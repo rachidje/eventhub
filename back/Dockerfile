@@ -27,4 +27,4 @@ COPY --from=builder /app/dist ./dist
 EXPOSE 5000
 
 # Lancer le serveur
-CMD ["node", "dist/index.js"]
+CMD ["node", "dist/api/main.js"]
