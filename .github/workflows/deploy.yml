@@ -20,7 +20,23 @@ jobs:
         username: ${{ secrets.VPS_USER }}
         key: ${{ secrets.VPS_SSH_KEY }}
         script: |
-          cd /home/${{ secrets.VPS_USER }}/my-app
+          cd /home/debian
+
+          # Cloner le projet si le dossier n'existe pas
+          if [ ! -d "eventhub" ]; then
+            git clone git@github.com:rachidje/eventhub.git eventhub
+          fi
+
+          cd eventhub
+
+          # Vérifie que c'est bien un dépôt Git
+          if [ ! -d ".git" ]; then
+            echo "Erreur : ce n'est pas un dépôt Git."
+            exit 1
+          fi
+
           git pull origin main
-          docker-compose down
-          docker-compose up --build -d
+
+          docker compose down
+          docker compose up --build -d
+
