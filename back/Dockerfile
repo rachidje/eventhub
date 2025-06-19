@@ -12,7 +12,7 @@ COPY . .
 RUN npm run build  # suppose que "build" = "tsc"
 
 # Étape 2 : Image minimale pour l'exécution
-FROM node:20.13.2-alpine
+FROM node:20-alpine
 
 WORKDIR /app
 
