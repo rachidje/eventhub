@@ -14,7 +14,8 @@ export class InMemoryEventRepository {
 
     async findByOrganizerAndStatus(user: User, statuses: EventStatus[]): Promise<HostedEvent[]> {
         return this.events.filter(event => 
-            event.wasOrganizedBy(user) && statuses.includes(event.hasStatus())
+            event.wasOrganizedBy(user) && 
+            event.hasOneOfStatus(statuses)
         )
     }
 }

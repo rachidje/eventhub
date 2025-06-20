@@ -3,9 +3,11 @@ import { EventStatus } from "../../domain/enums/event-status";
 import { HostedEvent } from "../../domain/hosted-event.entity";
 import { InMemoryEventRepository } from "../../tests/infra-test/in-memory-event-repository";
 
+
 interface CreateEventUseCasePayload {
-    user: User
-    event: HostedEvent
+    name: string
+    description: string
+    organizer: User
 }
 
 export class CreateEventUseCase {
@@ -13,14 +15,22 @@ export class CreateEventUseCase {
 
     async execute(payload: CreateEventUseCasePayload): Promise<void> {
         const events = await this.repository.findByOrganizerAndStatus(
-            payload.user, [EventStatus.SCHEDULED, EventStatus.PUBLISHED]
+            payload.organizer,
+            [EventStatus.SCHEDULED, EventStatus.PUBLISHED]
         )
 
-        const conflictingEvent = events.find(event => event.isSimilarTo(payload.event))
+        const event = new HostedEvent({
+            id: "evt-001",
+            name: payload.name,
+            description: payload.description,
+            organizer: payload.organizer,
+            status: EventStatus.SCHEDULED
+        })
+
+        const conflictingEvent = events.find(event => event.isSimilarTo(event))
 
         if (conflictingEvent) {
             throw new Error("Event with same data already exists")
         }
     }
-
 }
