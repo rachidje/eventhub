@@ -44,5 +44,13 @@ export class HostedEvent {
         if (this.props.dates.isInThePast()) {
             throw new Error("Event dates are in the past")
         }
+        
+        if (this.props.dates.isTooSoon()) {
+            throw new Error("Event is too soon")
+        }
+        
+        if (this.props.dates.isTooLong()) {
+            throw new Error("Event is too long")
+        }
     }
 }

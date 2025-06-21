@@ -32,6 +32,8 @@ export class CreateEventUseCase {
             [EventStatus.SCHEDULED, EventStatus.PUBLISHED]
         )
 
+        
+        
         const event = new HostedEvent({
             id: "evt-001",
             name: payload.name,
@@ -50,11 +52,11 @@ export class CreateEventUseCase {
                 country: payload.location.country
             })
         })
-
+        
         if (event.hasConflictWith(events)) {
             throw new Error("Event with same data already exists")
         }
-
+        
         event.validateOrThrow()
     }
 }

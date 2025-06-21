@@ -1,3 +1,4 @@
+import { addDays, addHours } from "date-fns";
 import { unittestUsers } from "../../../user/tests/entities-test/unittest-users";
 import { EventStatus } from "../../domain/enums/event-status";
 import { HostedEvent } from "../../domain/hosted-event.entity";
@@ -12,8 +13,8 @@ export const unittestHostedEvents = {
                 organizer: unittestUsers.alice,
                 status: EventStatus.PUBLISHED,
                 dates: new EventDates({
-                    start: new Date("2025-10-01T00:00:00.000Z"),
-                    end: new Date("2025-10-01T02:00:00.000Z")
+                    start : addDays(new Date(), 5),
+                    end : addDays(addHours(new Date(), 2), 5)
                 }),
                 location: new EventPlace({
                     name: "La Cité des Sciences",

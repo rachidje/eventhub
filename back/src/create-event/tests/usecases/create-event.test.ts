@@ -1,19 +1,23 @@
-import { addDays } from "date-fns"
+import { addDays, addHours } from "date-fns"
 import { unittestUsers } from "../../../user/tests/entities-test/unittest-users"
-import { CreateEventUseCase } from "../../application/usecases/create-event"
+import { CreateEventUseCase } from "../../application/usecases/create-event.usecase"
 import { EventStatus } from "../../domain/enums/event-status"
 import { unittestHostedEvents } from "../entities-test/unittest-hosted-events"
 import { InMemoryEventRepository } from "../infra-test/in-memory-event-repository"
+import { HostedEvent } from "../../domain/hosted-event.entity"
 
 describe("Create New Event", () => {
+    const startDate = addDays(new Date(), 5)
+    const endDate = addDays(addHours(new Date(), 2), 5)
+
     const payload = {
             name: "Salon de la photo immersive",
             description: "Un événement artistique autour des technologies immersives et interactives.",
             organizer: unittestUsers.alice,
             status: EventStatus.SCHEDULED,
             dates: {
-                start: new Date("2025-10-01T00:00:00.000Z"),
-                end: new Date("2025-10-01T02:00:00.000Z")
+                start: startDate,
+                end: endDate
             },
             location : {
                 name: "La Cité des Sciences",
@@ -33,8 +37,6 @@ describe("Create New Event", () => {
     })
 
     describe("Scenario : The event already exists with the same data", () => {
-        
-
         it("should throw an error" , async () => {
             await repository.save(unittestHostedEvents.event)
             await expect(usecase.execute(payload)).rejects.toThrow("Event with same data already exists")
@@ -53,6 +55,33 @@ describe("Create New Event", () => {
         it("should throw an error" , async () => {
             await expect(usecase.execute(invalidPayload)).rejects.toThrow("Event dates are in the past")
         })
+    })
 
+    describe("Scenario : The event is too soon", () => {
+        const invalidPayload = {
+            ...payload,
+            dates: {
+                start: addDays(new Date(), 2),
+                end: addDays(new Date(), 2)
+            }
+        }
+
+        it("should throw an error" , async () => {
+            await expect(usecase.execute(invalidPayload)).rejects.toThrow("Event is too soon")
+        })
+    })
+
+    describe("Scenario : The event is too long", () => {
+        const invalidPayload = {
+            ...payload,
+            dates: {
+                start: addDays(new Date(), 5),
+                end: addDays(addHours(new Date(), 4), 5)
+            }
+        }
+
+        it("should throw an error" , async () => {
+            await expect(usecase.execute(invalidPayload)).rejects.toThrow("Event is too long")
+        })
     })
 })
