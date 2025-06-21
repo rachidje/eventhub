@@ -1,6 +1,6 @@
 export default {
     collectCoverage: true,
-    coverageDirectory: 'coverage',
+    coverageDirectory: '../coverage',
     coverageReporters: ['lcov', 'text', 'cobertura'],
     preset: 'ts-jest',
     testEnvironment: 'node',

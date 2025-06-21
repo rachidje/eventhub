@@ -4,6 +4,7 @@ import { HostedEvent } from "../../domain/hosted-event.entity";
 import { EventDates } from "../../domain/value-objects/event-dates";
 import { EventPlace } from "../../domain/value-objects/event-place";
 import { IEventRepository } from "../ports/event-repository.interface";
+import { IVenueRepository } from "../ports/venue-repository.interface";
 
 
 interface CreateEventUseCasePayload {
@@ -25,7 +26,10 @@ interface CreateEventUseCasePayload {
 }
 
 export class CreateEventUseCase {
-    constructor(private readonly repository: IEventRepository) {}
+    constructor(
+        private readonly repository: IEventRepository,
+        private readonly venueRepository: IVenueRepository
+    ) {}
 
     async execute(payload: CreateEventUseCasePayload): Promise<void> {
         const events = await this.repository.findByOrganizerAndStatus(
@@ -52,11 +56,17 @@ export class CreateEventUseCase {
             }),
             capacity: payload.capacity
         })
-        
+
         if (event.hasConflictWith(events)) {
             throw new Error("Event with same data already exists")
         }
         
         event.validateOrThrow()
+
+        // 
+        const venue = await this.venueRepository.findByName(payload.location.name)
+        if(venue && !venue.isOpenAt(payload.dates)) {
+            throw new Error("Event dates are not in opening hours of the venue")
+        }
     }
 }
