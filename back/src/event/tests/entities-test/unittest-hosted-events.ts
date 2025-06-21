@@ -22,6 +22,7 @@ export const unittestHostedEvents = {
                     postalCode: "75001",
                     city: "Paris",
                     country: "France"
-                })
+                }),
+                capacity: 50
             })
 }

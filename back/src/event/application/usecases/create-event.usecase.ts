@@ -20,7 +20,8 @@ interface CreateEventUseCasePayload {
         postalCode: string
         city: string
         country: string
-    }
+    },
+    capacity: number
 }
 
 export class CreateEventUseCase {
@@ -31,8 +32,6 @@ export class CreateEventUseCase {
             payload.organizer,
             [EventStatus.SCHEDULED, EventStatus.PUBLISHED]
         )
-
-        
         
         const event = new HostedEvent({
             id: "evt-001",
@@ -50,7 +49,8 @@ export class CreateEventUseCase {
                 postalCode: payload.location.postalCode,
                 city: payload.location.city,
                 country: payload.location.country
-            })
+            }),
+            capacity: payload.capacity
         })
         
         if (event.hasConflictWith(events)) {

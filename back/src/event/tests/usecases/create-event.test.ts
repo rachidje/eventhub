@@ -4,7 +4,6 @@ import { CreateEventUseCase } from "../../application/usecases/create-event.usec
 import { EventStatus } from "../../domain/enums/event-status"
 import { unittestHostedEvents } from "../entities-test/unittest-hosted-events"
 import { InMemoryEventRepository } from "../infra-test/in-memory-event-repository"
-import { HostedEvent } from "../../domain/hosted-event.entity"
 
 describe("Create New Event", () => {
     const startDate = addDays(new Date(), 5)
@@ -25,7 +24,8 @@ describe("Create New Event", () => {
                 postalCode: "75001",
                 city: "Paris",
                 country: "France"
-            }
+            },
+            capacity: 50
         }
 
     let repository: InMemoryEventRepository
@@ -82,6 +82,28 @@ describe("Create New Event", () => {
 
         it("should throw an error" , async () => {
             await expect(usecase.execute(invalidPayload)).rejects.toThrow("Event is too long")
+        })
+    })
+
+    describe("Scenario : The event's capacity is not enough", () => {
+        const invalidPayload = {
+            ...payload,
+            capacity: 1
+        }
+
+        it("should throw an error" , async () => {
+            await expect(usecase.execute(invalidPayload)).rejects.toThrow("Event capacity is not enough")
+        })
+    })
+
+    describe("Scenario : The event's capacity is too much", () => {
+        const invalidPayload = {
+            ...payload,
+            capacity: 101
+        }
+
+        it("should throw an error" , async () => {
+            await expect(usecase.execute(invalidPayload)).rejects.toThrow("Event capacity is too much")
         })
     })
 })
