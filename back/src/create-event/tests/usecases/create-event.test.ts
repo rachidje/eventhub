@@ -1,10 +1,18 @@
 import { unittestUsers } from "../../../user/tests/entities-test/unittest-users"
 import { CreateEventUseCase } from "../../application/usecases/create-event"
 import { EventStatus } from "../../domain/enums/event-status"
-import { HostedEvent } from "../../domain/hosted-event.entity"
+import { unittestHostedEvents } from "../entities-test/unittest-hosted-events"
 import { InMemoryEventRepository } from "../infra-test/in-memory-event-repository"
 
 describe("Create New Event", () => {
+
+    let repository: InMemoryEventRepository
+    let usecase: CreateEventUseCase
+
+    beforeEach(async () => {
+        repository = new InMemoryEventRepository()
+        usecase = new CreateEventUseCase(repository)
+    })
 
     describe("Scenario : The event already exists with the same data", () => {
         const payload = {
@@ -12,20 +20,21 @@ describe("Create New Event", () => {
             description: "Un événement artistique autour des technologies immersives et interactives.",
             organizer: unittestUsers.alice,
             status: EventStatus.SCHEDULED,
+            dates: {
+                start: new Date("2025-10-01T00:00:00.000Z"),
+                end: new Date("2025-10-01T02:00:00.000Z")
+            },
+            location : {
+                name: "La Cité des Sciences",
+                address: "30 Avenue de la République",
+                postalCode: "75001",
+                city: "Paris",
+                country: "France"
+            }
         }
+
         it("should throw an error" , async () => {
-            const repository = new InMemoryEventRepository()
-            const usecase = new CreateEventUseCase(repository)
-
-            const event = new HostedEvent({
-                id: "evt-001",
-                name: "Salon de la photo immersive",
-                description: "Un événement artistique autour des technologies immersives et interactives.",
-                organizer: unittestUsers.alice,
-                status: EventStatus.PUBLISHED
-            })
-
-            await repository.save(event)
+            await repository.save(unittestHostedEvents.event)
             await expect(usecase.execute(payload)).rejects.toThrow("Event with same data already exists")
         })
     })

@@ -1,6 +1,8 @@
 import stringSimilarity from "string-similarity"
 import { User } from "../../user/domain/user.entity"
 import { EventStatus } from "./enums/event-status"
+import { EventDates } from "./value-objects/event-dates"
+import { EventPlace } from "./value-objects/event-place"
 
 export interface HostedEventProps {
     id: string
@@ -8,6 +10,8 @@ export interface HostedEventProps {
     description: string
     organizer: User
     status: EventStatus
+    dates: EventDates
+    location: EventPlace
 }
 
 export class HostedEvent {
@@ -22,7 +26,9 @@ export class HostedEvent {
     }
 
     isSimilarTo(event: HostedEvent): boolean {
-        return this.isTextuallyCloseTo(event)
+        return this.isTextuallyCloseTo(event) &&
+            this.props.dates.equals(event.props.dates) &&
+            this.props.location.equals(event.props.location)
     }
 
     private isTextuallyCloseTo(event: HostedEvent): boolean {

@@ -4,8 +4,6 @@ export interface EventPlaceProps {
     city: string
     postalCode: string
     country: string
-    latitude: number
-    longitude: number
 }
 
 export class EventPlace {
@@ -17,7 +15,5 @@ export class EventPlace {
             && this.props.city === eventPlace.props.city
             && this.props.postalCode === eventPlace.props.postalCode
             && this.props.country === eventPlace.props.country
-            && this.props.latitude === eventPlace.props.latitude
-            && this.props.longitude === eventPlace.props.longitude
     }
 }

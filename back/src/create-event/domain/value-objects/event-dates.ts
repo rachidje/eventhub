@@ -3,10 +3,10 @@ export interface EventDateProps {
     end: Date
 }
 
-export class EventDate {
+export class EventDates {
     constructor(private props: EventDateProps) {}
 
-    equals(eventDate: EventDate): boolean {
+    equals(eventDate: EventDates): boolean {
         return this.props.start.getTime() === eventDate.props.start.getTime()
             && this.props.end.getTime() === eventDate.props.end.getTime()
     }
