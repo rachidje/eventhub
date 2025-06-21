@@ -8,7 +8,7 @@
 [![Dockerized](https://img.shields.io/badge/Docker-Ready-blue)](https://www.docker.com/)
 [![Version](https://img.shields.io/badge/version-1.0.0-brightgreen)]()
 
-**EventHub** est une application web de gestion d’événements et de billetterie, conçue dans le cadre du titre professionnel CDA. Elle permet aux organisateurs de créer et gérer leurs événements, et aux utilisateurs de réserver leurs places simplement et en toute sécurité.
+**EventHub** est une application web de gestion d’événements et de billetterie, **conçue pour les apprenants que j'accompagne dans le cadre du titre professionnel CDA**. Elle permet aux organisateurs de créer et gérer leurs événements, et aux utilisateurs de réserver leurs places simplement et en toute sécurité.
 
 ---
 
