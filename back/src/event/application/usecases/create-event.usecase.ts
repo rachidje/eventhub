@@ -3,7 +3,7 @@ import { EventStatus } from "../../domain/enums/event-status";
 import { HostedEvent } from "../../domain/hosted-event.entity";
 import { EventDates } from "../../domain/value-objects/event-dates";
 import { EventPlace } from "../../domain/value-objects/event-place";
-import { InMemoryEventRepository } from "../../tests/infra-test/in-memory-event-repository";
+import { IEventRepository } from "../ports/event-repository.interface";
 
 
 interface CreateEventUseCasePayload {
@@ -25,7 +25,7 @@ interface CreateEventUseCasePayload {
 }
 
 export class CreateEventUseCase {
-    constructor(private readonly repository: InMemoryEventRepository) {}
+    constructor(private readonly repository: IEventRepository) {}
 
     async execute(payload: CreateEventUseCasePayload): Promise<void> {
         const events = await this.repository.findByOrganizerAndStatus(

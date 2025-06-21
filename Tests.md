@@ -12,3 +12,5 @@
 - [ ] Should fait if the place is not available
 - [ ] Should fail if the place is already taken
 - [ ] Should fail if the price is negative
+- [ ] Should return the event ID
+- [ ] Should insert the event in the database
