@@ -51,10 +51,10 @@ export class CreateEventUseCase {
             })
         })
 
-        const conflictingEvent = events.find(event => event.isSimilarTo(event))
-
-        if (conflictingEvent) {
+        if (event.hasConflictWith(events)) {
             throw new Error("Event with same data already exists")
         }
+
+        event.validateOrThrow()
     }
 }

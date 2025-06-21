@@ -25,6 +25,10 @@ export class HostedEvent {
         return statuses.includes(this.props.status)
     }
 
+    hasConflictWith(events: HostedEvent[]): boolean {
+        return events.find(event => event.isSimilarTo(this)) !== undefined
+    }
+
     isSimilarTo(event: HostedEvent): boolean {
         return this.isTextuallyCloseTo(event) &&
             this.props.dates.equals(event.props.dates) &&
@@ -34,5 +38,11 @@ export class HostedEvent {
     private isTextuallyCloseTo(event: HostedEvent): boolean {
         return stringSimilarity.compareTwoStrings(this.props.name, event.props.name) > 0.8 &&
             stringSimilarity.compareTwoStrings(this.props.description, event.props.description) > 0.8
+    }
+
+    validateOrThrow(): void {
+        if (this.props.dates.isInThePast()) {
+            throw new Error("Event dates are in the past")
+        }
     }
 }

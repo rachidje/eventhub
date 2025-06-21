@@ -10,4 +10,8 @@ export class EventDates {
         return this.props.start.getTime() === eventDate.props.start.getTime()
             && this.props.end.getTime() === eventDate.props.end.getTime()
     }
+
+    isInThePast(): boolean {
+        return this.props.start < new Date() || this.props.end < new Date()
+    }
 }

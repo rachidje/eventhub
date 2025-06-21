@@ -47,6 +47,10 @@
 - UC4 : Gestion des entrées avec QR Code
 - UC5 : Reporting avancé pour les organisateurs
 
+### Liste des tests unitaires
+
+[Tests unitaires](Tests.md)
+
 ## Démonstration & dépôt
 
 Le projet est conteneurisé pour une mise en route rapide via `docker-compose`.
