@@ -1,7 +1,7 @@
-import { IEventRepository } from "../../modules/event/application/ports/event-repository.interface"
-import { EventStatus } from "../../modules/event/domain/enums/event-status"
-import { HostedEvent } from "../../modules/event/domain/hosted-event.entity"
-import { Organizer } from "../../modules/organizer/domain/organizer.entity"
+import { IEventRepository } from "@event/application/ports/event-repository.interface"
+import { EventStatus } from "@event/domain/enums/event-status"
+import { HostedEvent } from "@event/domain/hosted-event.entity"
+import { Organizer } from "@organizer/domain/organizer.entity"
 
 export class InMemoryEventRepository implements IEventRepository {
     private events: HostedEvent[]

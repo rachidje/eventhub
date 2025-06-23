@@ -1,6 +1,6 @@
 // venue/tests/infra-test/in-memory-venue-repository.ts
-import { IVenueRepository } from "../../modules/event/application/ports/venue-repository.interface";
-import { Venue } from "../../modules/venue/domain/venue.entity";
+import { IVenueRepository } from "@event/application/ports/venue-repository.interface";
+import { Venue } from "@venue/domain/venue.entity";
 
 export class InMemoryVenueRepository implements IVenueRepository {
     private venues: Venue[]

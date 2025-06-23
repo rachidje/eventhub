@@ -1,5 +1,5 @@
-import { IEventRepository } from "../../modules/calendar/application/ports/event-repository.interface";
-import { HostedEvent } from "../../modules/event/domain/hosted-event.entity";
+import { IEventRepository } from "@calendar/application/ports/event-repository.interface";
+import { HostedEvent } from "@event/domain/hosted-event.entity";
 
 export class InMemoryEventRepository implements IEventRepository {
     constructor(public events: HostedEvent[] = []) {}

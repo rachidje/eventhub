@@ -1,7 +1,6 @@
 import { addDays, addHours, set } from "date-fns"
-import { CreateEventUseCase } from "../../modules/event/application/usecases/create-event.usecase"
-import { EventStatus } from "../../modules/event/domain/enums/event-status"
-import { Slot } from "../../modules/calendar/domain/value-objects/slot"
+import { EventStatus } from "@event/domain/enums/event-status"
+import { Slot } from "@calendar/domain/value-objects/slot"
 import { unittestVenue } from "../entities-test/unittest-venue"
 import { unittestOrganizers } from "../entities-test/unittest-organizers"
 import { InMemoryEventRepository } from "../infra-tests/in-memory-event-repository"
@@ -9,8 +8,9 @@ import { InMemoryEventRepository as InMemoryEventRepositoryForCalendar } from ".
 import { InMemoryCalendarRepository } from "../infra-tests/in-memory-calendar-repository"
 import { InMemoryVenueRepository as InMemoryVenueRepositoryForEvent } from "../infra-tests/in-memory-venue-repository"
 import { InMemoryVenueRepository as InMemoryVenueRepositoryForCalendar } from "../infra-tests/in-memory-venue-repository-for-calendar"
-import { VenueAvailabilityService } from "../../modules/calendar/domain/services/venue-availibility.service"
+import { VenueAvailabilityService } from "@calendar/domain/services/venue-availibility.service"
 import { unittestHostedEvents } from "../entities-test/unittest-hosted-events"
+import { CreateEventUseCase } from "@event/application/usecases/create-event.usecase"
 
 describe("Create New Event", () => {
     function nextDayAt(targetDay: number, hour: number, minute: number = 0): Date {

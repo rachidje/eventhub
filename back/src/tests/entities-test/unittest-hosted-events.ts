@@ -1,9 +1,10 @@
+import { HostedEvent } from "@event/domain/hosted-event.entity";
 import { addDays, addHours } from "date-fns";
-import { HostedEvent } from "../../modules/event/domain/hosted-event.entity";
 import { unittestOrganizers } from "./unittest-organizers";
-import { EventStatus } from "../../modules/event/domain/enums/event-status";
-import { EventDates } from "../../modules/event/domain/value-objects/event-dates";
-import { EventPlace } from "../../modules/event/domain/value-objects/event-place";
+import { EventStatus } from "@event/domain/enums/event-status";
+import { EventDates } from "@event/domain/value-objects/event-dates";
+import { EventPlace } from "@event/domain/value-objects/event-place";
+
 
 
 export const unittestHostedEvents = {

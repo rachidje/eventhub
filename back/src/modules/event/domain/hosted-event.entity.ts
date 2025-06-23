@@ -1,8 +1,9 @@
+import { Organizer } from "@organizer/domain/organizer.entity"
 import stringSimilarity from "string-similarity"
-import { Organizer } from "../../organizer/domain/organizer.entity"
 import { EventStatus } from "./enums/event-status"
 import { EventDates } from "./value-objects/event-dates"
 import { EventPlace } from "./value-objects/event-place"
+
 
 export interface HostedEventProps {
     id: string

@@ -1,5 +1,6 @@
-import { ICalendarRepository } from "../../modules/calendar/application/ports/calendar-repository.interface";
-import { Slot } from "../../modules/calendar/domain/value-objects/slot";
+import { ICalendarRepository } from "@calendar/application/ports/calendar-repository.interface";
+import { Slot } from "@calendar/domain/value-objects/slot";
+
 
 export class InMemoryCalendarRepository implements ICalendarRepository {
 

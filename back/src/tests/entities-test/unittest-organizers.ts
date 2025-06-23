@@ -1,4 +1,4 @@
-import { Organizer } from "../../modules/organizer/domain/organizer.entity";
+import { Organizer } from "@organizer/domain/organizer.entity";
 
 export const unittestOrganizers = {
     alice: new Organizer({

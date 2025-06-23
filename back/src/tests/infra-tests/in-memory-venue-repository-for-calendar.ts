@@ -1,5 +1,5 @@
-import { IVenueRepository } from "../../modules/calendar/application/ports/venue-repository.interface";
-import { Venue } from "../../modules/venue/domain/venue.entity";
+import { IVenueRepository } from "@calendar/application/ports/venue-repository.interface";
+import { Venue } from "@venue/domain/venue.entity";
 
 export class InMemoryVenueRepository implements IVenueRepository {
     constructor(public venues: Venue[] = []) {}

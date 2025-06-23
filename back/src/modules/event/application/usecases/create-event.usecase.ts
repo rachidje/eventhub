@@ -1,11 +1,11 @@
-import { Organizer } from "../../../organizer/domain/organizer.entity";
-import { EventStatus } from "../../domain/enums/event-status";
-import { HostedEvent } from "../../domain/hosted-event.entity";
-import { EventDates } from "../../domain/value-objects/event-dates";
-import { EventPlace } from "../../domain/value-objects/event-place";
-import { IEventRepository } from "../ports/event-repository.interface";
-import { IVenueAvailabilityService } from "../ports/venue-availability-service.interface";
-import { IVenueRepository } from "../ports/venue-repository.interface";
+import { IEventRepository } from "@event/application/ports/event-repository.interface";
+import { IVenueAvailabilityService } from "@event/application/ports/venue-availability-service.interface";
+import { IVenueRepository } from "@event/application/ports/venue-repository.interface";
+import { EventStatus } from "@event/domain/enums/event-status";
+import { HostedEvent } from "@event/domain/hosted-event.entity";
+import { EventDates } from "@event/domain/value-objects/event-dates";
+import { EventPlace } from "@event/domain/value-objects/event-place";
+import { Organizer } from "@organizer/domain/organizer.entity";
 
 
 interface CreateEventUseCasePayload {

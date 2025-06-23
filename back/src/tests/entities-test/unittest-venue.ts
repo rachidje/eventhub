@@ -1,8 +1,8 @@
 // venue/tests/entities-test/unittest-venue.ts
 
-import { Address } from "../../modules/venue/domain/value-objects/adress";
-import { WeeklySchedule } from "../../modules/venue/domain/value-objects/weekly-schedule";
-import { Venue } from "../../modules/venue/domain/venue.entity";
+import { Address } from "@venue/domain/value-objects/adress";
+import { WeeklySchedule } from "@venue/domain/value-objects/weekly-schedule";
+import { Venue } from "@venue/domain/venue.entity";
 
 export const unittestVenue = {
     venue: new Venue({

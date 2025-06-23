@@ -7,5 +7,12 @@ export default {
     testRegex: '\\.test\\.ts$',
     coverageProvider: 'v8',
     moduleFileExtensions: ['js', 'json', 'ts', 'tsx'],
-    rootDir: 'src'
+    rootDir: 'src',
+    moduleNameMapper: {
+        "^@event/(.*)$": "<rootDir>/modules/event/$1",
+        "^@calendar/(.*)$": "<rootDir>/modules/calendar/$1",
+        "^@venue/(.*)$": "<rootDir>/modules/venue/$1",
+        "^@organizer/(.*)$": "<rootDir>/modules/organizer/$1",
+        "^@api/(.*)$": "<rootDir>/modules/api/$1"
+    }
 };

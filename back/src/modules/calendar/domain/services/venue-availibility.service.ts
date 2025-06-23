@@ -1,5 +1,5 @@
-import { IEventRepository } from "../../application/ports/event-repository.interface";
-import { IVenueRepository } from "../../application/ports/venue-repository.interface";
+import { IEventRepository } from "@calendar/application/ports/event-repository.interface";
+import { IVenueRepository } from "@calendar/application/ports/venue-repository.interface";
 
 export class VenueAvailabilityService {
     constructor(
