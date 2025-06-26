@@ -2,7 +2,6 @@ import { IEventRepository as IEventRepositoryForCalendarContext } from "@calenda
 import { IEventRepository } from "@event/application/ports/event-repository.interface"
 import { EventStatus } from "@event/domain/enums/event-status"
 import { HostedEvent } from "@event/domain/hosted-event.entity"
-import { Organizer } from "@organizer/domain/organizer.entity"
 
 export class InMemoryEventRepository implements IEventRepository, IEventRepositoryForCalendarContext {
     private events: HostedEvent[]
@@ -14,14 +13,18 @@ export class InMemoryEventRepository implements IEventRepository, IEventReposito
         this.events.push(event)
     }
 
-    async findByOrganizerAndStatus(user: Organizer, statuses: EventStatus[]): Promise<HostedEvent[]> {
+    async findByOrganizerAndStatus(organizerId: string, statuses: EventStatus[]): Promise<HostedEvent[]> {
         return this.events.filter(event => 
-            event.wasOrganizedBy(user) && 
-            event.hasOneOfStatus(statuses)
+            event.props.organizer.props.id === organizerId &&
+            statuses.includes(event.props.status)
         )
     }
 
-    async findEventsAtVenue(name: string): Promise<HostedEvent[]> {
-        return this.events.filter(event => event.hasVenueName(name))
+    async findEventsAtVenue(venueId: string): Promise<HostedEvent[]> {
+        return this.events.filter(event => event.props.venueId === venueId)
+    }
+
+    async findById(id: string): Promise<HostedEvent | null> {
+        return this.events.find(event => event.props.id === id) || null
     }
 }

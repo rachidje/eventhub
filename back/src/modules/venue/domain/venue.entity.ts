@@ -10,21 +10,9 @@ export interface VenueProps {
 }
 
 export class Venue {
-    constructor(private props: VenueProps) {}
-
-    hasName(name: string): boolean {
-        return this.props.name === name
-    }
+    constructor(public props: VenueProps) {}
 
     isOpenAt(dates: {start: Date, end: Date}): boolean {
         return this.props.weeklySchedule.isOpenDuring(dates)
-    }
-
-    venueId(): string {
-        return this.props.id
-    }
-
-    name(): string {
-        return this.props.name
     }
 }

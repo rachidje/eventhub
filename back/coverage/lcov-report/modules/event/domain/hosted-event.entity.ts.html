@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.7% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>88/91</span>
+                <span class='fraction'>94/94</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.83% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>23/24</span>
+                <span class='fraction'>26/26</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">91.66% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>11/12</span>
+                <span class='fraction'>12/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.7% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>88/91</span>
+                <span class='fraction'>94/94</span>
             </div>
         
             
@@ -153,7 +153,10 @@
 <a name='L88'></a><a href='#L88'>88</a>
 <a name='L89'></a><a href='#L89'>89</a>
 <a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -178,6 +181,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -186,25 +191,26 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">8x</span>
@@ -246,8 +252,7 @@
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import { Organizer } from "@organizer/domain/organizer.entity"
 import stringSimilarity from "string-similarity"
 import { EventStatus } from "./enums/event-status"
-import { EventDates } from "./value-objects/event-dates"
-import { EventPlace } from "./value-objects/event-place"
+import { differenceInBusinessDays, differenceInHours } from "date-fns"
 &nbsp;
 &nbsp;
 export interface HostedEventProps {
@@ -256,44 +261,48 @@ export interface HostedEventProps {
     description: string
     organizer: Organizer
     status: EventStatus
-    dates: EventDates
-    location: EventPlace
+    dates: {
+        start: Date,
+        end: Date
+    }
+    venueId: string
     capacity: number
     price: number
 }
 &nbsp;
 export class HostedEvent {
-    constructor(private props: HostedEventProps) {}
-&nbsp;
-    wasOrganizedBy(organizer: Organizer): boolean {
-        return this.props.organizer.hasSameIdAs(organizer)
-    }
-&nbsp;
-    hasVenueName(name: string): boolean {
-        return this.props.location.hasVenueName(name)
-    }
-&nbsp;
-    hasOneOfStatus(statuses: EventStatus[]): boolean {
-        return statuses.includes(this.props.status)
-    }
+    constructor(public props: HostedEventProps) {}
 &nbsp;
     hasConflictWith(events: HostedEvent[]): boolean {
         return events.find(event =&gt; event.isSimilarTo(this)) !== undefined
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    conflictsWithDates(dates: {start: Date, end: Date}): boolean {</span>
-<span class="cstat-no" title="statement not covered" >        return this.props.dates.conflictsWith(dates)</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
+    conflictsWithDates(dates: {start: Date, end: Date}): boolean {
+        return (
+            this.props.dates.start &lt; dates.end &amp;&amp;
+            dates.start &lt; this.props.dates.end
+        )
+    }
 &nbsp;
     isSimilarTo(event: HostedEvent): boolean {
-        return this.isTextuallyCloseTo(event) &amp;&amp;
-            this.props.dates.equals(event.props.dates)<span class="branch-0 cbranch-no" title="branch not covered" > &amp;&amp;</span>
-<span class="cstat-no" title="statement not covered" >            this.props.location.equals(event.props.location)</span>
+        return this.isTextuallyCloseTo(event)
     }
 &nbsp;
     private isTextuallyCloseTo(event: HostedEvent): boolean {
-        return stringSimilarity.compareTwoStrings(this.props.name, event.props.name) &gt; 0.8 &amp;&amp;
-            stringSimilarity.compareTwoStrings(this.props.description, event.props.description) &gt; 0.8
+        return stringSimilarity.compareTwoStrings(this.props.name, event.props.name) &gt; 0.7 &amp;&amp;
+            stringSimilarity.compareTwoStrings(this.props.description, event.props.description) &gt; 0.7
+    }
+&nbsp;
+    hasDatesInThePast(): boolean {
+        return this.props.dates.start &lt; new Date() || this.props.dates.end &lt; new Date()
+    }
+&nbsp;
+    isTooSoon(): boolean {
+        return differenceInBusinessDays(this.props.dates.start, new Date()) &lt; 3
+    }
+&nbsp;
+    isTooLong(): boolean {
+        return differenceInHours(this.props.dates.end, this.props.dates.start) &gt; 2
     }
 &nbsp;
     hasNotEnoughCapacity(): boolean {
@@ -309,15 +318,15 @@ export class HostedEvent {
     }
 &nbsp;
     validateOrThrow(): void {
-        if (this.props.dates.isInThePast()) {
+        if (this.hasDatesInThePast()) {
             throw new Error("Event dates are in the past")
         }
         
-        if (this.props.dates.isTooSoon()) {
+        if (this.isTooSoon()) {
             throw new Error("Event is too soon")
         }
         
-        if (this.props.dates.isTooLong()) {
+        if (this.isTooLong()) {
             throw new Error("Event is too long")
         }
 &nbsp;
@@ -340,7 +349,7 @@ export class HostedEvent {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-26T06:25:16.578Z
+                at 2025-06-26T13:21:13.510Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

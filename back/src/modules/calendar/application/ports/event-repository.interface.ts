@@ -1,5 +1,5 @@
 import { HostedEvent } from "@event/domain/hosted-event.entity";
 
 export interface IEventRepository {
-    findEventsAtVenue(name: string): Promise<HostedEvent[]>
+    findEventsAtVenue(venueId: string): Promise<HostedEvent[]>
 }

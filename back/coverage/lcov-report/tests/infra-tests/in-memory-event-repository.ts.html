@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>27/27</span>
+                <span class='fraction'>30/30</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">88.88% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>8/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>27/27</span>
+                <span class='fraction'>30/30</span>
             </div>
         
             
@@ -89,8 +89,10 @@
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -102,24 +104,27 @@
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import { IEventRepository } from "@event/application/ports/event-repository.interface"
-import { IEventRepository as IEventRepositoryForCalendarContext } from "@calendar/application/ports/event-repository.interface"
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import { IEventRepository as IEventRepositoryForCalendarContext } from "@calendar/application/ports/event-repository.interface"
+import { IEventRepository } from "@event/application/ports/event-repository.interface"
 import { EventStatus } from "@event/domain/enums/event-status"
 import { HostedEvent } from "@event/domain/hosted-event.entity"
-import { Organizer } from "@organizer/domain/organizer.entity"
 &nbsp;
 export class InMemoryEventRepository implements IEventRepository, IEventRepositoryForCalendarContext {
     private events: HostedEvent[]
@@ -131,15 +136,19 @@ export class InMemoryEventRepository implements IEventRepository, IEventReposito
         this.events.push(event)
     }
 &nbsp;
-    async findByOrganizerAndStatus(user: Organizer, statuses: EventStatus[]): Promise&lt;HostedEvent[]&gt; {
+    async findByOrganizerAndStatus(organizerId: string, statuses: EventStatus[]): Promise&lt;HostedEvent[]&gt; {
         return this.events.filter(event =&gt; 
-            event.wasOrganizedBy(user) &amp;&amp; 
-            event.hasOneOfStatus(statuses)
+            event.props.organizer.props.id === organizerId &amp;&amp;
+            statuses.includes(event.props.status)
         )
     }
 &nbsp;
-    async findEventsAtVenue(name: string): Promise&lt;HostedEvent[]&gt; {
-        return this.events.filter(event =&gt; event.hasVenueName(name))
+    async findEventsAtVenue(venueId: string): Promise&lt;HostedEvent[]&gt; {
+        return this.events.filter(event =&gt; event.props.venueId === venueId)
+    }
+&nbsp;
+    async findById(id: string): Promise&lt;HostedEvent | null&gt; {
+        return this.events.find(event =&gt; event.props.id === id)<span class="branch-0 cbranch-no" title="branch not covered" > || null</span>
     }
 }</pre></td></tr></table></pre>
 
@@ -148,7 +157,7 @@ export class InMemoryEventRepository implements IEventRepository, IEventReposito
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-26T06:25:16.578Z
+                at 2025-06-26T13:21:13.510Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

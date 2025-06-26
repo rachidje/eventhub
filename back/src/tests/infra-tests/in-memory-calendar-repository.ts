@@ -11,7 +11,7 @@ export class InMemoryCalendarRepository implements ICalendarRepository, ICalenda
         this.slots.push(slot)
     }
 
-    async findById(id: string): Promise<Slot | null> {
-        return this.slots.find(slot => slot.id() === id) || null
+    async findByVenueId(id: string): Promise<Slot | null> {
+        return this.slots.find(slot => slot.props.venueId === id) || null
     }
 }

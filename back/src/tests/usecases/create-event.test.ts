@@ -1,44 +1,21 @@
-import { addDays, addHours, set } from "date-fns"
-import { EventStatus } from "@event/domain/enums/event-status"
-import { Slot } from "@calendar/domain/value-objects/slot"
-import { unittestVenue } from "../entities-test/unittest-venue"
-import { unittestOrganizers } from "../entities-test/unittest-organizers"
-import { InMemoryEventRepository } from "../infra-tests/in-memory-event-repository"
 import { VenueAvailabilityService } from "@calendar/domain/services/venue-availibility.service"
-import { unittestHostedEvents } from "../entities-test/unittest-hosted-events"
 import { CreateEventUseCase } from "@event/application/usecases/create-event.usecase"
-import { InMemoryVenueRepository } from "../infra-tests/in-memory-venue-repository"
+import { EventStatus } from "@event/domain/enums/event-status"
+import { addDays, addHours, nextMonday, nextSaturday, setHours, setMinutes, setSeconds } from "date-fns"
+import { unittestOrganizers } from "../entities-test/unittest-organizers"
+import { unittestVenue } from "../entities-test/unittest-venue"
 import { InMemoryCalendarRepository } from "../infra-tests/in-memory-calendar-repository"
+import { InMemoryEventRepository } from "../infra-tests/in-memory-event-repository"
+import { InMemoryVenueRepository } from "../infra-tests/in-memory-venue-repository"
+import { unittestHostedEvents } from "../entities-test/unittest-hosted-events"
+import { Slot } from "@calendar/domain/value-objects/slot"
 
 describe("Create New Event", () => {
-    function nextDayAt(targetDay: number, hour: number, minute: number = 0): Date {
-        /**
-         * Fonction qui retourne le prochain jour specifique après la date courante.
-         */
-        const today = addDays(new Date(), 5)
-        const currentDay = today.getDay()
-        const delta = (targetDay - currentDay + 7) % 7 || 7
 
-        const targetDate = addDays(today, delta)
-        return set(targetDate, { hours: hour, minutes: minute, seconds: 0, milliseconds: 0 })
-    }
-
-    function nextMondayAt(hour: number, minute: number = 0): Date {
-        return nextDayAt(1, hour, minute)
-    }
-
-    function nextSaturdayAt(hour: number, minute: number = 0): Date {
-        return nextDayAt(6, hour, minute)
-    }
-
-    const startDate = nextSaturdayAt(10)
-    const endDate = nextSaturdayAt(12)
-
-    const bookedSlot = new Slot({
-        start: nextSaturdayAt(10),
-        end: nextSaturdayAt(12),
-        venueId: unittestVenue.venue.venueId()
-    })
+    const baseDate = nextSaturday(addDays(new Date(), 5))
+    
+    const startDate = setSeconds(setMinutes(setHours(baseDate, 10), 0), 0)
+    const endDate = setSeconds(setMinutes(setHours(baseDate, 12), 0), 0)
 
     const payload = {
             name: "Salon de la photo immersive",
@@ -49,13 +26,7 @@ describe("Create New Event", () => {
                 start: startDate,
                 end: endDate
             },
-            location : {
-                name: "La Cité des Sciences",
-                address: "30 Avenue de la République",
-                postalCode: "75001",
-                city: "Paris",
-                country: "France"
-            },
+            venueName: "La Cité des Sciences",
             capacity: 50,
             price: 100
         }
@@ -76,14 +47,19 @@ describe("Create New Event", () => {
         
         venueAvailabilityService = new VenueAvailabilityService(venueRepository, eventRepository)
 
-
         usecase = new CreateEventUseCase(eventRepository, venueRepository, venueAvailabilityService, calendarRepository)
     })
 
     describe("Scenario : The event already exists with the same data", () => {
+        const invalidPayload = {
+            ...payload,
+            name: "Salon de la photo",
+            description: "Un événement autour des technologies immersives et interactives."
+        }
         it("should throw an error" , async () => {
-            await eventRepository.save(unittestHostedEvents.event)
-            await expect(usecase.execute(payload)).rejects.toThrow("Event with same data already exists")
+            await eventRepository.save(unittestHostedEvents.eventWithSimilarData)
+            await expect(usecase.execute(invalidPayload)).rejects.toThrow("Already event exists with the same data")
+
         })
     })
 
@@ -105,11 +81,10 @@ describe("Create New Event", () => {
         const invalidPayload = {
             ...payload,
             dates: {
-                start: addDays(new Date(), 2),
-                end: addDays(new Date(), 2)
+                start: addDays(new Date(), 1),
+                end: addDays(new Date(), 1)
             }
         }
-
         it("should throw an error" , async () => {
             await expect(usecase.execute(invalidPayload)).rejects.toThrow("Event is too soon")
         })
@@ -120,10 +95,9 @@ describe("Create New Event", () => {
             ...payload,
             dates: {
                 start: addDays(new Date(), 5),
-                end: addDays(addHours(new Date(), 4), 5)
+                end: addDays(addHours(new Date(), 5), 5)
             }
         }
-
         it("should throw an error" , async () => {
             await expect(usecase.execute(invalidPayload)).rejects.toThrow("Event is too long")
         })
@@ -134,7 +108,6 @@ describe("Create New Event", () => {
             ...payload,
             capacity: 1
         }
-
         it("should throw an error" , async () => {
             await expect(usecase.execute(invalidPayload)).rejects.toThrow("Event capacity is not enough")
         })
@@ -145,68 +118,47 @@ describe("Create New Event", () => {
             ...payload,
             capacity: 101
         }
-
         it("should throw an error" , async () => {
             await expect(usecase.execute(invalidPayload)).rejects.toThrow("Event capacity is too much")
         })
     })
 
     describe("Scenario: The event's dates are not in opening hours of the place", () => {
+        
         it("should throw an error" , async () => {
-            const monday7am = nextMondayAt(7)
-            const monday9am = new Date(monday7am.getTime())
-            monday9am.setHours(9)
-            
-            const invalidPayload = {
-                ...payload,
-                dates: {
-                    start: monday7am,
-                    end: monday9am
-                }
-            }
-
-            await expect(usecase.execute(invalidPayload)).rejects.toThrow("Event dates are not in opening hours of the venue")
-        })
-
-        it('should throw an error for an opening slot out of opening hours', async () => {
-            const saturday7am = nextSaturdayAt(7)
-            const saturday9am = new Date(saturday7am.getTime())
-            saturday9am.setHours(9)
+            const startDate = nextMonday(addDays(new Date(), 5))
+            const endDate = addHours(startDate, 2)
 
             const invalidPayload = {
                 ...payload,
                 dates: {
-                    start: saturday7am,
-                    end: saturday9am
+                    start: startDate,
+                    end: endDate
                 }
             }
-
-            await expect(usecase.execute(invalidPayload)).rejects.toThrow("Event dates are not in opening hours of the venue")
+            await expect(usecase.execute(invalidPayload)).rejects.toThrow("Event dates are not in opening hours of the place")
         })
     })
 
-    describe.only("Scenario: The slot is not available", () => {
-        const invalidPayload = {
-                ...payload,
-                dates: {
-                    start: nextSaturdayAt(10),
-                    end: nextSaturdayAt(12)
-                }
-            }
+    describe("Scenario: The slot is not available", () => {
+        const bookedSlot = new Slot({
+                start: startDate,
+                end: endDate,
+                venueId: unittestVenue.venue.props.id
+            })
 
         it("should throw an error" , async () => {
             await calendarRepository.save(bookedSlot)
             await eventRepository.save(unittestHostedEvents.event)
-            await expect(usecase.execute(invalidPayload)).rejects.toThrow("The slot is not available")
+            await expect(usecase.execute(payload)).rejects.toThrow("Slot is not available")
         })
     })
 
     describe("Scenario: Negative price", () => {
         const invalidPayload = {
-                ...payload,
-                price: -1
-            }
-
+            ...payload,
+            price: -1
+        }
         it("should throw an error" , async () => {
             await expect(usecase.execute(invalidPayload)).rejects.toThrow("Event price must be a positive number")
         })
@@ -215,9 +167,24 @@ describe("Create New Event", () => {
     describe("Scenario: Booking the place", () => {
         it("should book the place" , async () => {
             await usecase.execute(payload)
-            const book = await calendarRepository.findById(bookedSlot.id())
-            
-            expect(book).toBeDefined()
+
+            const slot = await calendarRepository.findByVenueId(unittestVenue.venue.props.id)
+            expect(slot).toBeDefined()
+            expect(slot!.props.start).toEqual(startDate)
+            expect(slot!.props.end).toEqual(endDate)
+        })
+    })
+
+    describe("Scenario: Save the event and return ID", () => {
+        it("should return the event ID" , async () => {
+            const eventId = await usecase.execute(payload)
+            expect(eventId).toEqual(expect.any(String))
+
+            const event = await eventRepository.findById(eventId)
+            expect(event).toBeDefined()
+            expect(event!.props.name).toEqual(payload.name)
+            expect(event!.props.description).toEqual(payload.description)
+
         })
     })
 })

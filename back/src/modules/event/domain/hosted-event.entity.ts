@@ -1,8 +1,7 @@
 import { Organizer } from "@organizer/domain/organizer.entity"
 import stringSimilarity from "string-similarity"
 import { EventStatus } from "./enums/event-status"
-import { EventDates } from "./value-objects/event-dates"
-import { EventPlace } from "./value-objects/event-place"
+import { differenceInBusinessDays, differenceInHours } from "date-fns"
 
 
 export interface HostedEventProps {
@@ -11,45 +10,48 @@ export interface HostedEventProps {
     description: string
     organizer: Organizer
     status: EventStatus
-    dates: EventDates
-    location: EventPlace
+    dates: {
+        start: Date,
+        end: Date
+    }
+    venueId: string
     capacity: number
     price: number
 }
 
 export class HostedEvent {
-    constructor(private props: HostedEventProps) {}
-
-    wasOrganizedBy(organizer: Organizer): boolean {
-        return this.props.organizer.hasSameIdAs(organizer)
-    }
-
-    hasVenueName(name: string): boolean {
-        return this.props.location.hasVenueName(name)
-    }
-
-    hasOneOfStatus(statuses: EventStatus[]): boolean {
-        return statuses.includes(this.props.status)
-    }
+    constructor(public props: HostedEventProps) {}
 
     hasConflictWith(events: HostedEvent[]): boolean {
         return events.find(event => event.isSimilarTo(this)) !== undefined
     }
 
     conflictsWithDates(dates: {start: Date, end: Date}): boolean {
-        console.log(dates)
-        return this.props.dates.conflictsWith(dates)
+        return (
+            this.props.dates.start < dates.end &&
+            dates.start < this.props.dates.end
+        )
     }
 
     isSimilarTo(event: HostedEvent): boolean {
-        return this.isTextuallyCloseTo(event) &&
-            this.props.dates.equals(event.props.dates) &&
-            this.props.location.equals(event.props.location)
+        return this.isTextuallyCloseTo(event)
     }
 
     private isTextuallyCloseTo(event: HostedEvent): boolean {
-        return stringSimilarity.compareTwoStrings(this.props.name, event.props.name) > 0.8 &&
-            stringSimilarity.compareTwoStrings(this.props.description, event.props.description) > 0.8
+        return stringSimilarity.compareTwoStrings(this.props.name, event.props.name) > 0.7 &&
+            stringSimilarity.compareTwoStrings(this.props.description, event.props.description) > 0.7
+    }
+
+    hasDatesInThePast(): boolean {
+        return this.props.dates.start < new Date() || this.props.dates.end < new Date()
+    }
+
+    isTooSoon(): boolean {
+        return differenceInBusinessDays(this.props.dates.start, new Date()) < 3
+    }
+
+    isTooLong(): boolean {
+        return differenceInHours(this.props.dates.end, this.props.dates.start) > 2
     }
 
     hasNotEnoughCapacity(): boolean {
@@ -65,15 +67,15 @@ export class HostedEvent {
     }
 
     validateOrThrow(): void {
-        if (this.props.dates.isInThePast()) {
+        if (this.hasDatesInThePast()) {
             throw new Error("Event dates are in the past")
         }
         
-        if (this.props.dates.isTooSoon()) {
+        if (this.isTooSoon()) {
             throw new Error("Event is too soon")
         }
         
-        if (this.props.dates.isTooLong()) {
+        if (this.isTooLong()) {
             throw new Error("Event is too long")
         }
 
