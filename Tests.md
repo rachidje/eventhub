@@ -12,5 +12,5 @@
 - [x] Should fail if the place is not available
 - [x] Should fail if the price is negative
 - [x] Should book the place
-- [ ] Should return the event ID
-- [ ] Should insert the event in the database
+- [x] Should return the event ID
+- [x] Should insert the event in the database

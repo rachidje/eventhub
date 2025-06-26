@@ -13,7 +13,8 @@ export default {
         "^@calendar/(.*)$": "<rootDir>/modules/calendar/$1",
         "^@venue/(.*)$": "<rootDir>/modules/venue/$1",
         "^@organizer/(.*)$": "<rootDir>/modules/organizer/$1",
-        "^@api/(.*)$": "<rootDir>/modules/api/$1",
+        "^@api/(.*)$": "<rootDir>/api/$1",
         "^@shared/(.*)$": "<rootDir>/modules/shared/$1",
+        "^@tests/(.*)$": "<rootDir>/tests/$1"
     }
 };

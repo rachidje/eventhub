@@ -22,7 +22,7 @@ export interface CreateEventUseCasePayload {
 
 export class CreateEventUseCase {
     constructor(
-        private readonly repository: IEventRepository,
+        private readonly eventRepository: IEventRepository,
         private readonly venueRepository: IVenueRepository,
         private readonly venueAvailabilityService: IVenueAvailabilityService,
         private readonly eventConflictService: IEventConflictCheckerService,
@@ -53,7 +53,7 @@ export class CreateEventUseCase {
 
         await this.slotReservationService.reserveSlot(venue.props.id, payload.dates)
 
-        await this.repository.save(event)
+        await this.eventRepository.save(event)
 
         return event.props.id
     }

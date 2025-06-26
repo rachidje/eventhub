@@ -1,20 +1,427 @@
 <?xml version="1.0" ?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage lines-valid="427" lines-covered="427" line-rate="1" branches-valid="76" branches-covered="70" branch-rate="0.9209999999999999" timestamp="1750944073553" complexity="0" version="0.1">
+<coverage lines-valid="808" lines-covered="750" line-rate="0.9281999999999999" branches-valid="99" branches-covered="87" branch-rate="0.8787" timestamp="1750975075603" complexity="0" version="0.1">
   <sources>
     <source>/Volumes/backup/Dropbox/mac/3WA/CDA Nouveau Programme/eventhub/back</source>
   </sources>
   <packages>
-    <package name="modules.calendar.domain.services" line-rate="1" branch-rate="0.6">
+    <package name="api" line-rate="1" branch-rate="1">
       <classes>
-        <class name="venue-availibility.service.ts" filename="src/modules/calendar/domain/services/venue-availibility.service.ts" line-rate="1" branch-rate="0.6">
+        <class name="main.ts" filename="src/api/main.ts" line-rate="1" branch-rate="1">
           <methods>
-            <method name="VenueAvailabilityService" hits="11" signature="()V">
+          </methods>
+          <lines>
+            <line number="1" hits="1" branch="false"/>
+            <line number="2" hits="1" branch="false"/>
+            <line number="3" hits="1" branch="false"/>
+            <line number="4" hits="1" branch="false"/>
+            <line number="5" hits="1" branch="false"/>
+            <line number="6" hits="1" branch="false"/>
+            <line number="7" hits="1" branch="false"/>
+            <line number="8" hits="1" branch="false"/>
+            <line number="9" hits="1" branch="false"/>
+            <line number="10" hits="1" branch="false"/>
+            <line number="11" hits="1" branch="false"/>
+            <line number="12" hits="1" branch="false"/>
+            <line number="13" hits="1" branch="false"/>
+            <line number="14" hits="1" branch="false"/>
+            <line number="15" hits="1" branch="false"/>
+            <line number="16" hits="1" branch="false"/>
+            <line number="17" hits="1" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="18" hits="1" branch="false"/>
+            <line number="19" hits="1" branch="false"/>
+            <line number="20" hits="1" branch="false"/>
+            <line number="21" hits="1" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="api.config" line-rate="0.9718000000000001" branch-rate="0.5">
+      <classes>
+        <class name="dependency-injection.ts" filename="src/api/config/dependency-injection.ts" line-rate="1" branch-rate="1">
+          <methods>
+          </methods>
+          <lines>
+            <line number="1" hits="1" branch="false"/>
+            <line number="2" hits="1" branch="false"/>
+            <line number="3" hits="1" branch="false"/>
+            <line number="4" hits="1" branch="false"/>
+            <line number="5" hits="1" branch="false"/>
+            <line number="6" hits="1" branch="false"/>
+            <line number="7" hits="1" branch="false"/>
+            <line number="8" hits="1" branch="false"/>
+            <line number="9" hits="1" branch="false"/>
+            <line number="10" hits="1" branch="false"/>
+            <line number="11" hits="1" branch="false"/>
+            <line number="12" hits="1" branch="false"/>
+            <line number="13" hits="1" branch="false"/>
+            <line number="14" hits="1" branch="false"/>
+            <line number="15" hits="1" branch="false"/>
+            <line number="16" hits="1" branch="false"/>
+            <line number="17" hits="1" branch="false"/>
+            <line number="18" hits="1" branch="false"/>
+            <line number="19" hits="1" branch="false"/>
+            <line number="20" hits="1" branch="false"/>
+            <line number="21" hits="1" branch="false"/>
+            <line number="22" hits="1" branch="false"/>
+            <line number="23" hits="1" branch="false"/>
+            <line number="24" hits="1" branch="false"/>
+            <line number="25" hits="1" branch="false"/>
+            <line number="26" hits="1" branch="false"/>
+            <line number="27" hits="1" branch="false"/>
+            <line number="28" hits="1" branch="false"/>
+            <line number="29" hits="1" branch="false"/>
+            <line number="30" hits="1" branch="false"/>
+            <line number="31" hits="1" branch="false"/>
+            <line number="32" hits="1" branch="false"/>
+            <line number="33" hits="1" branch="false"/>
+            <line number="34" hits="1" branch="false"/>
+            <line number="35" hits="1" branch="false"/>
+            <line number="36" hits="1" branch="false"/>
+            <line number="37" hits="1" branch="false"/>
+            <line number="38" hits="1" branch="false"/>
+            <line number="39" hits="1" branch="false"/>
+            <line number="40" hits="1" branch="false"/>
+            <line number="41" hits="1" branch="false"/>
+            <line number="42" hits="1" branch="false"/>
+            <line number="43" hits="1" branch="false"/>
+            <line number="44" hits="1" branch="false"/>
+            <line number="45" hits="1" branch="false"/>
+            <line number="46" hits="1" branch="false"/>
+            <line number="47" hits="1" branch="false"/>
+            <line number="48" hits="1" branch="false"/>
+            <line number="49" hits="1" branch="false"/>
+            <line number="50" hits="1" branch="false"/>
+            <line number="51" hits="1" branch="false"/>
+            <line number="52" hits="1" branch="false"/>
+            <line number="53" hits="1" branch="false"/>
+            <line number="54" hits="1" branch="false"/>
+            <line number="55" hits="1" branch="false"/>
+            <line number="56" hits="1" branch="false"/>
+            <line number="57" hits="1" branch="false"/>
+            <line number="58" hits="1" branch="false"/>
+            <line number="59" hits="1" branch="false"/>
+            <line number="60" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="get-env.ts" filename="src/api/config/get-env.ts" line-rate="0.8181" branch-rate="0.5">
+          <methods>
+            <method name="getEnv" hits="1" signature="()V">
               <lines>
-                <line number="5" hits="11"/>
+                <line number="5" hits="1"/>
               </lines>
             </method>
-            <method name="isSlotAvailable" hits="3" signature="()V">
+          </methods>
+          <lines>
+            <line number="1" hits="1" branch="false"/>
+            <line number="2" hits="1" branch="false"/>
+            <line number="3" hits="1" branch="false"/>
+            <line number="4" hits="1" branch="false"/>
+            <line number="5" hits="1" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="6" hits="1" branch="false"/>
+            <line number="7" hits="1" branch="true" condition-coverage="0% (0/1)"/>
+            <line number="8" hits="0" branch="false"/>
+            <line number="9" hits="0" branch="false"/>
+            <line number="10" hits="1" branch="false"/>
+            <line number="11" hits="1" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="api.controller.v1" line-rate="0.8974" branch-rate="0.5">
+      <classes>
+        <class name="event.controller.ts" filename="src/api/controller/v1/event.controller.ts" line-rate="0.8946999999999999" branch-rate="0.5">
+          <methods>
+            <method name="createEvent" hits="1" signature="()V">
+              <lines>
+                <line number="7" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="1" hits="1" branch="false"/>
+            <line number="2" hits="1" branch="false"/>
+            <line number="3" hits="1" branch="false"/>
+            <line number="4" hits="1" branch="false"/>
+            <line number="5" hits="1" branch="false"/>
+            <line number="6" hits="1" branch="false"/>
+            <line number="7" hits="1" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="8" hits="1" branch="false"/>
+            <line number="9" hits="1" branch="false"/>
+            <line number="10" hits="1" branch="false"/>
+            <line number="11" hits="1" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="12" hits="1" branch="false"/>
+            <line number="13" hits="1" branch="false"/>
+            <line number="14" hits="1" branch="false"/>
+            <line number="15" hits="1" branch="true" condition-coverage="0% (0/1)"/>
+            <line number="16" hits="0" branch="false"/>
+            <line number="17" hits="0" branch="false"/>
+            <line number="18" hits="1" branch="false"/>
+            <line number="19" hits="1" branch="false"/>
+            <line number="20" hits="1" branch="false"/>
+            <line number="21" hits="1" branch="false"/>
+            <line number="22" hits="1" branch="false"/>
+            <line number="23" hits="1" branch="false"/>
+            <line number="24" hits="1" branch="false"/>
+            <line number="25" hits="1" branch="false"/>
+            <line number="26" hits="1" branch="false"/>
+            <line number="27" hits="1" branch="false"/>
+            <line number="28" hits="1" branch="false"/>
+            <line number="29" hits="1" branch="false"/>
+            <line number="30" hits="1" branch="false"/>
+            <line number="31" hits="1" branch="false"/>
+            <line number="32" hits="1" branch="false"/>
+            <line number="33" hits="1" branch="false"/>
+            <line number="34" hits="1" branch="false"/>
+            <line number="35" hits="1" branch="true" condition-coverage="0% (0/1)"/>
+            <line number="36" hits="0" branch="false"/>
+            <line number="37" hits="0" branch="false"/>
+            <line number="38" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="index.ts" filename="src/api/controller/v1/index.ts" line-rate="1" branch-rate="1">
+          <methods>
+          </methods>
+          <lines>
+            <line number="1" hits="1" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="api.dto" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="event.dto.ts" filename="src/api/dto/event.dto.ts" line-rate="1" branch-rate="1">
+          <methods>
+          </methods>
+          <lines>
+            <line number="1" hits="1" branch="false"/>
+            <line number="2" hits="1" branch="false"/>
+            <line number="3" hits="1" branch="false"/>
+            <line number="4" hits="1" branch="false"/>
+            <line number="5" hits="1" branch="false"/>
+            <line number="6" hits="1" branch="false"/>
+            <line number="7" hits="1" branch="false"/>
+            <line number="8" hits="1" branch="false"/>
+            <line number="9" hits="1" branch="false"/>
+            <line number="10" hits="1" branch="false"/>
+            <line number="11" hits="1" branch="false"/>
+            <line number="12" hits="1" branch="false"/>
+            <line number="13" hits="1" branch="false"/>
+            <line number="14" hits="1" branch="false"/>
+            <line number="15" hits="1" branch="false"/>
+            <line number="16" hits="1" branch="false"/>
+            <line number="17" hits="1" branch="false"/>
+            <line number="18" hits="1" branch="false"/>
+            <line number="19" hits="1" branch="false"/>
+            <line number="20" hits="1" branch="false"/>
+            <line number="21" hits="1" branch="false"/>
+            <line number="22" hits="1" branch="false"/>
+            <line number="23" hits="1" branch="false"/>
+            <line number="24" hits="1" branch="false"/>
+            <line number="25" hits="1" branch="false"/>
+            <line number="26" hits="1" branch="false"/>
+            <line number="27" hits="1" branch="false"/>
+            <line number="28" hits="1" branch="false"/>
+            <line number="29" hits="1" branch="false"/>
+            <line number="30" hits="1" branch="false"/>
+            <line number="31" hits="1" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="api.middlewares" line-rate="0.6862" branch-rate="1">
+      <classes>
+        <class name="error-handler.middleware.ts" filename="src/api/middlewares/error-handler.middleware.ts" line-rate="0.3" branch-rate="1">
+          <methods>
+            <method name="errorHandlerMiddleware" hits="0" signature="()V">
+              <lines>
+                <line number="3" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="1" hits="1" branch="false"/>
+            <line number="2" hits="1" branch="false"/>
+            <line number="3" hits="1" branch="false"/>
+            <line number="4" hits="0" branch="false"/>
+            <line number="5" hits="0" branch="false"/>
+            <line number="6" hits="0" branch="false"/>
+            <line number="7" hits="0" branch="false"/>
+            <line number="8" hits="0" branch="false"/>
+            <line number="9" hits="0" branch="false"/>
+            <line number="10" hits="0" branch="false"/>
+          </lines>
+        </class>
+        <class name="json-response.middleware.ts" filename="src/api/middlewares/json-response.middleware.ts" line-rate="0.7804000000000001" branch-rate="1">
+          <methods>
+            <method name="jsonApiResponseMiddleware" hits="1" signature="()V">
+              <lines>
+                <line number="19" hits="1"/>
+              </lines>
+            </method>
+            <method name="res.jsonSuccess" hits="1" signature="()V">
+              <lines>
+                <line number="20" hits="1"/>
+              </lines>
+            </method>
+            <method name="res.jsonError" hits="0" signature="()V">
+              <lines>
+                <line number="28" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="1" hits="1" branch="false"/>
+            <line number="2" hits="1" branch="false"/>
+            <line number="3" hits="1" branch="false"/>
+            <line number="4" hits="1" branch="false"/>
+            <line number="5" hits="1" branch="false"/>
+            <line number="6" hits="1" branch="false"/>
+            <line number="7" hits="1" branch="false"/>
+            <line number="8" hits="1" branch="false"/>
+            <line number="9" hits="1" branch="false"/>
+            <line number="10" hits="1" branch="false"/>
+            <line number="11" hits="1" branch="false"/>
+            <line number="12" hits="1" branch="false"/>
+            <line number="13" hits="1" branch="false"/>
+            <line number="14" hits="1" branch="false"/>
+            <line number="15" hits="1" branch="false"/>
+            <line number="16" hits="1" branch="false"/>
+            <line number="17" hits="1" branch="false"/>
+            <line number="18" hits="1" branch="false"/>
+            <line number="19" hits="1" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="20" hits="1" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="21" hits="1" branch="false"/>
+            <line number="22" hits="1" branch="false"/>
+            <line number="23" hits="1" branch="false"/>
+            <line number="24" hits="1" branch="false"/>
+            <line number="25" hits="1" branch="false"/>
+            <line number="26" hits="1" branch="false"/>
+            <line number="27" hits="1" branch="false"/>
+            <line number="28" hits="1" branch="false"/>
+            <line number="29" hits="0" branch="false"/>
+            <line number="30" hits="0" branch="false"/>
+            <line number="31" hits="0" branch="false"/>
+            <line number="32" hits="0" branch="false"/>
+            <line number="33" hits="0" branch="false"/>
+            <line number="34" hits="0" branch="false"/>
+            <line number="35" hits="0" branch="false"/>
+            <line number="36" hits="0" branch="false"/>
+            <line number="37" hits="0" branch="false"/>
+            <line number="38" hits="1" branch="false"/>
+            <line number="39" hits="1" branch="false"/>
+            <line number="40" hits="1" branch="false"/>
+            <line number="41" hits="1" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="api.routes" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="index.ts" filename="src/api/routes/index.ts" line-rate="1" branch-rate="1">
+          <methods>
+          </methods>
+          <lines>
+            <line number="1" hits="1" branch="false"/>
+            <line number="2" hits="1" branch="false"/>
+            <line number="3" hits="1" branch="false"/>
+            <line number="4" hits="1" branch="false"/>
+            <line number="5" hits="1" branch="false"/>
+            <line number="6" hits="1" branch="false"/>
+            <line number="7" hits="1" branch="false"/>
+            <line number="8" hits="1" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="api.routes.v1" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="event.routes.ts" filename="src/api/routes/v1/event.routes.ts" line-rate="1" branch-rate="1">
+          <methods>
+          </methods>
+          <lines>
+            <line number="1" hits="1" branch="false"/>
+            <line number="2" hits="1" branch="false"/>
+            <line number="3" hits="1" branch="false"/>
+            <line number="4" hits="1" branch="false"/>
+            <line number="5" hits="1" branch="false"/>
+            <line number="6" hits="1" branch="false"/>
+            <line number="7" hits="1" branch="false"/>
+            <line number="8" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="index.ts" filename="src/api/routes/v1/index.ts" line-rate="1" branch-rate="1">
+          <methods>
+          </methods>
+          <lines>
+            <line number="1" hits="1" branch="false"/>
+            <line number="2" hits="1" branch="false"/>
+            <line number="3" hits="1" branch="false"/>
+            <line number="4" hits="1" branch="false"/>
+            <line number="5" hits="1" branch="false"/>
+            <line number="6" hits="1" branch="false"/>
+            <line number="7" hits="1" branch="false"/>
+            <line number="8" hits="1" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="api.utils" line-rate="0.7306999999999999" branch-rate="0.6666">
+      <classes>
+        <class name="validate-request.ts" filename="src/api/utils/validate-request.ts" line-rate="0.7306999999999999" branch-rate="0.6666">
+          <methods>
+            <method name="validationError" hits="1" signature="()V">
+              <lines>
+                <line number="4" hits="1"/>
+              </lines>
+            </method>
+            <method name="RequestValidator" hits="1" signature="()V">
+              <lines>
+                <line number="16" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="1" hits="1" branch="false"/>
+            <line number="2" hits="1" branch="false"/>
+            <line number="3" hits="1" branch="false"/>
+            <line number="4" hits="1" branch="true" condition-coverage="100% (2/2)"/>
+            <line number="5" hits="1" branch="false"/>
+            <line number="6" hits="1" branch="false"/>
+            <line number="7" hits="1" branch="false"/>
+            <line number="8" hits="1" branch="false"/>
+            <line number="9" hits="1" branch="true" condition-coverage="0% (0/1)"/>
+            <line number="10" hits="0" branch="false"/>
+            <line number="11" hits="0" branch="false"/>
+            <line number="12" hits="1" branch="false"/>
+            <line number="13" hits="1" branch="false"/>
+            <line number="14" hits="1" branch="false"/>
+            <line number="15" hits="1" branch="false"/>
+            <line number="16" hits="1" branch="true" condition-coverage="100% (2/2)"/>
+            <line number="17" hits="1" branch="false"/>
+            <line number="18" hits="1" branch="false"/>
+            <line number="19" hits="1" branch="true" condition-coverage="0% (0/1)"/>
+            <line number="20" hits="0" branch="false"/>
+            <line number="21" hits="0" branch="false"/>
+            <line number="22" hits="0" branch="false"/>
+            <line number="23" hits="0" branch="false"/>
+            <line number="24" hits="0" branch="false"/>
+            <line number="25" hits="1" branch="false"/>
+            <line number="26" hits="1" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="modules.calendar.domain.services" line-rate="1" branch-rate="0.7142000000000001">
+      <classes>
+        <class name="slot-reservation.service.ts" filename="src/modules/calendar/domain/services/slot-reservation.service.ts" line-rate="1" branch-rate="1">
+          <methods>
+            <method name="SlotReservationService" hits="12" signature="()V">
+              <lines>
+                <line number="6" hits="12"/>
+              </lines>
+            </method>
+            <method name="reserveSlot" hits="3" signature="()V">
               <lines>
                 <line number="10" hits="3"/>
               </lines>
@@ -25,20 +432,53 @@
             <line number="2" hits="1" branch="false"/>
             <line number="3" hits="1" branch="false"/>
             <line number="4" hits="1" branch="false"/>
-            <line number="5" hits="1" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="6" hits="11" branch="false"/>
-            <line number="7" hits="11" branch="false"/>
-            <line number="8" hits="11" branch="false"/>
+            <line number="5" hits="1" branch="false"/>
+            <line number="6" hits="1" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="7" hits="12" branch="false"/>
+            <line number="8" hits="12" branch="false"/>
             <line number="9" hits="1" branch="false"/>
             <line number="10" hits="1" branch="true" condition-coverage="100% (1/1)"/>
             <line number="11" hits="3" branch="false"/>
-            <line number="12" hits="3" branch="true" condition-coverage="0% (0/2)"/>
+            <line number="12" hits="3" branch="false"/>
             <line number="13" hits="3" branch="false"/>
             <line number="14" hits="3" branch="false"/>
-            <line number="15" hits="3" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="15" hits="3" branch="false"/>
             <line number="16" hits="3" branch="false"/>
-            <line number="17" hits="3" branch="false"/>
-            <line number="18" hits="3" branch="false"/>
+            <line number="17" hits="1" branch="false"/>
+          </lines>
+        </class>
+        <class name="venue-availibility.service.ts" filename="src/modules/calendar/domain/services/venue-availibility.service.ts" line-rate="1" branch-rate="0.6">
+          <methods>
+            <method name="VenueAvailabilityService" hits="12" signature="()V">
+              <lines>
+                <line number="5" hits="12"/>
+              </lines>
+            </method>
+            <method name="isSlotAvailable" hits="4" signature="()V">
+              <lines>
+                <line number="10" hits="4"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="1" hits="1" branch="false"/>
+            <line number="2" hits="1" branch="false"/>
+            <line number="3" hits="1" branch="false"/>
+            <line number="4" hits="1" branch="false"/>
+            <line number="5" hits="1" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="6" hits="12" branch="false"/>
+            <line number="7" hits="12" branch="false"/>
+            <line number="8" hits="12" branch="false"/>
+            <line number="9" hits="1" branch="false"/>
+            <line number="10" hits="1" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="11" hits="4" branch="false"/>
+            <line number="12" hits="4" branch="true" condition-coverage="0% (0/2)"/>
+            <line number="13" hits="4" branch="false"/>
+            <line number="14" hits="4" branch="false"/>
+            <line number="15" hits="4" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="16" hits="4" branch="false"/>
+            <line number="17" hits="4" branch="false"/>
+            <line number="18" hits="4" branch="false"/>
             <line number="19" hits="1" branch="false"/>
           </lines>
         </class>
@@ -48,9 +488,9 @@
       <classes>
         <class name="slot.ts" filename="src/modules/calendar/domain/value-objects/slot.ts" line-rate="1" branch-rate="1">
           <methods>
-            <method name="Slot" hits="3" signature="()V">
+            <method name="Slot" hits="4" signature="()V">
               <lines>
-                <line number="8" hits="3"/>
+                <line number="8" hits="4"/>
               </lines>
             </method>
           </methods>
@@ -69,18 +509,18 @@
         </class>
       </classes>
     </package>
-    <package name="modules.event.application.usecases" line-rate="1" branch-rate="1">
+    <package name="modules.event.application.usecases" line-rate="1" branch-rate="0.9">
       <classes>
-        <class name="create-event.usecase.ts" filename="src/modules/event/application/usecases/create-event.usecase.ts" line-rate="1" branch-rate="1">
+        <class name="create-event.usecase.ts" filename="src/modules/event/application/usecases/create-event.usecase.ts" line-rate="1" branch-rate="0.9">
           <methods>
-            <method name="CreateEventUseCase" hits="11" signature="()V">
+            <method name="CreateEventUseCase" hits="12" signature="()V">
               <lines>
-                <line number="25" hits="11"/>
+                <line number="24" hits="12"/>
               </lines>
             </method>
-            <method name="execute" hits="11" signature="()V">
+            <method name="execute" hits="12" signature="()V">
               <lines>
-                <line number="32" hits="11"/>
+                <line number="33" hits="12"/>
               </lines>
             </method>
           </methods>
@@ -108,61 +548,43 @@
             <line number="21" hits="1" branch="false"/>
             <line number="22" hits="1" branch="false"/>
             <line number="23" hits="1" branch="false"/>
-            <line number="24" hits="1" branch="false"/>
-            <line number="25" hits="1" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="26" hits="11" branch="false"/>
-            <line number="27" hits="11" branch="false"/>
-            <line number="28" hits="11" branch="false"/>
-            <line number="29" hits="11" branch="false"/>
-            <line number="30" hits="11" branch="false"/>
-            <line number="31" hits="1" branch="false"/>
-            <line number="32" hits="1" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="33" hits="11" branch="false"/>
-            <line number="34" hits="11" branch="false"/>
-            <line number="35" hits="11" branch="false"/>
-            <line number="36" hits="11" branch="false"/>
-            <line number="37" hits="11" branch="false"/>
-            <line number="38" hits="11" branch="false"/>
-            <line number="39" hits="11" branch="false"/>
-            <line number="40" hits="11" branch="false"/>
+            <line number="24" hits="1" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="25" hits="12" branch="false"/>
+            <line number="26" hits="12" branch="false"/>
+            <line number="27" hits="12" branch="false"/>
+            <line number="28" hits="12" branch="false"/>
+            <line number="29" hits="12" branch="false"/>
+            <line number="30" hits="12" branch="false"/>
+            <line number="31" hits="12" branch="false"/>
+            <line number="32" hits="1" branch="false"/>
+            <line number="33" hits="1" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="34" hits="12" branch="false"/>
+            <line number="35" hits="12" branch="true" condition-coverage="0% (0/1)"/>
+            <line number="36" hits="12" branch="false"/>
+            <line number="37" hits="12" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="38" hits="1" branch="false"/>
+            <line number="39" hits="1" branch="false"/>
+            <line number="40" hits="11" branch="true" condition-coverage="100% (1/1)"/>
             <line number="41" hits="11" branch="false"/>
             <line number="42" hits="11" branch="false"/>
             <line number="43" hits="11" branch="false"/>
             <line number="44" hits="11" branch="false"/>
-            <line number="45" hits="11" branch="false"/>
-            <line number="46" hits="11" branch="false"/>
-            <line number="47" hits="11" branch="false"/>
-            <line number="48" hits="11" branch="false"/>
-            <line number="49" hits="11" branch="false"/>
-            <line number="50" hits="11" branch="false"/>
-            <line number="51" hits="11" branch="false"/>
-            <line number="52" hits="11" branch="false"/>
-            <line number="53" hits="5" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="54" hits="11" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="55" hits="1" branch="false"/>
-            <line number="56" hits="1" branch="false"/>
-            <line number="57" hits="4" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="58" hits="11" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="59" hits="1" branch="false"/>
+            <line number="45" hits="12" branch="true" condition-coverage="100% (2/2)"/>
+            <line number="46" hits="1" branch="false"/>
+            <line number="47" hits="1" branch="false"/>
+            <line number="48" hits="4" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="49" hits="4" branch="false"/>
+            <line number="50" hits="12" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="51" hits="1" branch="false"/>
+            <line number="52" hits="1" branch="false"/>
+            <line number="53" hits="3" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="54" hits="3" branch="false"/>
+            <line number="55" hits="3" branch="false"/>
+            <line number="56" hits="3" branch="false"/>
+            <line number="57" hits="3" branch="false"/>
+            <line number="58" hits="3" branch="false"/>
+            <line number="59" hits="3" branch="false"/>
             <line number="60" hits="1" branch="false"/>
-            <line number="61" hits="3" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="62" hits="3" branch="false"/>
-            <line number="63" hits="11" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="64" hits="1" branch="false"/>
-            <line number="65" hits="1" branch="false"/>
-            <line number="66" hits="2" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="67" hits="2" branch="false"/>
-            <line number="68" hits="2" branch="false"/>
-            <line number="69" hits="2" branch="false"/>
-            <line number="70" hits="2" branch="false"/>
-            <line number="71" hits="2" branch="false"/>
-            <line number="72" hits="2" branch="false"/>
-            <line number="73" hits="2" branch="false"/>
-            <line number="74" hits="2" branch="false"/>
-            <line number="75" hits="2" branch="false"/>
-            <line number="76" hits="2" branch="false"/>
-            <line number="77" hits="2" branch="false"/>
-            <line number="78" hits="1" branch="false"/>
           </lines>
         </class>
       </classes>
@@ -337,22 +759,27 @@
           <methods>
           </methods>
           <lines>
-            <line number="1" hits="1" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="2" hits="1" branch="false"/>
-            <line number="3" hits="1" branch="false"/>
-            <line number="4" hits="1" branch="false"/>
-            <line number="5" hits="1" branch="false"/>
+            <line number="1" hits="2" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="2" hits="2" branch="false"/>
+            <line number="3" hits="2" branch="false"/>
+            <line number="4" hits="2" branch="false"/>
+            <line number="5" hits="2" branch="false"/>
           </lines>
         </class>
       </classes>
     </package>
-    <package name="modules.organizer.domain" line-rate="1" branch-rate="1">
+    <package name="modules.event.domain.factories" line-rate="1" branch-rate="1">
       <classes>
-        <class name="organizer.entity.ts" filename="src/modules/organizer/domain/organizer.entity.ts" line-rate="1" branch-rate="1">
+        <class name="hosted-event.factory.ts" filename="src/modules/event/domain/factories/hosted-event.factory.ts" line-rate="1" branch-rate="1">
           <methods>
-            <method name="Organizer" hits="2" signature="()V">
+            <method name="HostedEventFactory" hits="12" signature="()V">
               <lines>
-                <line number="6" hits="2"/>
+                <line number="8" hits="12"/>
+              </lines>
+            </method>
+            <method name="create" hits="11" signature="()V">
+              <lines>
+                <line number="12" hits="11"/>
               </lines>
             </method>
           </methods>
@@ -362,8 +789,173 @@
             <line number="3" hits="1" branch="false"/>
             <line number="4" hits="1" branch="false"/>
             <line number="5" hits="1" branch="false"/>
-            <line number="6" hits="1" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="6" hits="1" branch="false"/>
             <line number="7" hits="1" branch="false"/>
+            <line number="8" hits="1" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="9" hits="12" branch="false"/>
+            <line number="10" hits="12" branch="false"/>
+            <line number="11" hits="1" branch="false"/>
+            <line number="12" hits="1" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="13" hits="11" branch="false"/>
+            <line number="14" hits="11" branch="false"/>
+            <line number="15" hits="11" branch="false"/>
+            <line number="16" hits="11" branch="false"/>
+            <line number="17" hits="11" branch="false"/>
+            <line number="18" hits="11" branch="false"/>
+            <line number="19" hits="11" branch="false"/>
+            <line number="20" hits="11" branch="false"/>
+            <line number="21" hits="11" branch="false"/>
+            <line number="22" hits="11" branch="false"/>
+            <line number="23" hits="11" branch="false"/>
+            <line number="24" hits="11" branch="false"/>
+            <line number="25" hits="11" branch="false"/>
+            <line number="26" hits="11" branch="false"/>
+            <line number="27" hits="11" branch="false"/>
+            <line number="28" hits="1" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="modules.event.domain.services" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="event-conflict-checker.service.ts" filename="src/modules/event/domain/services/event-conflict-checker.service.ts" line-rate="1" branch-rate="1">
+          <methods>
+            <method name="EventConflictService" hits="12" signature="()V">
+              <lines>
+                <line number="7" hits="12"/>
+              </lines>
+            </method>
+            <method name="hasConflictWith" hits="5" signature="()V">
+              <lines>
+                <line number="11" hits="5"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="1" hits="1" branch="false"/>
+            <line number="2" hits="1" branch="false"/>
+            <line number="3" hits="1" branch="false"/>
+            <line number="4" hits="1" branch="false"/>
+            <line number="5" hits="1" branch="false"/>
+            <line number="6" hits="1" branch="false"/>
+            <line number="7" hits="1" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="8" hits="12" branch="false"/>
+            <line number="9" hits="12" branch="false"/>
+            <line number="10" hits="1" branch="false"/>
+            <line number="11" hits="1" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="12" hits="5" branch="false"/>
+            <line number="13" hits="5" branch="false"/>
+            <line number="14" hits="5" branch="false"/>
+            <line number="15" hits="5" branch="false"/>
+            <line number="16" hits="5" branch="false"/>
+            <line number="17" hits="1" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="modules.organizer.domain" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="organizer.entity.ts" filename="src/modules/organizer/domain/organizer.entity.ts" line-rate="1" branch-rate="1">
+          <methods>
+            <method name="Organizer" hits="3" signature="()V">
+              <lines>
+                <line number="8" hits="3"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="1" hits="1" branch="false"/>
+            <line number="2" hits="1" branch="false"/>
+            <line number="3" hits="1" branch="false"/>
+            <line number="4" hits="1" branch="false"/>
+            <line number="5" hits="1" branch="false"/>
+            <line number="6" hits="1" branch="false"/>
+            <line number="7" hits="1" branch="false"/>
+            <line number="8" hits="1" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="9" hits="1" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="modules.shared.infrastructure" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="uuid-generator.ts" filename="src/modules/shared/infrastructure/uuid-generator.ts" line-rate="1" branch-rate="1">
+          <methods>
+            <method name="generate" hits="11" signature="()V">
+              <lines>
+                <line number="5" hits="11"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="1" hits="1" branch="false"/>
+            <line number="2" hits="1" branch="false"/>
+            <line number="3" hits="1" branch="false"/>
+            <line number="4" hits="1" branch="false"/>
+            <line number="5" hits="1" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="6" hits="11" branch="false"/>
+            <line number="7" hits="11" branch="false"/>
+            <line number="8" hits="1" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="modules.shared.services" line-rate="0.275" branch-rate="1">
+      <classes>
+        <class name="jwt-authenticator.ts" filename="src/modules/shared/services/jwt-authenticator.ts" line-rate="0.275" branch-rate="1">
+          <methods>
+            <method name="JwtAuthenticator" hits="0" signature="()V">
+              <lines>
+                <line number="8" hits="0"/>
+              </lines>
+            </method>
+            <method name="authenticate" hits="0" signature="()V">
+              <lines>
+                <line number="13" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="1" hits="1" branch="false"/>
+            <line number="2" hits="1" branch="false"/>
+            <line number="3" hits="1" branch="false"/>
+            <line number="4" hits="1" branch="false"/>
+            <line number="5" hits="1" branch="false"/>
+            <line number="6" hits="1" branch="false"/>
+            <line number="7" hits="1" branch="false"/>
+            <line number="8" hits="1" branch="false"/>
+            <line number="9" hits="0" branch="false"/>
+            <line number="10" hits="0" branch="false"/>
+            <line number="11" hits="0" branch="false"/>
+            <line number="12" hits="1" branch="false"/>
+            <line number="13" hits="1" branch="false"/>
+            <line number="14" hits="0" branch="false"/>
+            <line number="15" hits="0" branch="false"/>
+            <line number="16" hits="0" branch="false"/>
+            <line number="17" hits="0" branch="false"/>
+            <line number="18" hits="0" branch="false"/>
+            <line number="19" hits="0" branch="false"/>
+            <line number="20" hits="0" branch="false"/>
+            <line number="21" hits="0" branch="false"/>
+            <line number="22" hits="0" branch="false"/>
+            <line number="23" hits="0" branch="false"/>
+            <line number="24" hits="0" branch="false"/>
+            <line number="25" hits="0" branch="false"/>
+            <line number="26" hits="0" branch="false"/>
+            <line number="27" hits="0" branch="false"/>
+            <line number="28" hits="0" branch="false"/>
+            <line number="29" hits="0" branch="false"/>
+            <line number="30" hits="0" branch="false"/>
+            <line number="31" hits="0" branch="false"/>
+            <line number="32" hits="0" branch="false"/>
+            <line number="33" hits="0" branch="false"/>
+            <line number="34" hits="0" branch="false"/>
+            <line number="35" hits="0" branch="false"/>
+            <line number="36" hits="0" branch="false"/>
+            <line number="37" hits="0" branch="false"/>
+            <line number="38" hits="0" branch="false"/>
+            <line number="39" hits="0" branch="false"/>
+            <line number="40" hits="1" branch="false"/>
           </lines>
         </class>
       </classes>
@@ -372,14 +964,14 @@
       <classes>
         <class name="venue.entity.ts" filename="src/modules/venue/domain/venue.entity.ts" line-rate="1" branch-rate="1">
           <methods>
-            <method name="Venue" hits="1" signature="()V">
+            <method name="Venue" hits="4" signature="()V">
               <lines>
-                <line number="13" hits="1"/>
+                <line number="13" hits="4"/>
               </lines>
             </method>
-            <method name="isOpenAt" hits="7" signature="()V">
+            <method name="isOpenAt" hits="16" signature="()V">
               <lines>
-                <line number="15" hits="7"/>
+                <line number="15" hits="16"/>
               </lines>
             </method>
           </methods>
@@ -399,8 +991,8 @@
             <line number="13" hits="1" branch="true" condition-coverage="100% (1/1)"/>
             <line number="14" hits="1" branch="false"/>
             <line number="15" hits="1" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="16" hits="7" branch="false"/>
-            <line number="17" hits="7" branch="false"/>
+            <line number="16" hits="16" branch="false"/>
+            <line number="17" hits="16" branch="false"/>
             <line number="18" hits="1" branch="false"/>
           </lines>
         </class>
@@ -410,9 +1002,9 @@
       <classes>
         <class name="adress.ts" filename="src/modules/venue/domain/value-objects/adress.ts" line-rate="1" branch-rate="1">
           <methods>
-            <method name="Address" hits="1" signature="()V">
+            <method name="Address" hits="4" signature="()V">
               <lines>
-                <line number="10" hits="1"/>
+                <line number="10" hits="4"/>
               </lines>
             </method>
           </methods>
@@ -432,29 +1024,29 @@
         </class>
         <class name="weekly-schedule.ts" filename="src/modules/venue/domain/value-objects/weekly-schedule.ts" line-rate="1" branch-rate="1">
           <methods>
-            <method name="WeeklySchedule" hits="1" signature="()V">
+            <method name="WeeklySchedule" hits="4" signature="()V">
               <lines>
-                <line number="14" hits="1"/>
+                <line number="14" hits="4"/>
               </lines>
             </method>
-            <method name="from" hits="1" signature="()V">
+            <method name="from" hits="4" signature="()V">
               <lines>
-                <line number="16" hits="1"/>
+                <line number="16" hits="4"/>
               </lines>
             </method>
-            <method name="isOpenDuring" hits="7" signature="()V">
+            <method name="isOpenDuring" hits="16" signature="()V">
               <lines>
-                <line number="20" hits="7"/>
+                <line number="20" hits="16"/>
               </lines>
             </method>
-            <method name="dayOf" hits="7" signature="()V">
+            <method name="dayOf" hits="16" signature="()V">
               <lines>
-                <line number="31" hits="7"/>
+                <line number="31" hits="16"/>
               </lines>
             </method>
-            <method name="setTime" hits="12" signature="()V">
+            <method name="setTime" hits="30" signature="()V">
               <lines>
-                <line number="39" hits="12"/>
+                <line number="39" hits="30"/>
               </lines>
             </method>
           </methods>
@@ -475,32 +1067,32 @@
             <line number="14" hits="1" branch="true" condition-coverage="100% (1/1)"/>
             <line number="15" hits="1" branch="false"/>
             <line number="16" hits="1" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="17" hits="1" branch="false"/>
-            <line number="18" hits="1" branch="false"/>
+            <line number="17" hits="4" branch="false"/>
+            <line number="18" hits="4" branch="false"/>
             <line number="19" hits="1" branch="false"/>
             <line number="20" hits="1" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="21" hits="7" branch="false"/>
-            <line number="22" hits="7" branch="true" condition-coverage="100% (2/2)"/>
-            <line number="23" hits="7" branch="false"/>
-            <line number="24" hits="7" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="25" hits="6" branch="false"/>
-            <line number="26" hits="6" branch="false"/>
-            <line number="27" hits="6" branch="false"/>
-            <line number="28" hits="7" branch="false"/>
-            <line number="29" hits="7" branch="false"/>
+            <line number="21" hits="16" branch="false"/>
+            <line number="22" hits="16" branch="true" condition-coverage="100% (2/2)"/>
+            <line number="23" hits="16" branch="false"/>
+            <line number="24" hits="16" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="25" hits="15" branch="false"/>
+            <line number="26" hits="15" branch="false"/>
+            <line number="27" hits="15" branch="false"/>
+            <line number="28" hits="16" branch="false"/>
+            <line number="29" hits="16" branch="false"/>
             <line number="30" hits="1" branch="false"/>
             <line number="31" hits="1" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="32" hits="7" branch="false"/>
-            <line number="33" hits="7" branch="false"/>
-            <line number="34" hits="7" branch="false"/>
-            <line number="35" hits="7" branch="false"/>
-            <line number="36" hits="7" branch="false"/>
-            <line number="37" hits="7" branch="false"/>
+            <line number="32" hits="16" branch="false"/>
+            <line number="33" hits="16" branch="false"/>
+            <line number="34" hits="16" branch="false"/>
+            <line number="35" hits="16" branch="false"/>
+            <line number="36" hits="16" branch="false"/>
+            <line number="37" hits="16" branch="false"/>
             <line number="38" hits="1" branch="false"/>
             <line number="39" hits="1" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="40" hits="12" branch="false"/>
-            <line number="41" hits="12" branch="false"/>
-            <line number="42" hits="12" branch="false"/>
+            <line number="40" hits="30" branch="false"/>
+            <line number="41" hits="30" branch="false"/>
+            <line number="42" hits="30" branch="false"/>
             <line number="43" hits="1" branch="false"/>
           </lines>
         </class>
@@ -563,6 +1155,10 @@
             <line number="8" hits="1" branch="false"/>
             <line number="9" hits="1" branch="false"/>
             <line number="10" hits="1" branch="false"/>
+            <line number="11" hits="1" branch="false"/>
+            <line number="12" hits="1" branch="false"/>
+            <line number="13" hits="1" branch="false"/>
+            <line number="14" hits="1" branch="false"/>
           </lines>
         </class>
         <class name="unittest-venue.ts" filename="src/tests/entities-test/unittest-venue.ts" line-rate="1" branch-rate="1">
@@ -595,6 +1191,26 @@
             <line number="24" hits="1" branch="false"/>
             <line number="25" hits="1" branch="false"/>
             <line number="26" hits="1" branch="false"/>
+            <line number="27" hits="1" branch="false"/>
+            <line number="28" hits="1" branch="false"/>
+            <line number="29" hits="1" branch="false"/>
+            <line number="30" hits="1" branch="false"/>
+            <line number="31" hits="1" branch="false"/>
+            <line number="32" hits="1" branch="false"/>
+            <line number="33" hits="1" branch="false"/>
+            <line number="34" hits="1" branch="false"/>
+            <line number="35" hits="1" branch="false"/>
+            <line number="36" hits="1" branch="false"/>
+            <line number="37" hits="1" branch="false"/>
+            <line number="38" hits="1" branch="false"/>
+            <line number="39" hits="1" branch="false"/>
+            <line number="40" hits="1" branch="false"/>
+            <line number="41" hits="1" branch="false"/>
+            <line number="42" hits="1" branch="false"/>
+            <line number="43" hits="1" branch="false"/>
+            <line number="44" hits="1" branch="false"/>
+            <line number="45" hits="1" branch="false"/>
+            <line number="46" hits="1" branch="false"/>
           </lines>
         </class>
       </classes>
@@ -603,14 +1219,14 @@
       <classes>
         <class name="in-memory-calendar-repository.ts" filename="src/tests/infra-tests/in-memory-calendar-repository.ts" line-rate="1" branch-rate="0.8">
           <methods>
-            <method name="InMemoryCalendarRepository" hits="22" signature="()V">
+            <method name="InMemoryCalendarRepository" hits="12" signature="()V">
               <lines>
-                <line number="8" hits="22"/>
+                <line number="8" hits="12"/>
               </lines>
             </method>
-            <method name="save" hits="3" signature="()V">
+            <method name="save" hits="4" signature="()V">
               <lines>
-                <line number="10" hits="3"/>
+                <line number="10" hits="4"/>
               </lines>
             </method>
             <method name="findByVenueId" hits="1" signature="()V">
@@ -630,8 +1246,8 @@
             <line number="8" hits="1" branch="true" condition-coverage="100% (1/1)"/>
             <line number="9" hits="1" branch="false"/>
             <line number="10" hits="1" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="11" hits="3" branch="false"/>
-            <line number="12" hits="3" branch="false"/>
+            <line number="11" hits="4" branch="false"/>
+            <line number="12" hits="4" branch="false"/>
             <line number="13" hits="1" branch="false"/>
             <line number="14" hits="1" branch="true" condition-coverage="100% (1/1)"/>
             <line number="15" hits="1" branch="true" condition-coverage="50% (1/2)"/>
@@ -641,14 +1257,14 @@
         </class>
         <class name="in-memory-event-repository.ts" filename="src/tests/infra-tests/in-memory-event-repository.ts" line-rate="1" branch-rate="0.8887999999999999">
           <methods>
-            <method name="InMemoryEventRepository" hits="11" signature="()V">
+            <method name="InMemoryEventRepository" hits="12" signature="()V">
               <lines>
-                <line number="8" hits="11"/>
+                <line number="8" hits="12"/>
               </lines>
             </method>
-            <method name="save" hits="4" signature="()V">
+            <method name="save" hits="5" signature="()V">
               <lines>
-                <line number="12" hits="4"/>
+                <line number="12" hits="5"/>
               </lines>
             </method>
             <method name="findByOrganizerAndStatus" hits="5" signature="()V">
@@ -656,9 +1272,9 @@
                 <line number="16" hits="5"/>
               </lines>
             </method>
-            <method name="findEventsAtVenue" hits="3" signature="()V">
+            <method name="findEventsAtVenue" hits="4" signature="()V">
               <lines>
-                <line number="23" hits="3"/>
+                <line number="23" hits="4"/>
               </lines>
             </method>
             <method name="findById" hits="1" signature="()V">
@@ -676,12 +1292,12 @@
             <line number="6" hits="1" branch="false"/>
             <line number="7" hits="1" branch="false"/>
             <line number="8" hits="1" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="9" hits="11" branch="false"/>
-            <line number="10" hits="11" branch="false"/>
+            <line number="9" hits="12" branch="false"/>
+            <line number="10" hits="12" branch="false"/>
             <line number="11" hits="1" branch="false"/>
             <line number="12" hits="1" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="13" hits="4" branch="false"/>
-            <line number="14" hits="4" branch="false"/>
+            <line number="13" hits="5" branch="false"/>
+            <line number="14" hits="5" branch="false"/>
             <line number="15" hits="1" branch="false"/>
             <line number="16" hits="1" branch="true" condition-coverage="100% (1/1)"/>
             <line number="17" hits="5" branch="true" condition-coverage="100% (1/1)"/>
@@ -691,8 +1307,8 @@
             <line number="21" hits="5" branch="false"/>
             <line number="22" hits="1" branch="false"/>
             <line number="23" hits="1" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="24" hits="3" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="25" hits="3" branch="false"/>
+            <line number="24" hits="4" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="25" hits="4" branch="false"/>
             <line number="26" hits="1" branch="false"/>
             <line number="27" hits="1" branch="true" condition-coverage="100% (1/1)"/>
             <line number="28" hits="1" branch="true" condition-coverage="50% (1/2)"/>
@@ -702,24 +1318,24 @@
         </class>
         <class name="in-memory-venue-repository.ts" filename="src/tests/infra-tests/in-memory-venue-repository.ts" line-rate="1" branch-rate="0.75">
           <methods>
-            <method name="InMemoryVenueRepository" hits="11" signature="()V">
+            <method name="InMemoryVenueRepository" hits="12" signature="()V">
               <lines>
-                <line number="9" hits="11"/>
+                <line number="9" hits="12"/>
               </lines>
             </method>
-            <method name="save" hits="11" signature="()V">
+            <method name="save" hits="13" signature="()V">
               <lines>
-                <line number="13" hits="11"/>
+                <line number="13" hits="13"/>
               </lines>
             </method>
-            <method name="findByName" hits="11" signature="()V">
+            <method name="findByName" hits="12" signature="()V">
               <lines>
-                <line number="17" hits="11"/>
+                <line number="17" hits="12"/>
               </lines>
             </method>
-            <method name="findById" hits="3" signature="()V">
+            <method name="findById" hits="4" signature="()V">
               <lines>
-                <line number="21" hits="3"/>
+                <line number="21" hits="4"/>
               </lines>
             </method>
           </methods>
@@ -733,20 +1349,20 @@
             <line number="7" hits="1" branch="false"/>
             <line number="8" hits="1" branch="false"/>
             <line number="9" hits="1" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="10" hits="11" branch="false"/>
-            <line number="11" hits="11" branch="false"/>
+            <line number="10" hits="12" branch="false"/>
+            <line number="11" hits="12" branch="false"/>
             <line number="12" hits="1" branch="false"/>
             <line number="13" hits="1" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="14" hits="11" branch="false"/>
-            <line number="15" hits="11" branch="false"/>
+            <line number="14" hits="13" branch="false"/>
+            <line number="15" hits="13" branch="false"/>
             <line number="16" hits="1" branch="false"/>
             <line number="17" hits="1" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="18" hits="11" branch="true" condition-coverage="50% (1/2)"/>
-            <line number="19" hits="11" branch="false"/>
+            <line number="18" hits="12" branch="true" condition-coverage="50% (1/2)"/>
+            <line number="19" hits="12" branch="false"/>
             <line number="20" hits="1" branch="false"/>
             <line number="21" hits="1" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="22" hits="3" branch="true" condition-coverage="50% (1/2)"/>
-            <line number="23" hits="3" branch="false"/>
+            <line number="22" hits="4" branch="true" condition-coverage="50% (1/2)"/>
+            <line number="23" hits="4" branch="false"/>
             <line number="24" hits="1" branch="false"/>
           </lines>
         </class>

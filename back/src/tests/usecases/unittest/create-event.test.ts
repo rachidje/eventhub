@@ -4,15 +4,15 @@ import { Slot } from "@calendar/domain/value-objects/slot"
 import { CreateEventUseCase } from "@event/application/usecases/create-event.usecase"
 import { EventStatus } from "@event/domain/enums/event-status"
 import { HostedEventFactory } from "@event/domain/factories/hosted-event.factory"
-import { EventConflictCheckerService } from "@event/domain/services/event-conflict-checker.service"
+import { EventConflictService } from "@event/domain/services/event-conflict-checker.service"
 import { UuidGenerator } from "@shared/infrastructure/uuid-generator"
-import { addDays, addHours, nextMonday, nextSaturday, setHours, setMinutes, setSeconds } from "date-fns"
-import { unittestHostedEvents } from "../entities-test/unittest-hosted-events"
-import { unittestOrganizers } from "../entities-test/unittest-organizers"
-import { unittestVenue } from "../entities-test/unittest-venue"
-import { InMemoryCalendarRepository } from "../infra-tests/in-memory-calendar-repository"
-import { InMemoryEventRepository } from "../infra-tests/in-memory-event-repository"
-import { InMemoryVenueRepository } from "../infra-tests/in-memory-venue-repository"
+import { addDays, addHours, nextDay, nextMonday, nextSaturday, previousSaturday, setHours, setMinutes, setSeconds } from "date-fns"
+import { unittestHostedEvents } from "../../entities-test/unittest-hosted-events"
+import { unittestOrganizers } from "../../entities-test/unittest-organizers"
+import { unittestVenue } from "../../entities-test/unittest-venue"
+import { InMemoryCalendarRepository } from "../../infra-tests/in-memory-calendar-repository"
+import { InMemoryEventRepository } from "../../infra-tests/in-memory-event-repository"
+import { InMemoryVenueRepository } from "../../infra-tests/in-memory-venue-repository"
 
 describe("Create New Event", () => {
 
@@ -30,7 +30,7 @@ describe("Create New Event", () => {
                 start: startDate,
                 end: endDate
             },
-            venueName: "La Cité des Sciences",
+            venueName: unittestVenue.venue.props.name,
             capacity: 50,
             price: 100
         }
@@ -41,7 +41,7 @@ describe("Create New Event", () => {
     let venueAvailabilityService: VenueAvailabilityService
     let usecase: CreateEventUseCase
     let idGenerator: UuidGenerator
-    let eventConflictService: EventConflictCheckerService
+    let eventConflictService: EventConflictService
     let hostedEventFactory: HostedEventFactory
     let slotReservationService: SlotReservationService
 
@@ -52,7 +52,7 @@ describe("Create New Event", () => {
         slotReservationService = new SlotReservationService(calendarRepository)
         idGenerator = new UuidGenerator()
         hostedEventFactory = new HostedEventFactory(idGenerator)
-        eventConflictService = new EventConflictCheckerService(eventRepository)
+        eventConflictService = new EventConflictService(eventRepository)
 
         await venueRepository.save(unittestVenue.venue)
         
@@ -82,11 +82,14 @@ describe("Create New Event", () => {
     })
 
     describe("Scenario : The event's dates are in the past", () => {
+        const startDate = previousSaturday(new Date())
+        const endDate = addDays(startDate, -1)
+
         const invalidPayload = {
             ...payload,
             dates: {
-                start: addDays(new Date(), -1),
-                end: addDays(new Date(), -1)
+                start: startDate,
+                end: endDate
             }
         }
 
@@ -96,14 +99,21 @@ describe("Create New Event", () => {
     })
 
     describe("Scenario : The event is too soon", () => {
+        const baseDate = nextDay(new Date(), 1)
+    
+        const startDate = setSeconds(setMinutes(setHours(baseDate, 10), 0), 0)
+        const endDate = setSeconds(setMinutes(setHours(baseDate, 12), 0), 0)
+
         const invalidPayload = {
             ...payload,
+            venueName: unittestVenue.venueOpenAllDays.props.name,
             dates: {
-                start: addDays(new Date(), 1),
-                end: addDays(new Date(), 1)
+                start: startDate,
+                end: endDate
             }
         }
         it("should throw an error" , async () => {
+            await venueRepository.save(unittestVenue.venueOpenAllDays)
             await expect(usecase.execute(invalidPayload)).rejects.toThrow("Event is too soon")
         })
     })

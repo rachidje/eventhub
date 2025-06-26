@@ -1,9 +1,9 @@
 import { IEventConflictCheckerService } from "@event/application/ports/event-conflict-checker-service.interface";
-import { HostedEvent } from "../hosted-event.entity";
 import { IEventRepository } from "@event/application/ports/event-repository.interface";
 import { EventStatus } from "../enums/event-status";
+import { HostedEvent } from "../hosted-event.entity";
 
-export class EventConflictCheckerService implements IEventConflictCheckerService {
+export class EventConflictService implements IEventConflictCheckerService {
     constructor(
         private readonly eventRepository: IEventRepository
     ) {}
