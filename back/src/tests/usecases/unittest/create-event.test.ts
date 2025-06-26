@@ -6,7 +6,7 @@ import { EventStatus } from "@event/domain/enums/event-status"
 import { HostedEventFactory } from "@event/domain/factories/hosted-event.factory"
 import { EventConflictService } from "@event/domain/services/event-conflict-checker.service"
 import { UuidGenerator } from "@shared/infrastructure/uuid-generator"
-import { addDays, addHours, nextDay, nextMonday, nextSaturday, previousSaturday, setHours, setMinutes, setSeconds } from "date-fns"
+import { addDays, addHours, nextDay, nextMonday, nextSaturday, previousDay, previousSaturday, setHours, setMinutes, setSeconds } from "date-fns"
 import { unittestHostedEvents } from "../../entities-test/unittest-hosted-events"
 import { unittestOrganizers } from "../../entities-test/unittest-organizers"
 import { unittestVenue } from "../../entities-test/unittest-venue"
@@ -82,11 +82,14 @@ describe("Create New Event", () => {
     })
 
     describe("Scenario : The event's dates are in the past", () => {
-        const startDate = previousSaturday(new Date())
-        const endDate = addDays(startDate, -1)
+        const baseDate = previousDay(new Date(), 1)
+
+        const startDate = setSeconds(setMinutes(setHours(baseDate, 10), 0), 0)
+        const endDate = setSeconds(setMinutes(setHours(baseDate, 12), 0), 0)
 
         const invalidPayload = {
             ...payload,
+            venueName: unittestVenue.venueOpenAllDays.props.name,
             dates: {
                 start: startDate,
                 end: endDate
@@ -94,6 +97,7 @@ describe("Create New Event", () => {
         }
 
         it("should throw an error" , async () => {
+            await venueRepository.save(unittestVenue.venueOpenAllDays)
             await expect(usecase.execute(invalidPayload)).rejects.toThrow("Event dates are in the past")
         })
     })
