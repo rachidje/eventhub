@@ -1,14 +1,18 @@
+import { SlotReservationService } from "@calendar/domain/services/slot-reservation.service"
 import { VenueAvailabilityService } from "@calendar/domain/services/venue-availibility.service"
+import { Slot } from "@calendar/domain/value-objects/slot"
 import { CreateEventUseCase } from "@event/application/usecases/create-event.usecase"
 import { EventStatus } from "@event/domain/enums/event-status"
+import { HostedEventFactory } from "@event/domain/factories/hosted-event.factory"
+import { EventConflictCheckerService } from "@event/domain/services/event-conflict-checker.service"
+import { UuidGenerator } from "@shared/infrastructure/uuid-generator"
 import { addDays, addHours, nextMonday, nextSaturday, setHours, setMinutes, setSeconds } from "date-fns"
+import { unittestHostedEvents } from "../entities-test/unittest-hosted-events"
 import { unittestOrganizers } from "../entities-test/unittest-organizers"
 import { unittestVenue } from "../entities-test/unittest-venue"
 import { InMemoryCalendarRepository } from "../infra-tests/in-memory-calendar-repository"
 import { InMemoryEventRepository } from "../infra-tests/in-memory-event-repository"
 import { InMemoryVenueRepository } from "../infra-tests/in-memory-venue-repository"
-import { unittestHostedEvents } from "../entities-test/unittest-hosted-events"
-import { Slot } from "@calendar/domain/value-objects/slot"
 
 describe("Create New Event", () => {
 
@@ -36,18 +40,32 @@ describe("Create New Event", () => {
     let calendarRepository: InMemoryCalendarRepository
     let venueAvailabilityService: VenueAvailabilityService
     let usecase: CreateEventUseCase
+    let idGenerator: UuidGenerator
+    let eventConflictService: EventConflictCheckerService
+    let hostedEventFactory: HostedEventFactory
+    let slotReservationService: SlotReservationService
 
     beforeEach(async () => {
         eventRepository = new InMemoryEventRepository()
         venueRepository = new InMemoryVenueRepository()
         calendarRepository = new InMemoryCalendarRepository()
+        slotReservationService = new SlotReservationService(calendarRepository)
+        idGenerator = new UuidGenerator()
+        hostedEventFactory = new HostedEventFactory(idGenerator)
+        eventConflictService = new EventConflictCheckerService(eventRepository)
 
         await venueRepository.save(unittestVenue.venue)
-        calendarRepository = new InMemoryCalendarRepository()
         
         venueAvailabilityService = new VenueAvailabilityService(venueRepository, eventRepository)
 
-        usecase = new CreateEventUseCase(eventRepository, venueRepository, venueAvailabilityService, calendarRepository)
+        usecase = new CreateEventUseCase(
+            eventRepository, 
+            venueRepository, 
+            venueAvailabilityService, 
+            eventConflictService, 
+            hostedEventFactory, 
+            slotReservationService
+        )
     })
 
     describe("Scenario : The event already exists with the same data", () => {
@@ -94,8 +112,8 @@ describe("Create New Event", () => {
         const invalidPayload = {
             ...payload,
             dates: {
-                start: addDays(new Date(), 5),
-                end: addDays(addHours(new Date(), 5), 5)
+                ...payload.dates,
+                end: setSeconds(setMinutes(setHours(baseDate, 15), 0), 0)
             }
         }
         it("should throw an error" , async () => {
