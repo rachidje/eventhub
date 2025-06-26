@@ -8,6 +8,7 @@ export class VenueAvailabilityService {
     ) {}
 
     async isSlotAvailable(venueName: string, dates: {start: Date, end: Date}): Promise<boolean> {
+        console.log(venueName)
         const venue = await this.venueRepository.findByName(venueName);
         if(!venue?.isOpenAt(dates)) return false
 

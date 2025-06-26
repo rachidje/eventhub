@@ -23,4 +23,8 @@ export class Venue {
     venueId(): string {
         return this.props.id
     }
+
+    name(): string {
+        return this.props.name
+    }
 }

@@ -197,7 +197,6 @@ describe("Create New Event", () => {
         it("should throw an error" , async () => {
             await calendarRepository.save(bookedSlot)
             await eventRepository.save(unittestHostedEvents.event)
-            console.log(calendarRepository.slots)
             await expect(usecase.execute(invalidPayload)).rejects.toThrow("The slot is not available")
         })
     })

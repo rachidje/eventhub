@@ -19,6 +19,7 @@ export class InMemoryVenueRepository implements IVenueRepository, IVenueReposito
     }
 
     async findById(id: string): Promise<Venue | null> {
+        console.log(id)
         return this.venues.find(venue => venue.venueId() === id) || null
     }
 }

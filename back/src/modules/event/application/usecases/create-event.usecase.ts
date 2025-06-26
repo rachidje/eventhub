@@ -76,7 +76,7 @@ export class CreateEventUseCase {
         }
 
         const venueIsAvailable = await this.venueAvailabilityService.isSlotAvailable(venue!.venueId(), payload.dates)
-        
+        console.log(venueIsAvailable)
         if(venue && !venueIsAvailable) {
             throw new Error("The slot is not available")
         }
