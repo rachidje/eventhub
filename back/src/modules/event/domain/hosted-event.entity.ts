@@ -14,6 +14,7 @@ export interface HostedEventProps {
     dates: EventDates
     location: EventPlace
     capacity: number
+    price: number
 }
 
 export class HostedEvent {
@@ -58,6 +59,10 @@ export class HostedEvent {
         return this.props.capacity > 100
     }
 
+    hasNegativePrice(): boolean {
+        return this.props.price < 0
+    }
+
     validateOrThrow(): void {
         if (this.props.dates.isInThePast()) {
             throw new Error("Event dates are in the past")
@@ -77,6 +82,10 @@ export class HostedEvent {
 
         if (this.hasTooMuchCapacity()) {
             throw new Error("Event capacity is too much")
+        }
+
+        if (this.hasNegativePrice()) {
+            throw new Error("Event price must be a positive number")
         }
     }
 }

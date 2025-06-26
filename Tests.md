@@ -9,8 +9,8 @@
 - [x] Should fail if capacity is lower than 10
 - [x] Should fail if capacity is higher than 100
 - [x] Should fail if dates are not in opening hours of the place
-- [ ] Should fail if the place is not available
-- [ ] Should fail if the price is negative
+- [x] Should fail if the place is not available
+- [x] Should fail if the price is negative
 - [ ] Should book the place
 - [ ] Should return the event ID
 - [ ] Should insert the event in the database

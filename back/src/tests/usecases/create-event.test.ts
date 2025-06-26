@@ -58,7 +58,8 @@ describe("Create New Event", () => {
                 city: "Paris",
                 country: "France"
             },
-            capacity: 50
+            capacity: 50,
+            price: 100
         }
 
     let repository: InMemoryEventRepository
@@ -199,6 +200,17 @@ describe("Create New Event", () => {
 
         it("should throw an error" , async () => {
             await expect(usecase.execute(invalidPayload)).rejects.toThrow("The slot is not available")
+        })
+    })
+
+    describe("Scenario: Negative price", () => {
+        const invalidPayload = {
+                ...payload,
+                price: -1
+            }
+
+        it("should throw an error" , async () => {
+            await expect(usecase.execute(invalidPayload)).rejects.toThrow("Event price must be a positive number")
         })
     })
 })

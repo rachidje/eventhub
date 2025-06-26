@@ -23,7 +23,8 @@ interface CreateEventUseCasePayload {
         city: string
         country: string
     },
-    capacity: number
+    capacity: number,
+    price: number
 }
 
 export class CreateEventUseCase {
@@ -56,7 +57,8 @@ export class CreateEventUseCase {
                 city: payload.location.city,
                 country: payload.location.country
             }),
-            capacity: payload.capacity
+            capacity: payload.capacity,
+            price: payload.price
         })
 
         if (event.hasConflictWith(events)) {
