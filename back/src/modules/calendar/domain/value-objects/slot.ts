@@ -6,4 +6,8 @@ export interface SlotProps {
 
 export class Slot {
     constructor(private props: SlotProps) {}
+
+    id(): string {
+        return this.props.venueId
+    }
 }

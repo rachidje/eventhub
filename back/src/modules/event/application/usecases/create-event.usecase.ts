@@ -6,6 +6,8 @@ import { HostedEvent } from "@event/domain/hosted-event.entity";
 import { EventDates } from "@event/domain/value-objects/event-dates";
 import { EventPlace } from "@event/domain/value-objects/event-place";
 import { Organizer } from "@organizer/domain/organizer.entity";
+import { ICalendarRepository } from "../ports/calendar-repository.interface";
+import { Slot } from "@calendar/domain/value-objects/slot";
 
 
 interface CreateEventUseCasePayload {
@@ -31,7 +33,8 @@ export class CreateEventUseCase {
     constructor(
         private readonly repository: IEventRepository,
         private readonly venueRepository: IVenueRepository,
-        private readonly venueAvailabilityService: IVenueAvailabilityService
+        private readonly venueAvailabilityService: IVenueAvailabilityService,
+        private readonly calendarRepository: ICalendarRepository
     ) {}
 
     async execute(payload: CreateEventUseCasePayload): Promise<void> {
@@ -73,8 +76,17 @@ export class CreateEventUseCase {
         }
 
         const venueIsAvailable = await this.venueAvailabilityService.isSlotAvailable(venue!.venueId(), payload.dates)
+        
         if(venue && !venueIsAvailable) {
             throw new Error("The slot is not available")
         }
+
+        const bookedSlot = new Slot({
+            start: payload.dates.start,
+            end: payload.dates.end,
+            venueId: venue!.venueId()
+        })
+
+        await this.calendarRepository.save(bookedSlot)
     }
 }

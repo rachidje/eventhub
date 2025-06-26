@@ -37,6 +37,7 @@ export class HostedEvent {
     }
 
     conflictsWithDates(dates: {start: Date, end: Date}): boolean {
+        console.log(dates)
         return this.props.dates.conflictsWith(dates)
     }
 

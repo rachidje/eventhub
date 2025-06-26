@@ -7,12 +7,14 @@ export class VenueAvailabilityService {
         private readonly eventRepository: IEventRepository 
     ) {}
 
-    async isSlotAvailable(venueId: string, dates: {start: Date, end: Date}): Promise<boolean> {
-        const venue = await this.venueRepository.findById(venueId);
+    async isSlotAvailable(venueName: string, dates: {start: Date, end: Date}): Promise<boolean> {
+        const venue = await this.venueRepository.findByName(venueName);
         if(!venue?.isOpenAt(dates)) return false
 
-        const events = await this.eventRepository.findEventsAtVenue(venueId)
+        const events = await this.eventRepository.findEventsAtVenue(venueName)
+        console.log(events)
         const conflict = events.some(event => event.conflictsWithDates(dates))
+        console.log(conflict)
 
         return !conflict
     }
