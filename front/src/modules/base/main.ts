@@ -1,6 +1,7 @@
 import type { Dependencies } from "@eventhub/store/dependencies";
 import { createStore, type AppStore } from "@eventhub/store/store";
 import { InMemoryFetchVenuesApi } from "../create-event/api/in-memory-fetch-venues.api";
+import { SaveEventApi } from "../create-event/api/save-event.api";
 
 export class App {
     public dependencies: Dependencies;
@@ -13,7 +14,8 @@ export class App {
 
     setupDependencies(): Dependencies {
         return {
-            fetchVenues: new InMemoryFetchVenuesApi()
+            fetchVenues: new InMemoryFetchVenuesApi(),
+            saveEvent: new SaveEventApi()
         };
     }
 }

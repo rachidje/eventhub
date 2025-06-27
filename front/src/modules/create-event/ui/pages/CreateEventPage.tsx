@@ -11,6 +11,7 @@ import {
 import { EventDatePicker } from "../components/EventDatePicker"
 import { EventTimePicker } from "../components/EventTimePicker"
 import { useCreateEvent } from "../../hooks/use-create-event.hook"
+import { stringToTime, timeToString } from "@eventhub/shared/date-format"
 
 export const CreateEventPage: React.FC = () => {
     const hook = useCreateEvent()
@@ -61,24 +62,28 @@ export const CreateEventPage: React.FC = () => {
             <Grid container spacing={2}>
                 <Grid item xs={12} md={4}>
                     <EventDatePicker
-                        date={hook.form.event.date}
-                        setDate={(date) => hook.update("date", date)}
+                        date={new Date(hook.form.event.date)}
+                        setDate={(date) => hook.update("date", date.toISOString())}
                     />
                 </Grid>
 
                 <Grid item xs={12} md={4}>
                     <EventTimePicker
                         label="Heure de début"
-                        hour={hook.form.event.startTime}
-                        setHour={(hour) => hook.update("startTime", hour)}
+                        hour={stringToTime(hook.form.event.startTime)}  // ← string vers Date
+                        setHour={(hourDate) => {
+                            hook.update("startTime", timeToString(hourDate))  // ← Date vers string
+                        }}
                     />
                 </Grid>
 
                 <Grid item xs={12} md={4}>
                     <EventTimePicker
                         label="Heure de fin"
-                        hour={hook.form.event.endTime}
-                        setHour={(hour) => hook.update("endTime", hour)}
+                        hour={stringToTime(hook.form.event.endTime)}
+                        setHour={(hourDate) => {
+                            hook.update("endTime", timeToString(hourDate))  // ← Date vers string
+                        }}
                     />
                 </Grid>
             </Grid>
@@ -88,7 +93,7 @@ export const CreateEventPage: React.FC = () => {
                     <TextField
                         label="Prix (€)"
                         value={hook.form.event.price}
-                        onChange={(e) => hook.update("price", parseInt(e.target.value))}
+                        onChange={(e) => hook.update("price", Number(e.target.value))}
                         fullWidth
                         type="number"
                         inputProps={{ step: 0.01, min: 0 }}
@@ -100,7 +105,7 @@ export const CreateEventPage: React.FC = () => {
                     <TextField
                         label="Capacité d'accueil"
                         value={hook.form.event.capacity}
-                        onChange={(e) => hook.update("capacity", parseInt(e.target.value))}
+                        onChange={(e) => hook.update("capacity", Number(e.target.value))}
                         fullWidth
                         type="number"
                         inputProps={{ step: 1, min: 1 }}

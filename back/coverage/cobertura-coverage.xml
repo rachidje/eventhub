@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage lines-valid="808" lines-covered="750" line-rate="0.9281999999999999" branches-valid="99" branches-covered="87" branch-rate="0.8787" timestamp="1750976252542" complexity="0" version="0.1">
+<coverage lines-valid="808" lines-covered="750" line-rate="0.9281999999999999" branches-valid="99" branches-covered="87" branch-rate="0.8787" timestamp="1751047406137" complexity="0" version="0.1">
   <sources>
     <source>/Volumes/backup/Dropbox/mac/3WA/CDA Nouveau Programme/eventhub/back</source>
   </sources>

@@ -1,6 +1,6 @@
 import { EventStatus } from "@event/domain/enums/event-status";
 import { HostedEvent } from "@event/domain/hosted-event.entity";
-import { addDays, addHours, nextSaturday, setHours, setMinutes, setSeconds } from "date-fns";
+import { addDays, nextSaturday, setHours, setMinutes, setSeconds } from "date-fns";
 import { unittestOrganizers } from "./unittest-organizers";
 import { unittestVenue } from "./unittest-venue";
 

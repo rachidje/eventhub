@@ -7,6 +7,11 @@ export type CreateEventState = {
         status: "idle" | "loading" | "loaded" | "error"
         error: string | null
         data: EventModelDomain.Venue[]
+    },
+    eventCreation: {
+        status: "idle" | "loading" | "success" | "error"
+        error: string | null
+        eventId: string | null
     }
 }
 
@@ -15,9 +20,9 @@ const initialState: CreateEventState = {
         event: {
             name: "",
             description: "",
-            date: new Date(),
-            startTime: new Date(),
-            endTime: new Date(),
+            date: new Date().toISOString(),
+            startTime: "9:00",
+            endTime: "18:00",
             venueName: "",
             capacity: 0,
             price: 0
@@ -27,6 +32,11 @@ const initialState: CreateEventState = {
         status: "idle",
         error: null,
         data: []
+    },
+    eventCreation: {
+        status: "idle",
+        error: null,
+        eventId: null
     }
 
 }
@@ -45,6 +55,16 @@ export const createEventSlice = createSlice({
         handleErrorVenues: (state, action: PayloadAction<string>) => {
             state.venues.status = "error"
             state.venues.error = action.payload
+        },
+        handleSuccessEventCreation: (state, action: PayloadAction<string>) => {
+            state.eventCreation.status = "success"
+            state.eventCreation.eventId = action.payload
+            state.eventCreation.error = null
+        },
+        handleErrorEventCreation: (state, action: PayloadAction<string>) => {
+            state.eventCreation.status = "error"
+            state.eventCreation.error = action.payload
+            state.eventCreation.eventId = null
         }
     }
 })

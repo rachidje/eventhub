@@ -4,6 +4,7 @@ import type { EventModelDomain } from "../domain/model/event-model.domain"
 import { useAppDispatch, type AppState } from "@eventhub/store/store"
 import { useSelector } from "react-redux"
 import { fetchVenuesAction } from "../actions/fetch-venues.action"
+import { saveEventAction } from "../actions/save-event.action"
 
 export const useCreateEvent = () => {
     function update<T extends keyof EventModelDomain.EventModel>(
@@ -14,10 +15,13 @@ export const useCreateEvent = () => {
         setForm(newState)
     }
 
-    function submit() {}
+    function submit() {
+        dispatch(saveEventAction(form))
+    }
 
     function isSubmittable() {
-        return false
+        console.log(createEventForm.current.isSubmittable(form))
+        return createEventForm.current.isSubmittable(form)
     }
 
     const dispatch = useAppDispatch()
@@ -33,14 +37,15 @@ export const useCreateEvent = () => {
         event: {
             name: "",
             description: "",
-            date: new Date(),
-            startTime: new Date(),
-            endTime: new Date(),
+            date: new Date().toISOString(),
+            startTime: "9:00",
+            endTime: "18:00",
             venueName: "",
             capacity: 0,
             price: 0
         }
     })
+    console.log(form)
 
     return {
         update,

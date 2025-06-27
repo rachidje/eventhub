@@ -11,9 +11,9 @@ export namespace EventModelDomain {
     export type EventModel = {
         name: string
         description: string
-        date: Date
-        startTime: Date
-        endTime: Date
+        date: string
+        startTime: string
+        endTime: string
         venueName: string
         capacity: number
         price: number
