@@ -1,8 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import type { Dependencies } from "./dependencies";
+import { createEventReducer } from "@eventhub/modules/create-event/store/create-event.slice";
 
-const reducers = combineReducers({});
+const reducers = combineReducers({
+    createEvent: createEventReducer
+});
 
 export type AppStore = ReturnType<typeof createStore>;
 export type AppState = ReturnType<typeof reducers>;
