@@ -1,12 +1,13 @@
 import { AppWrapper } from './modules/base/ui/AppWrapper'
 import { Layout } from './modules/base/ui/Layout'
+import { CreateEventPage } from './modules/create-event/ui/pages/CreateEventPage'
 
 function App() {
 
   return (
     <AppWrapper>
       <Layout>
-        <h1>Hello Vite + React!</h1>
+        <CreateEventPage />
       </Layout>
     </AppWrapper>
   )
