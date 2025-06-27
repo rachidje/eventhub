@@ -1,7 +1,6 @@
 import {
     Box,
     Button,
-    FormControl,
     Grid,
     Paper,
     Stack,
@@ -40,21 +39,21 @@ export const CreateEventPage: React.FC = () => {
                 <Grid item xs={12} md={4}>
                 <EventDatePicker
                     date={today}
-                    setDate={(date) => {}}
+                    setDate={() => {}}
                 />
                 </Grid>
                 <Grid item xs={12} md={4}>
                 <EventTimePicker
                     label="Heure de début"
-                    hour={today.getTime()}
-                    setHour={(time) => {}}
+                    hour={today}
+                    setHour={() => {}}
                 />
                 </Grid>
                 <Grid item xs={12} md={4}>
                 <EventTimePicker
                     label="Heure de fin"
-                    hour={today.getTime()}
-                    setHour={(time) => {}}
+                    hour={today}
+                    setHour={() => {}}
                 />
                 </Grid>
 
