@@ -1,5 +1,6 @@
 import container from "@api/config/dependency-injection";
 import { CreateEventDto } from "@api/dto/event.dto";
+import { logger } from "@api/utils/logger";
 import { RequestValidator } from "@api/utils/validate-request";
 import { Organizer } from "@organizer/domain/organizer.entity";
 import { NextFunction, Request, Response } from "express";
@@ -10,6 +11,7 @@ export const createEvent = async (
     next: NextFunction
 ) : Promise<any> => {
     try {
+        logger.info(`Create event request received: ${JSON.stringify(req.body)}`);
         const {errors, input} = await RequestValidator(CreateEventDto, req.body);
 
         if (errors) {
@@ -33,6 +35,7 @@ export const createEvent = async (
 
         return res.jsonSuccess(eventId, 201);
     } catch (error) {
+        logger.error(error)
         next(error);
     }
 };

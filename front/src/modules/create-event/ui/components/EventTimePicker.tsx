@@ -1,6 +1,6 @@
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { TimePicker } from "@mui/x-date-pickers/TimePicker";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { MobileTimePicker } from "@mui/x-date-pickers/MobileTimePicker";
 
 export const EventTimePicker: React.FC<{
     label: string
@@ -10,11 +10,10 @@ export const EventTimePicker: React.FC<{
 
     return (
         <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <TimePicker
+            <MobileTimePicker
                 label={label}
                 value={hour}
                 onChange={(newValue) => setHour(newValue)}
-                // renderInput={(params) => <TextField {...params} fullWidth />}
             />
         </LocalizationProvider>
     );

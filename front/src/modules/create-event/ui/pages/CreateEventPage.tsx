@@ -52,7 +52,7 @@ export const CreateEventPage: React.FC = () => {
                     variant="outlined"
                 >
                     {hook.venues.data.map((venue) => (
-                        <MenuItem key={venue.id} value={venue.id}>
+                        <MenuItem key={venue.id} value={venue.name}>
                             {venue.name}
                         </MenuItem>
                     ))}

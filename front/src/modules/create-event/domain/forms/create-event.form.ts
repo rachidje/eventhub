@@ -16,7 +16,7 @@ export class CreateEventForm {
     }
 
     isSubmittable(form: EventModelDomain.Form): boolean {
-        return this.validate(form.event).isValid;
+        return this.validate(form.event).isValid && form.event.venueName !== "";
     }
 
     validate(event: EventModelDomain.EventModel): {
