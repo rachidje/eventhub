@@ -16,8 +16,6 @@ export const useCreateEvent = () => {
     }
 
     function submit() {
-        console.log(form)
-        
         dispatch(saveEventAction(form))
     }
 

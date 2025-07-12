@@ -17,7 +17,7 @@ describe("Create New Event", () => {
             
 
         const response = await request(app)
-                            .post("/api/v1/event")
+                            .post("/v1/event")
                             .send({
                                 name: "Salon de la photo immersive",
                                 description: "Un événement artistique autour des technologies immersives et interactives.",

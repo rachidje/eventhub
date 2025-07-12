@@ -28,7 +28,6 @@ export class SaveEventApi implements ISaveEventRequest {
                 throw new Error(response.data.error.message || 'Unknown error from backend')
             }
 
-            console.log(response.data)
             return response.data.data
         } catch (error) {
             if(axios.isAxiosError(error)) {
