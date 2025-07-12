@@ -11,24 +11,18 @@ export class SaveEventApi implements ISaveEventRequest {
         const startTime = padTime(event.startTime)
         const endTime = padTime(event.endTime)
 
-        const start = new Date(`${date}T${startTime}:00`);
-        const end = new Date(`${date}T${endTime}:00`);
-
-        console.log(start)
-        console.log(end)
-
         const payload = {
             name: event.name,
             description: event.description,
-            start: start.toISOString(),
-            end: end.toISOString(),
+            start: new Date(`${date}T${startTime}:00`).toISOString(),
+            end: new Date(`${date}T${endTime}:00`).toISOString(),
             venueName: event.venueName,
             capacity: event.capacity,
             price: event.price
         }
 
         try {
-            const response = await axios.post("http://localhost:5000/api/v1/event", payload)
+            const response = await axios.post("http://localhost:5000/v1/event", payload)
 
             if(!response.data.success) {
                 throw new Error(response.data.error.message || 'Unknown error from backend')

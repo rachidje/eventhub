@@ -7,3 +7,7 @@
 
 **/dist/
 **/build/
+
+docker-compose.override.yml
+**/Dockerfile.dev
+**/default.dev.conf

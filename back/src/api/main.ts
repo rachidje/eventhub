@@ -8,18 +8,18 @@ import { logger } from './utils/logger';
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
 app.use(morgan('combined', {
     stream: {
-        write: (message) => logger.info(message.trim())
+        write: (message:string) => logger.info(message.trim())
     }
 }))
 
 
 app.use(jsonApiResponseMiddleware)
-app.use('/api', ApiRoutes);
+app.use('/', ApiRoutes);
 
 app.use(errorHandlerMiddleware)
 app.listen(5000, () => {
