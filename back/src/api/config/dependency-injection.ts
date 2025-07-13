@@ -20,6 +20,7 @@ import { InMemoryCalendarRepository } from "@tests/infra-tests/in-memory-calenda
 import { InMemoryEventRepository } from "@tests/infra-tests/in-memory-event-repository";
 import { PostgresVenueRepository } from "@venue/infrastructure/repositories/postgres-venue.repository";
 import { getEnv } from "./get-env";
+import { PrismaClient } from "@prisma/client";
 
 
 const jwtSecret = getEnv('JWT_SECRET');
@@ -36,6 +37,7 @@ export interface Dependencies {
     authenticator: IAuthenticator
     createEventUseCase: CreateEventUseCase
     jwtSecret: string
+    prisma: PrismaClient
 }
 
 const container = createContainer<Dependencies>({
@@ -44,6 +46,7 @@ const container = createContainer<Dependencies>({
 
 container.register({
     jwtSecret: asValue(jwtSecret),
+    prisma: asValue(new PrismaClient()),
     idGenerator: asClass(UuidGenerator).singleton(),
     eventRepository: asClass(InMemoryEventRepository).singleton(),
     venueRepository: asClass(PostgresVenueRepository).singleton(),
