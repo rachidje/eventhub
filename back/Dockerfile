@@ -9,6 +9,8 @@ RUN npm install
 
 # Copier le reste du projet et compiler
 COPY . .
+# ✅ Générer le client Prisma
+RUN npx prisma generate
 RUN npm run build  # suppose que "build" = "tsc"
 
 # Étape 2 : Image minimale pour l'exécution
@@ -22,6 +24,8 @@ RUN npm install --only=production
 
 # Copier le build transpilé depuis l'étape précédente
 COPY --from=builder /app/dist ./dist
+# ✅ Copier le client Prisma généré
+COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
 
 # Exposer le port (à adapter si différent)
 EXPOSE 5000
