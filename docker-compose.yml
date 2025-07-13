@@ -30,8 +30,6 @@ services:
     - ./back/.env
     depends_on:
       - postgres
-    environment:
-      DATABASE_URL: ${DATABASE_URL}
     command: >
       sh -c "npm install &&
             npx prisma generate &&
