@@ -26,6 +26,8 @@ services:
     working_dir: /app
     volumes:
       - ./back:/app
+    env_file:
+    - ./back/.env
     depends_on:
       - postgres
     environment:
