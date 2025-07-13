@@ -10,6 +10,8 @@ services:
   backend:
     build: ./back
     container_name: backend
+    env_file:
+      - ./back/.env
     expose:
       - "5000"
     environment:
