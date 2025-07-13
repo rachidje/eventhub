@@ -52,6 +52,8 @@ jobs:
           DATABASE_URL=postgresql://${{ secrets.DB_USER }}:${{ secrets.DB_PASSWORD }}@postgres:5432/${{ secrets.DB_NAME }}
           EOF
 
+          export $(cat .env | xargs)
+
           docker compose down
           docker compose build || {
             echo "Le build a échoué, arrêt du déploiement."
