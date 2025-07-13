@@ -6,13 +6,14 @@ import { EventStatus } from "@event/domain/enums/event-status"
 import { HostedEventFactory } from "@event/domain/factories/hosted-event.factory"
 import { EventConflictService } from "@event/domain/services/event-conflict-checker.service"
 import { UuidGenerator } from "@shared/infrastructure/uuid-generator"
-import { addDays, addHours, nextDay, nextMonday, nextSaturday, previousDay, previousSaturday, setHours, setMinutes, setSeconds } from "date-fns"
+import { addDays, addHours, format, nextDay, nextMonday, nextSaturday, previousDay, setHours, setMinutes, setSeconds } from "date-fns"
 import { unittestHostedEvents } from "../../entities-test/unittest-hosted-events"
 import { unittestOrganizers } from "../../entities-test/unittest-organizers"
 import { unittestVenue } from "../../entities-test/unittest-venue"
 import { InMemoryCalendarRepository } from "../../infra-tests/in-memory-calendar-repository"
 import { InMemoryEventRepository } from "../../infra-tests/in-memory-event-repository"
 import { InMemoryVenueRepository } from "../../infra-tests/in-memory-venue-repository"
+import { combineDateTime } from "@event/application/utils/datetime"
 
 describe("Create New Event", () => {
 
@@ -26,14 +27,13 @@ describe("Create New Event", () => {
             description: "Un événement artistique autour des technologies immersives et interactives.",
             organizer: unittestOrganizers.alice,
             status: EventStatus.SCHEDULED,
-            dates: {
-                start: startDate,
-                end: endDate
-            },
+            date: format(startDate, "yyyy-MM-dd"),
+            startTime: format(startDate, "HH:mm"),
+            endTime: format(endDate, "HH:mm"),
             venueName: unittestVenue.venue.props.name,
             capacity: 50,
             price: 100
-        }
+    }
 
     let eventRepository: InMemoryEventRepository
     let venueRepository: InMemoryVenueRepository
@@ -90,10 +90,9 @@ describe("Create New Event", () => {
         const invalidPayload = {
             ...payload,
             venueName: unittestVenue.venueOpenAllDays.props.name,
-            dates: {
-                start: startDate,
-                end: endDate
-            }
+            date: format(startDate, "yyyy-MM-dd"),
+            startTime: format(startDate, "HH:mm"),
+            endTime: format(endDate, "HH:mm")
         }
 
         it("should throw an error" , async () => {
@@ -111,10 +110,9 @@ describe("Create New Event", () => {
         const invalidPayload = {
             ...payload,
             venueName: unittestVenue.venueOpenAllDays.props.name,
-            dates: {
-                start: startDate,
-                end: endDate
-            }
+            date: format(startDate, "yyyy-MM-dd"),
+            startTime: format(startDate, "HH:mm"),
+            endTime: format(endDate, "HH:mm")
         }
         it("should throw an error" , async () => {
             await venueRepository.save(unittestVenue.venueOpenAllDays)
@@ -125,10 +123,7 @@ describe("Create New Event", () => {
     describe("Scenario : The event is too long", () => {
         const invalidPayload = {
             ...payload,
-            dates: {
-                ...payload.dates,
-                end: setSeconds(setMinutes(setHours(baseDate, 15), 0), 0)
-            }
+            endTime: format(setSeconds(setMinutes(setHours(baseDate, 15), 0), 0), "HH:mm")
         }
         it("should throw an error" , async () => {
             await expect(usecase.execute(invalidPayload)).rejects.toThrow("Event is too long")
@@ -163,10 +158,9 @@ describe("Create New Event", () => {
 
             const invalidPayload = {
                 ...payload,
-                dates: {
-                    start: startDate,
-                    end: endDate
-                }
+                date: format(startDate, "yyyy-MM-dd"),
+                startTime: format(startDate, "HH:mm"),
+                endTime: format(endDate, "HH:mm")
             }
             await expect(usecase.execute(invalidPayload)).rejects.toThrow("Event dates are not in opening hours of the place")
         })
@@ -202,8 +196,12 @@ describe("Create New Event", () => {
 
             const slot = await calendarRepository.findByVenueId(unittestVenue.venue.props.id)
             expect(slot).toBeDefined()
-            expect(slot!.props.start).toEqual(startDate)
-            expect(slot!.props.end).toEqual(endDate)
+            const expectedStart = combineDateTime(payload.date, payload.startTime)
+            const expectedEnd = combineDateTime(payload.date, payload.endTime)
+
+            expect(slot!.props.start.getTime()).toBe(expectedStart.getTime())
+            expect(slot!.props.end.getTime()).toBe(expectedEnd.getTime())
+
         })
     })
 

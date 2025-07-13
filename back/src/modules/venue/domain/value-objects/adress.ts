@@ -7,5 +7,5 @@ export interface AddressProps {
 }
 
 export class Address {
-    constructor(private props: AddressProps) {}
+    constructor(public props: AddressProps) {}
 }

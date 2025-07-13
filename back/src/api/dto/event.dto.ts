@@ -9,13 +9,17 @@ export class CreateEventDto {
     @IsNotEmpty()
     description: string
 
-    @IsDateString()
+    @IsString()
     @IsNotEmpty()
-    start: Date
+    date: string
 
-    @IsDateString()
+    @IsString()
     @IsNotEmpty()
-    end: Date
+    startTime: string
+
+    @IsString()
+    @IsNotEmpty()
+    endTime: string
 
     @IsString()
     @IsNotEmpty()

@@ -1,7 +1,7 @@
 import container from "@api/config/dependency-injection"
 import app from "@api/main"
 import { unittestVenue } from "@tests/entities-test/unittest-venue"
-import { addDays, nextSaturday, setHours, setMinutes, setSeconds } from "date-fns"
+import { addDays, format, nextSaturday, setHours, setMinutes, setSeconds } from "date-fns"
 import request from "supertest"
 
 describe("Create New Event", () => {
@@ -21,8 +21,9 @@ describe("Create New Event", () => {
                             .send({
                                 name: "Salon de la photo immersive",
                                 description: "Un événement artistique autour des technologies immersives et interactives.",
-                                start: startDate.toISOString(),
-                                end: endDate.toISOString(),
+                                date: format(startDate, "yyyy-MM-dd"),
+                                startTime: format(startDate, "HH:mm"),
+                                endTime: format(endDate, "HH:mm"),
                                 venueName: "La Cité des Sciences",
                                 capacity: 50,
                                 price: 100

@@ -42,5 +42,4 @@ export const unittestVenue = {
                         sunday: [{start: "9:00", end: "17:00"}]
                     })
             })
-
 }

@@ -21,10 +21,9 @@ export const createEvent = async (
         const payload = {
             name: input.name,
             description: input.description,
-            dates: {
-                start: new Date(input.start),
-                end: new Date(input.end)
-            },
+            date: input.date,
+            startTime: input.startTime,
+            endTime: input.endTime,
             venueName: input.venueName,
             capacity: input.capacity,
             price: input.price,
