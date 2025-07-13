@@ -9,6 +9,7 @@ RUN npm install
 
 # Copier le reste du projet et compiler
 COPY . .
+COPY prisma ./prisma
 
 RUN npm run build  # suppose que "build" = "tsc"
 
@@ -23,6 +24,7 @@ RUN npm install --only=production
 
 # Copier le build transpilé depuis l'étape précédente
 COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/prisma ./prisma 
 
 # Exposer le port (à adapter si différent)
 EXPOSE 5000
