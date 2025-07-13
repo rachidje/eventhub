@@ -58,9 +58,9 @@ jobs:
             exit 1
           }
           # ✅ Exécuter le service migrate une seule fois, sans le garder actif
-          docker compose run --rm migrate || {
+          env $(cat .env | xargs) docker compose run --rm migrate || {
             echo "La migration Prisma a échoué."
             exit 1
           }
-          docker compose up -d
+          env $(cat .env | xargs) docker compose up -d
 
