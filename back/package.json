@@ -8,7 +8,7 @@
     "dev": "nodemon --watch src --ext ts,json --exec ts-node -r tsconfig-paths/register src/api/server.ts",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "build:seed": "tsc ../prisma/seed.ts --outDir dist/prisma --module commonjs",
+    "build:seed": "mkdir -p dist/prisma && tsc prisma/seed.ts --outDir dist/prisma --module commonjs",
     "seed:prod": "npm run build:seed && node dist/prisma/seed.js"
   },
   "prisma" : {
