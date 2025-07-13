@@ -42,17 +42,12 @@ jobs:
 
           git pull origin main
 
-          # Injecter le .env à partir des secrets GitHub
-          cat <<EOF > .env
-          DATABASE_URL=postgresql://${{ secrets.DB_USER }}:${{ secrets.DB_PASSWORD }}@postgres:5432/${{ secrets.DB_NAME }}
-          EOF
-
           cat <<EOF > back/.env
-          JWT_SECRET=${{ secrets.JWT_SECRET }}
+          POSTGRES_USER=${{ secrets.DB_USER }}
+          POSTGRES_PASSWORD=${{ secrets.DB_PASSWORD }}
+          POSTGRES_DB=${{ secrets.DB_NAME }}
           DATABASE_URL=postgresql://${{ secrets.DB_USER }}:${{ secrets.DB_PASSWORD }}@postgres:5432/${{ secrets.DB_NAME }}
           EOF
-
-          export $(cat .env | xargs)
 
           docker compose down
           docker compose build || {
@@ -60,9 +55,9 @@ jobs:
             exit 1
           }
           # ✅ Exécuter le service migrate une seule fois, sans le garder actif
-          env $(cat .env | xargs) docker compose run --rm migrate || {
+          docker compose run --rm migrate || {
             echo "La migration Prisma a échoué."
             exit 1
           }
-          env $(cat .env | xargs) docker compose up -d
+          docker compose up -d
 

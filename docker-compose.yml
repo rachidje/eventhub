@@ -41,10 +41,8 @@ services:
     image: postgres:15
     container_name: postgres
     restart: unless-stopped
-    environment:
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
+    env_file:
+      - ./back/.env
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:
