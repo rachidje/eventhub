@@ -14,8 +14,10 @@ export class InMemoryVenueRepository implements IVenueRepository, IVenueReposito
         this.venues.push(venue)
     }
 
-    async findByName(name: string): Promise<Venue | null> {
-        return this.venues.find(venue => venue.props.name === name) || null
+    async findByName(name: string): Promise<Venue> {
+        const venue = this.venues.find(venue => venue.props.name === name) 
+        if(!venue) throw new Error("Venue not found")
+        return venue
     }
 
     async findById(id: string): Promise<Venue | null> {

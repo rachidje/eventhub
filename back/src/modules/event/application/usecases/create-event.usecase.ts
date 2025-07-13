@@ -34,7 +34,6 @@ export class CreateEventUseCase {
 
     async execute(payload: CreateEventUseCasePayload): Promise<string> {
         const venue = await this.venueRepository.findByName(payload.venueName)
-        if(!venue) throw new Error("Venue not found")
 
         const dates = extractEventDates(payload)
 

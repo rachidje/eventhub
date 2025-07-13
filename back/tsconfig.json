@@ -121,5 +121,7 @@
     "jest.config.ts",
     "jest.config.e2e.ts",
     "jest.config.int.ts",
+    "node_modules",
+    "prisma/seed.ts"
   ]
 }
