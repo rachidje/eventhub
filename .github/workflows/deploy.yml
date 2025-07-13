@@ -43,12 +43,12 @@ jobs:
           git pull origin main
 
           # Injecter le .env à partir des secrets GitHub
-          cat <<EOF > back/.env
-          JWT_SECRET=${{ secrets.JWT_SECRET }}
+          cat <<EOF > .env
           DATABASE_URL=postgresql://${{ secrets.DB_USER }}:${{ secrets.DB_PASSWORD }}@postgres:5432/${{ secrets.DB_NAME }}
           EOF
 
-          cat <<EOF > .env
+          cat <<EOF > back/.env
+          JWT_SECRET=${{ secrets.JWT_SECRET }}
           DATABASE_URL=postgresql://${{ secrets.DB_USER }}:${{ secrets.DB_PASSWORD }}@postgres:5432/${{ secrets.DB_NAME }}
           EOF
 
