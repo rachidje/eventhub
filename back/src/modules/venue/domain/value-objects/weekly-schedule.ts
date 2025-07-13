@@ -8,13 +8,17 @@ type OpeningSlot = {
     end: string
 }
 
-type WeeklyScheduleProps = Partial<Record<DayOfWeek, OpeningSlot[]>>
+export type WeeklyScheduleProps = Partial<Record<DayOfWeek, OpeningSlot[]>>
 
 export class WeeklySchedule {
     constructor(private readonly props: WeeklyScheduleProps) {}
 
     static from(props: WeeklyScheduleProps): WeeklySchedule {
         return new WeeklySchedule(props)
+    }
+
+    toJSON(): WeeklyScheduleProps {
+        return this.props
     }
 
     isOpenDuring({ start, end }: { start: Date; end: Date }): boolean {
@@ -40,4 +44,6 @@ export class WeeklySchedule {
         const [hours, minutes] = time.split(":").map(Number)
         return set(base, { hours, minutes, seconds: 0, milliseconds: 0 })
     }
+
+    
 }
