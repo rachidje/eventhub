@@ -18,7 +18,7 @@ import { UuidGenerator } from "@shared/infrastructure/uuid-generator";
 import { JwtAuthenticator } from "@shared/services/jwt-authenticator";
 import { InMemoryCalendarRepository } from "@tests/infra-tests/in-memory-calendar-repository";
 import { InMemoryEventRepository } from "@tests/infra-tests/in-memory-event-repository";
-import { InMemoryVenueRepository } from "@tests/infra-tests/in-memory-venue-repository";
+import { PostgresVenueRepository } from "@venue/infrastructure/repositories/postgres-venue.repository";
 import { getEnv } from "./get-env";
 
 
@@ -46,7 +46,7 @@ container.register({
     jwtSecret: asValue(jwtSecret),
     idGenerator: asClass(UuidGenerator).singleton(),
     eventRepository: asClass(InMemoryEventRepository).singleton(),
-    venueRepository: asClass(InMemoryVenueRepository).singleton(),
+    venueRepository: asClass(PostgresVenueRepository).singleton(),
     calendarRepository: asClass(InMemoryCalendarRepository).singleton(),
     venueAvailabilityService: asClass(VenueAvailabilityService).singleton(),
     eventConflictService: asClass(EventConflictService).singleton(),
