@@ -14,8 +14,9 @@ export class SaveEventApi implements ISaveEventRequest {
         const payload = {
             name: event.name,
             description: event.description,
-            start: new Date(`${date}T${startTime}:00`).toISOString(),
-            end: new Date(`${date}T${endTime}:00`).toISOString(),
+            date,
+            startTime,
+            endTime,
             venueName: event.venueName,
             capacity: event.capacity,
             price: event.price
