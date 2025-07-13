@@ -46,7 +46,7 @@ jobs:
           cat <<EOF > back/.env
           JWT_SECRET=${{ secrets.JWT_SECRET }}
           # Ajoute ici d'autres secrets si nécessaire
-          DATABASE_URL=postgresql://${{ secrets.DB_USER }}:${{ secrets.DB_PASSWORD }}@localhost:5432/${{ secrets.DB_NAME }}
+          DATABASE_URL=postgresql://${{ secrets.DB_USER }}:${{ secrets.DB_PASSWORD }}@postgres:5432/${{ secrets.DB_NAME }}
           EOF
 
           docker compose down
