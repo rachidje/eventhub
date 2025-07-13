@@ -54,5 +54,10 @@ jobs:
             echo "Le build a échoué, arrêt du déploiement."
             exit 1
           }
+          # ✅ Exécuter le service migrate une seule fois, sans le garder actif
+          docker compose run --rm migrate || {
+            echo "La migration Prisma a échoué."
+            exit 1
+          }
           docker compose up -d
 
