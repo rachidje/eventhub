@@ -38,7 +38,6 @@ describe("Create New Event", () => {
                                 capacity: 50,
                                 price: 100
                             })
-        console.log(response)
 
         expect(response.status).toEqual(201)
         expect(response.body.success).toEqual(true)
