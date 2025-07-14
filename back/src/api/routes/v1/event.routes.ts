@@ -1,8 +1,11 @@
-import { createEvent } from "@api/controller/v1";
+import { createEvent } from "@api/controller/v1/event.controller";
 import { Router } from "express";
+import { DIContainer } from "types/di-container";
 
-const router = Router();
+const eventRoutes = (container: DIContainer): Router => {
+    const router = Router();
+    router.post("/", createEvent(container));
+    return router;
+};
 
-router.post('/', createEvent)
-
-export {router as EventRoutes};
+export default eventRoutes;

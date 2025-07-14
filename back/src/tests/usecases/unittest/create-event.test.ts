@@ -102,7 +102,7 @@ describe("Create New Event", () => {
     })
 
     describe("Scenario : The event is too soon", () => {
-        const baseDate = nextDay(new Date(), 1)
+        const baseDate = addHours(new Date(), 24)
     
         const startDate = setSeconds(setMinutes(setHours(baseDate, 10), 0), 0)
         const endDate = setSeconds(setMinutes(setHours(baseDate, 12), 0), 0)

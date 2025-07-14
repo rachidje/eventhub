@@ -1,11 +1,11 @@
-import { IEventRepository } from "@event/application/ports/event-repository.interface";
-import { IVenueAvailabilityService } from "@event/application/ports/venue-availability-service.interface";
-import { IVenueRepository } from "@event/application/ports/venue-repository.interface";
-import { Organizer } from "@organizer/domain/organizer.entity";
 import { IEventConflictCheckerService } from "@event/application/ports/event-conflict-checker-service.interface";
+import { IEventRepository } from "@event/application/ports/event-repository.interface";
 import { IHostedEventFactory } from "@event/application/ports/hosted-event-factory.interface";
 import { ISlotReservationService } from "@event/application/ports/slot-reservation-service.interface";
-import { combineDateTime, extractEventDates } from "@event/application/utils/datetime";
+import { IVenueAvailabilityService } from "@event/application/ports/venue-availability-service.interface";
+import { IVenueRepositoryForEvent } from "@event/application/ports/venue-repository-for-event.interface";
+import { extractEventDates } from "@event/application/utils/datetime";
+import { Organizer } from "@organizer/domain/organizer.entity";
 
 
 
@@ -25,7 +25,7 @@ export interface CreateEventUseCasePayload {
 export class CreateEventUseCase {
     constructor(
         private readonly eventRepository: IEventRepository,
-        private readonly venueRepository: IVenueRepository,
+        private readonly venueRepositoryForEvent: IVenueRepositoryForEvent,
         private readonly venueAvailabilityService: IVenueAvailabilityService,
         private readonly eventConflictService: IEventConflictCheckerService,
         private readonly hostedEventFactory: IHostedEventFactory,
@@ -33,7 +33,7 @@ export class CreateEventUseCase {
     ) {}
 
     async execute(payload: CreateEventUseCasePayload): Promise<string> {
-        const venue = await this.venueRepository.findByName(payload.venueName)
+        const venue = await this.venueRepositoryForEvent.findByName(payload.venueName)
 
         const dates = extractEventDates(payload)
 

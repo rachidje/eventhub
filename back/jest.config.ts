@@ -4,7 +4,7 @@ export default {
     coverageReporters: ['lcov', 'text', 'cobertura'],
     preset: 'ts-jest',
     testEnvironment: 'node',
-    testRegex: '\\.test\\.ts$',
+    testRegex: '^(?!.*\\.e2e\\.test\\.ts$).*\\.test\\.ts$',
     coverageProvider: 'v8',
     moduleFileExtensions: ['js', 'json', 'ts', 'tsx'],
     rootDir: 'src',

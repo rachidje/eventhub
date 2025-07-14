@@ -1,16 +1,26 @@
-import container from "@api/config/dependency-injection"
-import app from "@api/main"
-import { unittestVenue } from "@tests/entities-test/unittest-venue"
+import { createContainer } from "@api/config/dependency-injection"
+import { E2EVenues } from "@tests/fixtures/seeds/e2e-venues.fixture"
+import { TestApp } from "@tests/test-app"
 import { addDays, format, nextSaturday, setHours, setMinutes, setSeconds } from "date-fns"
+import { Application } from "express"
 import request from "supertest"
 
 describe("Create New Event", () => {
-    const baseDate = nextSaturday(addDays(new Date(), 5))
-    const startDate = setSeconds(setMinutes(setHours(baseDate, 10), 0), 0)
-    const endDate = setSeconds(setMinutes(setHours(baseDate, 12), 0), 0)
+    const baseDate = nextSaturday(addDays(new Date(), 5));
+    const startDate = setSeconds(setMinutes(setHours(baseDate, 10), 0), 0);
+    const endDate = setSeconds(setMinutes(setHours(baseDate, 12), 0), 0);
+
+    let testApp: TestApp;
+    let app: Application;
 
     beforeEach(async () => {
-        await container.resolve('venueRepository').save(unittestVenue.venue)
+        const container = createContainer()
+
+        testApp = new TestApp(container);
+        await testApp.setup();
+        app = testApp.getExpressApp();
+        
+        await testApp.loadFixtures([E2EVenues.venue])
     })
 
     it("should return the event ID with status 201" , async () => {
@@ -28,7 +38,7 @@ describe("Create New Event", () => {
                                 capacity: 50,
                                 price: 100
                             })
-        
+        console.log(response)
 
         expect(response.status).toEqual(201)
         expect(response.body.success).toEqual(true)

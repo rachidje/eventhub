@@ -1,9 +1,10 @@
 // venue/tests/infra-test/in-memory-venue-repository.ts
-import { IVenueRepository as IVenueRepositoryForCalendarContext } from "@calendar/application/ports/venue-repository.interface";
-import { IVenueRepository } from "@event/application/ports/venue-repository.interface";
+
+import { IVenueRepositoryForCalendar } from "@calendar/application/ports/venue-repository-for-calendar.interface";
+import { IVenueRepositoryForEvent } from "@event/application/ports/venue-repository-for-event.interface";
 import { Venue } from "@venue/domain/venue.entity";
 
-export class InMemoryVenueRepository implements IVenueRepository, IVenueRepositoryForCalendarContext {
+export class InMemoryVenueRepository implements IVenueRepositoryForEvent, IVenueRepositoryForCalendar {
     private venues: Venue[]
 
     constructor() {

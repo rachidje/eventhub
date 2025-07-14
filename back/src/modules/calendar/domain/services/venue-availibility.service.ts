@@ -1,14 +1,14 @@
-import { IEventRepository } from "@calendar/application/ports/event-repository.interface";
-import { IVenueRepository } from "@calendar/application/ports/venue-repository.interface";
+import { IEventRepositoryForCalendar } from "@calendar/application/ports/event-repository-for-calendar.interface";
+import { IVenueRepositoryForCalendar } from "@calendar/application/ports/venue-repository-for-calendar.interface";
 
 export class VenueAvailabilityService {
     constructor(
-        private readonly venueRepository: IVenueRepository,
-        private readonly eventRepository: IEventRepository 
+        private readonly venueRepositoryForCalendar: IVenueRepositoryForCalendar,
+        private readonly eventRepository: IEventRepositoryForCalendar 
     ) {}
 
     async isSlotAvailable(venueId: string, dates: {start: Date, end: Date}): Promise<boolean> {
-        const venue = await this.venueRepository.findById(venueId);
+        const venue = await this.venueRepositoryForCalendar.findById(venueId);
         if(!venue?.isOpenAt(dates)) return false
 
         const events = await this.eventRepository.findEventsAtVenue(venueId)
@@ -16,4 +16,4 @@ export class VenueAvailabilityService {
 
         return !conflict
     }
-}
+} 

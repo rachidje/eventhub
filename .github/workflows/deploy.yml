@@ -6,11 +6,18 @@ on:
       - main
 
 jobs:
-  call-tests:
-    uses: ./.github/workflows/test.yml
+  unit-tests:
+    uses: ./.github/workflows/test.unit.yml
     secrets: inherit
+
+  e2e-tests:
+    uses: ./.github/workflows/test.e2e.yml
+    secrets: inherit
+
   deploy:
-    needs: call-tests
+    needs:
+      - unit-tests
+      - e2e-tests
     runs-on: ubuntu-latest
 
     steps:

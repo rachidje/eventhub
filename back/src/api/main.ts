@@ -1,12 +1,14 @@
 import cors from 'cors';
 import express from 'express';
 import morgan from 'morgan';
+import { createContainer } from './config/dependency-injection';
 import { errorHandlerMiddleware } from './middlewares/error-handler.middleware';
 import { jsonApiResponseMiddleware } from './middlewares/json-response.middleware';
-import { ApiRoutes } from './routes';
+import { createApiRoutes } from './routes';
 import { logger } from './utils/logger';
 
 const app = express();
+const container = createContainer();
 
 app.use(cors());
 app.use(express.json());
@@ -19,11 +21,8 @@ app.use(morgan('combined', {
 
 
 app.use(jsonApiResponseMiddleware)
-app.use('/', ApiRoutes);
+app.use('/', createApiRoutes(container));
 
-app.use(errorHandlerMiddleware)
-app.listen(5000, () => {
-    console.log('Server is running on port 5000');
-});
+app.use(errorHandlerMiddleware);
 
 export default app;

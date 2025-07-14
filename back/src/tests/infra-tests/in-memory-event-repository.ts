@@ -1,9 +1,9 @@
-import { IEventRepository as IEventRepositoryForCalendarContext } from "@calendar/application/ports/event-repository.interface"
+import { IEventRepositoryForCalendar } from "@calendar/application/ports/event-repository-for-calendar.interface"
 import { IEventRepository } from "@event/application/ports/event-repository.interface"
 import { EventStatus } from "@event/domain/enums/event-status"
 import { HostedEvent } from "@event/domain/hosted-event.entity"
 
-export class InMemoryEventRepository implements IEventRepository, IEventRepositoryForCalendarContext {
+export class InMemoryEventRepository implements IEventRepository, IEventRepositoryForCalendar {
     private events: HostedEvent[]
     constructor() {
         this.events = []

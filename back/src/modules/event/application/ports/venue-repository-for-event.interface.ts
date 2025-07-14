@@ -2,7 +2,7 @@
 
 import { Venue } from "@venue/domain/venue.entity"
 
-export interface IVenueRepository {
+export interface IVenueRepositoryForEvent {
     save(venue: Venue): Promise<void>
     findByName(name: string): Promise<Venue>
 }

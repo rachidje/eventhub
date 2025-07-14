@@ -1,9 +1,9 @@
 import { ICalendarRepository } from "@calendar/application/ports/calendar-repository.interface";
 import { Slot } from "@calendar/domain/value-objects/slot";
-import { ICalendarRepository as ICalendarRepositoryForEventContext } from "@event/application/ports/calendar-repository.interface";
+import { ICalendarRepositoryForEvent } from "@event/application/ports/calendar-repository-for-event.interface";
 
 
-export class InMemoryCalendarRepository implements ICalendarRepository, ICalendarRepositoryForEventContext  {
+export class InMemoryCalendarRepository implements ICalendarRepository, ICalendarRepositoryForEvent  {
 
     constructor(public slots: Slot[] = []) {}
 
