@@ -1,4 +1,5 @@
 import {
+    Alert,
     Box,
     Button,
     Grid,
@@ -21,6 +22,14 @@ export const CreateEventPage: React.FC = () => {
         <Typography variant="h4" gutterBottom>
             Créer un événement
         </Typography>
+
+        {
+            hook.networkError && (
+                <Alert severity="error">
+                    {hook.networkError}
+                </Alert>
+            )
+        }
 
         <Paper elevation={3} sx={{ p: 4 }}>
             <Stack spacing={3}>

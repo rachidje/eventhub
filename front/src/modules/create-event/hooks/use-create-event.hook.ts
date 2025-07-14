@@ -44,12 +44,14 @@ export const useCreateEvent = () => {
             price: 0
         }
     })
+    const networkError = useSelector((state: AppState) => state.createEvent.eventCreation.error)
 
     return {
         update,
         submit,
         isSubmittable: isSubmittable(),
         form,
-        venues
+        venues,
+        networkError
     }
 }
