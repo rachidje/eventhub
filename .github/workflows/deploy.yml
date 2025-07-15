@@ -75,11 +75,14 @@ jobs:
             for service in "${expected_services[@]}"; do
               status=$(docker inspect -f '{{ .State.Status }}' "$service" 2>/dev/null || echo "not found")
               if [ "$status" != "running" ]; then
-                echo "❌ Le service '$service' n'est pas en état 'running' (état actuel : $status)"
-                docker logs "$service" || true
-                exit 1
+                echo "❌ Service '$service' en erreur (état : $status)"
+                echo "📦 Logs de '$service' :"
+                docker logs "$service" || echo "⚠️ Impossible d'afficher les logs"
+                failed=true
               fi
             done
+
+            $failed && exit 1
 
             echo "✅ Tous les services sont démarrés correctement."
 
