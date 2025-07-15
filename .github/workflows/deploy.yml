@@ -24,25 +24,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        run: npm install
-        working-directory: ./back
-
-      - name: Generate Prisma Client
-        run: npx prisma generate
-        working-directory: ./back
-
-      - name: Apply Prisma Migrations to Production DB
-        run: npx prisma migrate deploy
-        working-directory: ./back
-        env:
-          DATABASE_URL: postgresql://${{ secrets.DB_USER }}:${{ secrets.DB_PASSWORD }}@postgres:5432/${{ secrets.DB_NAME }}
-
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.0
         with:

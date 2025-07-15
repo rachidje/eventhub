@@ -30,10 +30,7 @@ services:
     - ./back/.env
     depends_on:
       - postgres
-    command: >
-      sh -c "npm install &&
-            npx prisma generate &&
-            npx prisma migrate deploy"
+    command: ./scripts/run-migrations.sh
     networks:
       - app-network
 
