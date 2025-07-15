@@ -1,5 +1,7 @@
 export default {
-    collectCoverage: false,
+    collectCoverage: true,
+    coverageDirectory: '../coverage',
+    coverageReporters: ['lcov', 'text', 'cobertura'],
     preset: 'ts-jest',
     testEnvironment: 'node',
     testRegex: '\\.e2e\\.test\\.ts$',
@@ -7,7 +9,7 @@ export default {
     maxWorkers: 1,
     rootDir: 'src',
     moduleNameMapper: {
-        "^@event/(.*)$": "<rootDir>/modules/event/$1",
+        "^@event/(.*)$": "<rootDir>/modules/event-management/$1",
         "^@calendar/(.*)$": "<rootDir>/modules/calendar/$1",
         "^@venue/(.*)$": "<rootDir>/modules/venue/$1",
         "^@organizer/(.*)$": "<rootDir>/modules/organizer/$1",
@@ -19,4 +21,3 @@ export default {
     globalSetup: "<rootDir>/tests/setup/global-setup.ts",
     globalTeardown: "<rootDir>/tests/setup/global-teardown.ts"
 };
-    

@@ -1,5 +1,6 @@
 import { IEventRepositoryForCalendar } from "@calendar/application/ports/event-repository-for-calendar.interface";
 import { IVenueRepositoryForCalendar } from "@calendar/application/ports/venue-repository-for-calendar.interface";
+import { SlotDates } from "../value-objects/slot";
 
 export class VenueAvailabilityService {
     constructor(
@@ -7,7 +8,7 @@ export class VenueAvailabilityService {
         private readonly eventRepository: IEventRepositoryForCalendar 
     ) {}
 
-    async isSlotAvailable(venueId: string, dates: {start: Date, end: Date}): Promise<boolean> {
+    async isSlotAvailable(venueId: string, dates: SlotDates): Promise<boolean> {
         const venue = await this.venueRepositoryForCalendar.findById(venueId);
         if(!venue?.isOpenAt(dates)) return false
 

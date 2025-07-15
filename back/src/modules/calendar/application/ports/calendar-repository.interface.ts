@@ -1,5 +1,5 @@
-import { Slot } from "@calendar/domain/value-objects/slot";
+import { Calendar } from "@calendar/domain/calendar.entity";
 
 export interface ICalendarRepository {
-    save(slot: Slot): Promise<void>
+    save(calendar: Calendar): Promise<void>
 }

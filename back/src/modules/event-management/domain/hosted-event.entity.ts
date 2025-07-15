@@ -2,6 +2,7 @@ import { Organizer } from "@organizer/domain/organizer.entity"
 import stringSimilarity from "string-similarity"
 import { EventStatus } from "./enums/event-status"
 import { differenceInBusinessDays, differenceInHours } from "date-fns"
+import { combineDateTime } from "@event/application/utils/datetime"
 
 
 export interface HostedEventProps {
@@ -26,11 +27,10 @@ export class HostedEvent {
         return events.find(event => event.isSimilarTo(this)) !== undefined
     }
 
-    conflictsWithDates(dates: {start: Date, end: Date}): boolean {
-        return (
-            this.props.dates.start < dates.end &&
-            dates.start < this.props.dates.end
-        )
+    conflictsWithDates(dates: { date: string; startTime: string; endTime: string }): boolean {
+        const slotStart = combineDateTime(dates.date, dates.startTime)
+        const slotEnd = combineDateTime(dates.date, dates.endTime)
+        return slotStart < this.props.dates.end && slotEnd > this.props.dates.start
     }
 
     isSimilarTo(event: HostedEvent): boolean {

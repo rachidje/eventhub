@@ -33,7 +33,7 @@
     "paths": {
       "@api/*": ["api/*"], 
       "@venue/*" : ["modules/venue/*"],
-      "@event/*" : ["modules/event/*"],
+      "@event/*" : ["modules/event-management/*"],
       "@organizer/*" : ["modules/organizer/*"],
       "@calendar/*" : ["modules/calendar/*"],
       "@shared/*" : ["modules/shared/*"],

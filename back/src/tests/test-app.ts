@@ -1,10 +1,10 @@
+import "../tests/setup/load-env";
 import { errorHandlerMiddleware } from "@api/middlewares/error-handler.middleware";
 import { jsonApiResponseMiddleware } from "@api/middlewares/json-response.middleware";
 import { createApiRoutes } from "@api/routes";
 import cors from "cors";
 import express, { Application } from "express";
 import { DIContainer } from "types/di-container";
-import "../tests/setup/load-env";
 import { IFixture } from "./fixtures/fixture.interface";
 
 export class TestApp {

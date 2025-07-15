@@ -1,17 +1,16 @@
 import { ICalendarRepository } from "@calendar/application/ports/calendar-repository.interface";
-import { Slot } from "@calendar/domain/value-objects/slot";
+import { Calendar } from "@calendar/domain/calendar.entity";
 import { ICalendarRepositoryForEvent } from "@event/application/ports/calendar-repository-for-event.interface";
 
 
-export class InMemoryCalendarRepository implements ICalendarRepository, ICalendarRepositoryForEvent  {
+export class InMemoryCalendarRepository implements ICalendarRepository, ICalendarRepositoryForEvent {
+    private readonly calendars: Map<string, Calendar> = new Map()
 
-    constructor(public slots: Slot[] = []) {}
-
-    async save(slot: Slot): Promise<void> {
-        this.slots.push(slot)
+    async findByVenueId(venueId: string): Promise<Calendar | null> {
+        return this.calendars.get(venueId) ?? null
     }
 
-    async findByVenueId(id: string): Promise<Slot | null> {
-        return this.slots.find(slot => slot.props.venueId === id) || null
+    async save(calendar: Calendar): Promise<void> {
+        this.calendars.set(calendar.venueId, calendar)
     }
 }

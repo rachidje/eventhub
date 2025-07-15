@@ -9,7 +9,7 @@ export default {
     moduleFileExtensions: ['js', 'json', 'ts', 'tsx'],
     rootDir: 'src',
     moduleNameMapper: {
-        "^@event/(.*)$": "<rootDir>/modules/event/$1",
+        "^@event/(.*)$": "<rootDir>/modules/event-management/$1",
         "^@calendar/(.*)$": "<rootDir>/modules/calendar/$1",
         "^@venue/(.*)$": "<rootDir>/modules/venue/$1",
         "^@organizer/(.*)$": "<rootDir>/modules/organizer/$1",

@@ -1,4 +1,6 @@
 // venue/domain/value-objects/weekly-schedule.ts
+import { SlotDates } from "@calendar/domain/value-objects/slot"
+import { combineDateTime } from "@event/application/utils/datetime"
 import { set } from "date-fns"
 
 type DayOfWeek = "monday" | "tuesday" | "wednesday" | "thursday" | "friday" | "saturday" | "sunday"
@@ -21,13 +23,16 @@ export class WeeklySchedule {
         return this.props
     }
 
-    isOpenDuring({ start, end }: { start: Date; end: Date }): boolean {
-        const day = this.dayOf(start)
-        const slots = this.props[day] ?? []
+    isOpenDuring({date, startTime, endTime}: SlotDates): boolean {
+        const start = combineDateTime(date, startTime)
+        const end = combineDateTime(date, endTime)
+        const days = this.dayOf(start)
+
+        const slots = this.props[days] ?? []
 
         return slots.some(slot => {
-            const rangeStart = this.setTime(start, slot.start)
-            const rangeEnd = this.setTime(start, slot.end)
+            const rangeStart = combineDateTime(date, slot.start)
+            const rangeEnd = combineDateTime(date, slot.end)
             return start >= rangeStart && end <= rangeEnd
         })
     }
@@ -44,6 +49,4 @@ export class WeeklySchedule {
         const [hours, minutes] = time.split(":").map(Number)
         return set(base, { hours, minutes, seconds: 0, milliseconds: 0 })
     }
-
-    
 }

@@ -23,6 +23,32 @@ enum DayOfWeek {
   sunday
 }
 
+model Slot {
+  id          String   @id @default(uuid())
+  calendarId  String
+  calendar    Calendar @relation(fields: [calendarId], references: [id])
+  date        DateTime @db.Date
+  startTime   DateTime @db.Time
+  endTime     DateTime @db.Time
+  isBooked    Boolean  @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([calendarId, date, startTime, endTime])
+  @@unique([calendarId, date, startTime, endTime])
+}
+
+model Calendar {
+  id          String   @id @default(uuid())
+  venueId     String   @unique
+  venue       Venue    @relation(fields: [venueId], references: [id])
+
+  slots       Slot[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
 model Venue {
   id             String   @id @default(uuid())
   name           String
@@ -31,4 +57,5 @@ model Venue {
   city           String
   country        String
   weeklySchedule Json
+  calendar       Calendar?
 }

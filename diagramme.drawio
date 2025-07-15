@@ -1,50 +1,119 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.8">
   <diagram name="Page-1" id="87In9eVRsVsPzgSGPspW">
-    <mxGraphModel dx="2603" dy="2451" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+    <mxGraphModel dx="1434" dy="797" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="NVYWkrNUr2UVajC7P3-T-16" value="CALENDAR" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="-120" y="280" width="450" height="160" as="geometry" />
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-1" value="EventManagement&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=40;" vertex="1" parent="1">
+          <mxGeometry x="247.5" y="201" width="230" height="140" as="geometry" />
         </mxCell>
-        <mxCell id="NVYWkrNUr2UVajC7P3-T-5" value="ICalendarRepository" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="-112.5" y="410" width="135" height="30" as="geometry" />
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-2" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=halfCircle;endFill=0;endSize=6;strokeWidth=1;sketch=0;fontSize=12;curved=1;exitX=0.826;exitY=-0.001;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="09P9XmpWZfXnvmp6IqaR-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="439.3199999999997" y="200.9999999999999" as="sourcePoint" />
+            <mxPoint x="477.5" y="159.88" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
-        <mxCell id="NVYWkrNUr2UVajC7P3-T-6" value="IEventRepository" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="37.5" y="410" width="135" height="30" as="geometry" />
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-3" value="" style="ellipse;whiteSpace=wrap;html=1;align=center;aspect=fixed;fillColor=none;strokeColor=none;resizable=0;perimeter=centerPerimeter;rotatable=0;allowArrows=0;points=[];outlineConnect=1;" vertex="1" parent="1">
+          <mxGeometry x="247.5" y="181" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="NVYWkrNUr2UVajC7P3-T-7" value="IVenueRepository" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=#d6b656;rotation=0;" parent="1" vertex="1">
-          <mxGeometry x="187.5" y="410" width="135" height="30" as="geometry" />
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-5" value="Hosted&lt;div&gt;Event&lt;/div&gt;" style="ellipse;shape=umlEntity;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="332.5" y="259.25" width="60" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="NVYWkrNUr2UVajC7P3-T-8" value="EVENT" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="120" y="-90" width="1060" height="160" as="geometry" />
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-6" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/interface.svg;rotation=-122;" vertex="1" parent="1">
+          <mxGeometry x="249.5" y="168.5" width="50" height="23.5" as="geometry" />
         </mxCell>
-        <mxCell id="NVYWkrNUr2UVajC7P3-T-9" value="ICalendarRepository" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="130" y="40" width="135" height="30" as="geometry" />
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-7" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/interface.svg;rotation=-150;" vertex="1" parent="1">
+          <mxGeometry x="221.5" y="212" width="50" height="23.5" as="geometry" />
         </mxCell>
-        <mxCell id="NVYWkrNUr2UVajC7P3-T-10" value="IEventRepository" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="280" y="40" width="135" height="30" as="geometry" />
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-8" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/interface.svg;rotation=-210;" vertex="1" parent="1">
+          <mxGeometry x="221.5" y="307" width="50" height="23.5" as="geometry" />
         </mxCell>
-        <mxCell id="NVYWkrNUr2UVajC7P3-T-11" value="IVenueRepository" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=#d6b656;rotation=0;" parent="1" vertex="1">
-          <mxGeometry x="430" y="40" width="135" height="30" as="geometry" />
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-9" value="ICalendarRepositoryForEvent" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;dashPattern=1 2;strokeColor=#82b366;fillColor=#d5e8d4;" vertex="1" parent="1">
+          <mxGeometry x="77.5" y="134" width="170" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="NVYWkrNUr2UVajC7P3-T-12" value="ISlotReservationService" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="580" y="40" width="135" height="30" as="geometry" />
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-10" value="IEventRepository" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;dashPattern=1 2;strokeColor=#82b366;fillColor=#d5e8d4;" vertex="1" parent="1">
+          <mxGeometry x="312.5" y="120" width="110" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="NVYWkrNUr2UVajC7P3-T-13" value="IVenueAvailabilityService" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="730" y="40" width="135" height="30" as="geometry" />
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-11" value="IVenueRepositoryForEvent" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;dashPattern=1 2;strokeColor=#82b366;fillColor=#d5e8d4;" vertex="1" parent="1">
+          <mxGeometry x="50" y="201" width="160" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="NVYWkrNUr2UVajC7P3-T-14" value="IHostedEventFactory" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
-          <mxGeometry x="880" y="40" width="135" height="30" as="geometry" />
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-14" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/interface.svg;rotation=-225;" vertex="1" parent="1">
+          <mxGeometry x="245.5" y="346" width="50" height="23.5" as="geometry" />
         </mxCell>
-        <mxCell id="NVYWkrNUr2UVajC7P3-T-15" value="IEventConflictService" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
-          <mxGeometry x="1030" y="40" width="135" height="30" as="geometry" />
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-15" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/interface.svg;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="342.5" y="164" width="50" height="23.5" as="geometry" />
         </mxCell>
-        <mxCell id="NVYWkrNUr2UVajC7P3-T-17" value="VENUE" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="360" y="280" width="520" height="160" as="geometry" />
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-16" value="IVenueAvailabilityService" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeColor=#82b366;dashed=1;dashPattern=1 2;fillColor=#d5e8d4;" vertex="1" parent="1">
+          <mxGeometry x="77.5" y="319.25" width="140" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="NVYWkrNUr2UVajC7P3-T-18" value="VENUE" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="920" y="280" width="520" height="160" as="geometry" />
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-17" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/interface.svg;rotation=90;" vertex="1" parent="1">
+          <mxGeometry x="342.5" y="354" width="50" height="23.5" as="geometry" />
+        </mxCell>
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-18" value="ISlotReservationService" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeColor=#82b366;dashed=1;dashPattern=1 2;fillColor=#d5e8d4;" vertex="1" parent="1">
+          <mxGeometry x="105.5" y="377.5" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-19" value="IHostedEventFactory" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeColor=#82b366;dashed=1;dashPattern=1 2;fillColor=#d5e8d4;" vertex="1" parent="1">
+          <mxGeometry x="57.5" y="256" width="128" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-20" value="IEventConflictCheckerService" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeColor=#82b366;dashed=1;dashPattern=1 2;fillColor=#d5e8d4;" vertex="1" parent="1">
+          <mxGeometry x="282.5" y="401" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-23" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/interface.svg;rotation=-180;" vertex="1" parent="1">
+          <mxGeometry x="198.5" y="259" width="50" height="23.5" as="geometry" />
+        </mxCell>
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-25" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=halfCircle;endFill=0;endSize=6;strokeWidth=1;sketch=0;fontSize=12;curved=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="09P9XmpWZfXnvmp6IqaR-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="487.49999999999966" y="272.1199999999999" as="sourcePoint" />
+            <mxPoint x="547.5" y="271" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-26" value="IUseCase" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;dashPattern=1 2;strokeColor=#6c8ebf;fillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="490" y="130" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-27" value="IController" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;dashPattern=1 2;strokeColor=#6c8ebf;fillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="557.5" y="256" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-28" value="&lt;div&gt;Calendar Management&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=40;" vertex="1" parent="1">
+          <mxGeometry x="1067.5" y="202.75" width="230" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-29" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=halfCircle;endFill=0;endSize=6;strokeWidth=1;sketch=0;fontSize=12;curved=1;exitX=0.826;exitY=-0.001;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="09P9XmpWZfXnvmp6IqaR-28">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1259.3199999999997" y="202.7499999999999" as="sourcePoint" />
+            <mxPoint x="1297.5" y="161.63" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-30" value="" style="ellipse;whiteSpace=wrap;html=1;align=center;aspect=fixed;fillColor=none;strokeColor=none;resizable=0;perimeter=centerPerimeter;rotatable=0;allowArrows=0;points=[];outlineConnect=1;" vertex="1" parent="1">
+          <mxGeometry x="1067.5" y="182.75" width="10" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-31" value="Slot&lt;div&gt;(VO)&lt;/div&gt;" style="ellipse;shape=umlEntity;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1152.5" y="261" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-32" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/interface.svg;rotation=-122;" vertex="1" parent="1">
+          <mxGeometry x="1069.5" y="170.25" width="50" height="23.5" as="geometry" />
+        </mxCell>
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-35" value="IEventRepositoryForCalendar" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;dashPattern=1 2;strokeColor=#82b366;fillColor=#d5e8d4;" vertex="1" parent="1">
+          <mxGeometry x="840" y="257.5" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-36" value="ICalendarRepository" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;dashPattern=1 2;strokeColor=#82b366;fillColor=#d5e8d4;" vertex="1" parent="1">
+          <mxGeometry x="950" y="138.5" width="117.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-38" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/interface.svg;rotation=-225;" vertex="1" parent="1">
+          <mxGeometry x="1065.5" y="347.75" width="50" height="23.5" as="geometry" />
+        </mxCell>
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-42" value="IVenueRepositoryForCalendar" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeColor=#82b366;dashed=1;dashPattern=1 2;fillColor=#d5e8d4;" vertex="1" parent="1">
+          <mxGeometry x="890" y="377.5" width="174.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-45" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/interface.svg;rotation=-180;" vertex="1" parent="1">
+          <mxGeometry x="1018.5" y="260.75" width="50" height="23.5" as="geometry" />
+        </mxCell>
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-46" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=halfCircle;endFill=0;endSize=6;strokeWidth=1;sketch=0;fontSize=12;curved=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="09P9XmpWZfXnvmp6IqaR-28">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1307.4999999999995" y="273.8699999999999" as="sourcePoint" />
+            <mxPoint x="1367.5" y="272.75" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="09P9XmpWZfXnvmp6IqaR-48" value="IController" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;dashPattern=1 2;strokeColor=#6c8ebf;fillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="1377.5" y="257.75" width="80" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

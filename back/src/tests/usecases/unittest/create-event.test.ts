@@ -1,3 +1,4 @@
+import { Calendar } from "@calendar/domain/calendar.entity"
 import { SlotReservationService } from "@calendar/domain/services/slot-reservation.service"
 import { VenueAvailabilityService } from "@calendar/domain/services/venue-availibility.service"
 import { Slot } from "@calendar/domain/value-objects/slot"
@@ -6,14 +7,13 @@ import { EventStatus } from "@event/domain/enums/event-status"
 import { HostedEventFactory } from "@event/domain/factories/hosted-event.factory"
 import { EventConflictService } from "@event/domain/services/event-conflict-checker.service"
 import { UuidGenerator } from "@shared/infrastructure/uuid-generator"
-import { addDays, addHours, format, nextDay, nextMonday, nextSaturday, previousDay, setHours, setMinutes, setSeconds } from "date-fns"
+import { addDays, addHours, format, nextMonday, nextSaturday, previousDay, setHours, setMinutes, setSeconds } from "date-fns"
 import { unittestHostedEvents } from "../../entities-test/unittest-hosted-events"
 import { unittestOrganizers } from "../../entities-test/unittest-organizers"
 import { unittestVenue } from "../../entities-test/unittest-venue"
 import { InMemoryCalendarRepository } from "../../infra-tests/in-memory-calendar-repository"
 import { InMemoryEventRepository } from "../../infra-tests/in-memory-event-repository"
 import { InMemoryVenueRepository } from "../../infra-tests/in-memory-venue-repository"
-import { combineDateTime } from "@event/application/utils/datetime"
 
 describe("Create New Event", () => {
 
@@ -168,13 +168,18 @@ describe("Create New Event", () => {
 
     describe("Scenario: The slot is not available", () => {
         const bookedSlot = new Slot({
-                start: startDate,
-                end: endDate,
+                date: format(startDate, "yyyy-MM-dd"),
+                startTime: format(startDate, "HH:mm"),
+                endTime: format(endDate, "HH:mm"),
                 venueId: unittestVenue.venue.props.id
             })
 
         it("should throw an error" , async () => {
-            await calendarRepository.save(bookedSlot)
+            const calendar = new Calendar(unittestVenue.venue.props.id);
+            calendar.addSlot(bookedSlot.props)
+
+
+            await calendarRepository.save(calendar)
             await eventRepository.save(unittestHostedEvents.event)
             await expect(usecase.execute(payload)).rejects.toThrow("Slot is not available")
         })
@@ -191,17 +196,18 @@ describe("Create New Event", () => {
     })
 
     describe("Scenario: Booking the place", () => {
-        it("should book the place" , async () => {
+        it("should book the place", async () => {
             await usecase.execute(payload)
 
-            const slot = await calendarRepository.findByVenueId(unittestVenue.venue.props.id)
-            expect(slot).toBeDefined()
-            const expectedStart = combineDateTime(payload.date, payload.startTime)
-            const expectedEnd = combineDateTime(payload.date, payload.endTime)
+            const calendar = await calendarRepository.findByVenueId(unittestVenue.venue.props.id)
+            expect(calendar).toBeDefined()
 
-            expect(slot!.props.start.getTime()).toBe(expectedStart.getTime())
-            expect(slot!.props.end.getTime()).toBe(expectedEnd.getTime())
+            const slots = calendar!.getSlots()
+            expect(slots.length).toBeGreaterThan(0)
 
+            const slot = slots[0]
+            expect(slot.props.startTime).toBe("10:00")
+            expect(slot.props.endTime).toBe("12:00")
         })
     })
 

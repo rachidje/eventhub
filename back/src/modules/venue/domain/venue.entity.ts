@@ -1,4 +1,5 @@
 // venue/domain/venue.entity.ts
+import { SlotDates } from "@calendar/domain/value-objects/slot"
 import { Address } from "./value-objects/adress"
 import { WeeklySchedule } from "./value-objects/weekly-schedule"
 
@@ -12,7 +13,7 @@ export interface VenueProps {
 export class Venue {
     constructor(public props: VenueProps) {}
 
-    isOpenAt(dates: {start: Date, end: Date}): boolean {
+    isOpenAt(dates: SlotDates): boolean {
         return this.props.weeklySchedule.isOpenDuring(dates)
     }
 }

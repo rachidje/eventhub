@@ -4,7 +4,6 @@ import { IHostedEventFactory } from "@event/application/ports/hosted-event-facto
 import { ISlotReservationService } from "@event/application/ports/slot-reservation-service.interface";
 import { IVenueAvailabilityService } from "@event/application/ports/venue-availability-service.interface";
 import { IVenueRepositoryForEvent } from "@event/application/ports/venue-repository-for-event.interface";
-import { extractEventDates } from "@event/application/utils/datetime";
 import { Organizer } from "@organizer/domain/organizer.entity";
 
 
@@ -35,7 +34,11 @@ export class CreateEventUseCase {
     async execute(payload: CreateEventUseCasePayload): Promise<string> {
         const venue = await this.venueRepositoryForEvent.findByName(payload.venueName)
 
-        const dates = extractEventDates(payload)
+        const dates = {
+            date: payload.date,
+            startTime: payload.startTime,
+            endTime: payload.endTime
+        }
 
         if(!venue.isOpenAt(dates)) {
             throw new Error("Event dates are not in opening hours of the place")
