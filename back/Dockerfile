@@ -10,6 +10,7 @@ RUN npm install
 # Copier le reste du projet et compiler
 COPY . .
 COPY prisma ./prisma
+RUN npx prisma generate
 
 RUN npm run build  # suppose que "build" = "tsc"
 
