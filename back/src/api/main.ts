@@ -25,4 +25,8 @@ app.use('/', createApiRoutes(container));
 
 app.use(errorHandlerMiddleware);
 
+app.listen(5000, () => {
+    logger.info('✅ Backend Started');
+});
+
 export default app;
