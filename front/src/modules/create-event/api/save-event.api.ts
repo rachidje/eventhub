@@ -23,7 +23,10 @@ export class SaveEventApi implements ISaveEventRequest {
         }
 
         try {
-            const response = await axios.post("/api/v1/event", payload)
+            const api = axios.create({
+                baseURL: "/api",
+            })
+            const response = await api.post("/v1/event", payload)
 
             if(!response.data.success) {
                 throw new Error(response.data.error.message || 'Unknown error from backend')
