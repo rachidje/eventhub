@@ -62,10 +62,32 @@ jobs:
               echo "Le build a échoué, arrêt du déploiement."
               exit 1
             }
-            # ✅ Exécuter le service migrate une seule fois, sans le garder actif
+
+            docker compose up -d
+
+            echo "⏳ Vérification des statuts des services..."
+            sleep 5  # Laisse le temps aux services de démarrer
+
+            # Liste les services attendus
+            expected_services=("backend" "frontend" "postgres")
+
+            # Vérifie que chaque service est en état 'running'
+            for service in "${expected_services[@]}"; do
+              status=$(docker inspect -f '{{ .State.Status }}' "$service" 2>/dev/null || echo "not found")
+              if [ "$status" != "running" ]; then
+                echo "❌ Le service '$service' n'est pas en état 'running' (état actuel : $status)"
+                docker logs "$service" || true
+                exit 1
+              fi
+            done
+
+            echo "✅ Tous les services sont démarrés correctement."
+
+            # Migration Prisma (exécutée *après* validation)
             docker compose run --rm migrate || {
-              echo "La migration Prisma a échoué."
+              echo "❌ La migration Prisma a échoué."
               exit 1
             }
-            docker compose up -d
+
+            echo "🚀 Déploiement terminé avec succès."
 

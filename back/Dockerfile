@@ -23,6 +23,10 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install --only=production
 
+# ✅ Copier le client Prisma généré
+COPY --from=builder /app/node_modules/.prisma /app/node_modules/.prisma
+COPY --from=builder /app/node_modules/@prisma /app/node_modules/@prisma
+
 # Copier le build transpilé depuis l'étape précédente
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/prisma ./prisma 
