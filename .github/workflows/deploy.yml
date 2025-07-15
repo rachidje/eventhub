@@ -21,51 +21,70 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Deploy via SSH
-      uses: appleboy/ssh-action@v1.0.0
-      with:
-        host: ${{ secrets.VPS_HOST }}
-        username: ${{ secrets.VPS_USER }}
-        key: ${{ secrets.VPS_SSH_KEY }}
-        script: |
-          set -e
-          cd /home/debian
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
 
-          # Cloner le projet si le dossier n'existe pas
-          if [ ! -d "eventhub" ]; then
-            git clone git@github.com:rachidje/eventhub.git eventhub
-          fi
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./back
 
-          cd eventhub
+      - name: Generate Prisma Client
+        run: npx prisma generate
+        working-directory: ./back
 
-          # Vérifie que c'est bien un dépôt Git
-          if [ ! -d ".git" ]; then
-            echo "Erreur : ce n'est pas un dépôt Git."
-            exit 1
-          fi
+      - name: Apply Prisma Migrations to Production DB
+        run: npx prisma migrate deploy
+        working-directory: ./back
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
-          git pull origin main
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            set -e
+            cd /home/debian
 
-          cat <<EOF > back/.env
-          JWT_SECRET=${{ secrets.JWT_SECRET }}
-          POSTGRES_USER=${{ secrets.DB_USER }}
-          POSTGRES_PASSWORD=${{ secrets.DB_PASSWORD }}
-          POSTGRES_DB=${{ secrets.DB_NAME }}
-          DATABASE_URL=postgresql://${{ secrets.DB_USER }}:${{ secrets.DB_PASSWORD }}@postgres:5432/${{ secrets.DB_NAME }}
-          EOF
+            # Cloner le projet si le dossier n'existe pas
+            if [ ! -d "eventhub" ]; then
+              git clone git@github.com:rachidje/eventhub.git eventhub
+            fi
 
-          docker compose down
-          docker compose build || {
-            echo "Le build a échoué, arrêt du déploiement."
-            exit 1
-          }
-          # ✅ Exécuter le service migrate une seule fois, sans le garder actif
-          docker compose run --rm migrate || {
-            echo "La migration Prisma a échoué."
-            exit 1
-          }
-          docker compose up -d
+            cd eventhub
+
+            # Vérifie que c'est bien un dépôt Git
+            if [ ! -d ".git" ]; then
+              echo "Erreur : ce n'est pas un dépôt Git."
+              exit 1
+            fi
+
+            git pull origin main
+
+            cat <<EOF > back/.env
+            JWT_SECRET=${{ secrets.JWT_SECRET }}
+            POSTGRES_USER=${{ secrets.DB_USER }}
+            POSTGRES_PASSWORD=${{ secrets.DB_PASSWORD }}
+            POSTGRES_DB=${{ secrets.DB_NAME }}
+            DATABASE_URL=postgresql://${{ secrets.DB_USER }}:${{ secrets.DB_PASSWORD }}@postgres:5432/${{ secrets.DB_NAME }}
+            EOF
+
+            docker compose down
+            docker compose build || {
+              echo "Le build a échoué, arrêt du déploiement."
+              exit 1
+            }
+            # ✅ Exécuter le service migrate une seule fois, sans le garder actif
+            docker compose run --rm migrate || {
+              echo "La migration Prisma a échoué."
+              exit 1
+            }
+            docker compose up -d
 
