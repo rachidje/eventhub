@@ -1,3 +1,4 @@
+import { stringToTime, timeToString } from "@eventhub/shared/date-format"
 import {
     Alert,
     Box,
@@ -9,10 +10,9 @@ import {
     TextField,
     Typography,
 } from "@mui/material"
+import { useCreateEvent } from "../../hooks/use-create-event.hook"
 import { EventDatePicker } from "../components/EventDatePicker"
 import { EventTimePicker } from "../components/EventTimePicker"
-import { useCreateEvent } from "../../hooks/use-create-event.hook"
-import { stringToTime, timeToString } from "@eventhub/shared/date-format"
 
 export const CreateEventPage: React.FC = () => {
     const hook = useCreateEvent()

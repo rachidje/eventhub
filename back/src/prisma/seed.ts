@@ -3,7 +3,9 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
-    await prisma.venue.deleteMany(); // plus de weeklySchedule à supprimer
+    await prisma.slot.deleteMany()
+    await prisma.calendar.deleteMany()
+    await prisma.venue.deleteMany()
 
     await prisma.venue.create({
         data: {
