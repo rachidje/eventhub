@@ -35,4 +35,4 @@ COPY --from=builder /app/prisma ./prisma
 EXPOSE 5000
 
 # Lancer le serveur
-CMD ["node", "dist/api/main.js"]
+CMD ["node", "echo '✅ backend ready to start'; dist/api/main.js"]
