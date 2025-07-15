@@ -21,7 +21,7 @@ app.use(morgan('combined', {
 
 
 app.use(jsonApiResponseMiddleware)
-app.use('/', createApiRoutes(container));
+app.use('/api', createApiRoutes(container));
 
 app.use(errorHandlerMiddleware);
 
