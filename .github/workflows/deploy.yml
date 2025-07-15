@@ -41,7 +41,7 @@ jobs:
         run: npx prisma migrate deploy
         working-directory: ./back
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DATABASE_URL: postgresql://${{ secrets.DB_USER }}:${{ secrets.DB_PASSWORD }}@postgres:5432/${{ secrets.DB_NAME }}
 
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.0
