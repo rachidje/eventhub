@@ -1,0 +1,34 @@
+name: Deploy Prisma Migrations
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  prisma-deploy:
+    name: Deploy Prisma migrations to production
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./back
+
+      - name: Generate Prisma Client
+        run: npx prisma generate
+        working-directory: ./back
+
+      - name: Apply pending Prisma migrations to production DB
+        run: npx prisma migrate deploy
+        working-directory: ./back
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
