@@ -34,7 +34,17 @@ export class HostedEvent {
     }
 
     isSimilarTo(event: HostedEvent): boolean {
-        return this.isTextuallyCloseTo(event)
+        return this.isTextuallyCloseTo(event) && 
+                this.hasSameOrganizer(event) &&
+                this.hasSameVenue(event)
+    }
+
+    private hasSameVenue(event: HostedEvent): boolean {
+        return this.props.venueId === event.props.venueId
+    }
+
+    private hasSameOrganizer(event: HostedEvent): boolean {
+        return this.props.organizer.props.id === event.props.organizer.props.id
     }
 
     private isTextuallyCloseTo(event: HostedEvent): boolean {
