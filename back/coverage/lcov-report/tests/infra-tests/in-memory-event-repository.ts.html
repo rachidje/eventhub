@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">55.55% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/9</span>
+                <span class='fraction'>30/30</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">88.88% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>8/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/8</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.42% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/7</span>
+                <span class='fraction'>30/30</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -92,36 +92,36 @@
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { IEventRepositoryForCalendar } from "@calendar/application/ports/event-repository-for-calendar.interface"
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import { IEventRepositoryForCalendar } from "@calendar/application/ports/event-repository-for-calendar.interface"
 import { IEventRepository } from "@event/application/ports/event-repository.interface"
 import { EventStatus } from "@event/domain/enums/event-status"
 import { HostedEvent } from "@event/domain/hosted-event.entity"
@@ -137,18 +137,18 @@ export class InMemoryEventRepository implements IEventRepository, IEventReposito
     }
 &nbsp;
     async findByOrganizerAndStatus(organizerId: string, statuses: EventStatus[]): Promise&lt;HostedEvent[]&gt; {
-        return this.events.filter(<span class="fstat-no" title="function not covered" >event </span>=&gt; 
-<span class="cstat-no" title="statement not covered" >            event.props.organizer.props.id === organizerId &amp;&amp;</span>
+        return this.events.filter(event =&gt; 
+            event.props.organizer.props.id === organizerId &amp;&amp;
             statuses.includes(event.props.status)
         )
     }
 &nbsp;
     async findEventsAtVenue(venueId: string): Promise&lt;HostedEvent[]&gt; {
-        return this.events.filter(<span class="fstat-no" title="function not covered" >event </span>=&gt; <span class="cstat-no" title="statement not covered" >event.props.venueId === venueId)</span>
+        return this.events.filter(event =&gt; event.props.venueId === venueId)
     }
 &nbsp;
-    async <span class="fstat-no" title="function not covered" >findById(</span>id: string): Promise&lt;HostedEvent | null&gt; {
-<span class="cstat-no" title="statement not covered" >        return this.events.find(<span class="fstat-no" title="function not covered" >event </span>=&gt; <span class="cstat-no" title="statement not covered" >event.props.id === id)</span> || null</span>
+    async findById(id: string): Promise&lt;HostedEvent | null&gt; {
+        return this.events.find(event =&gt; event.props.id === id)<span class="branch-0 cbranch-no" title="branch not covered" > || null</span>
     }
 }</pre></td></tr></table></pre>
 
@@ -157,7 +157,7 @@ export class InMemoryEventRepository implements IEventRepository, IEventReposito
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-07-15T20:55:13.173Z
+                at 2025-07-16T07:20:40.441Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

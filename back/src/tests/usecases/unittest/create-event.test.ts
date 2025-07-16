@@ -101,6 +101,17 @@ describe("Create New Event", () => {
         })
     })
 
+    describe("Scenario : The endTime is lower than the startTime", () => {
+        const invalidPayload = {
+            ...payload,
+            endTime: format(setSeconds(setMinutes(setHours(baseDate, 3), 0), 0), "HH:mm")
+        }
+
+        it("should throw an error" , async () => {
+            await expect(usecase.execute(invalidPayload)).rejects.toThrow("Event end time is lower than start time")
+        })
+    })
+
     describe("Scenario : The event is too soon", () => {
         const baseDate = addHours(new Date(), 24)
     

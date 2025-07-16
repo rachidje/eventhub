@@ -46,6 +46,10 @@ export class HostedEvent {
         return this.props.dates.start < new Date() || this.props.dates.end < new Date()
     }
 
+    hasEndTimeLowerThanStartTime(): boolean {
+        return this.props.dates.end < this.props.dates.start
+    }
+
     isTooSoon(): boolean {
         return differenceInBusinessDays(this.props.dates.start, new Date()) < 3
     }
@@ -69,6 +73,10 @@ export class HostedEvent {
     validateOrThrow(): void {
         if (this.hasDatesInThePast()) {
             throw new Error("Event dates are in the past")
+        }
+
+        if (this.hasEndTimeLowerThanStartTime()) {
+            throw new Error("Event end time is lower than start time")
         }
         
         if (this.isTooSoon()) {
