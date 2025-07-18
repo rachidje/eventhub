@@ -19,7 +19,7 @@ export class HostedEventFactory implements IHostedEventFactory {
             name: payload.name,
             description: payload.description,
             organizer: payload.organizer,
-            status: EventStatus.SCHEDULED,
+            status: EventStatus.scheduled,
             dates: { start, end },
             venueId,
             capacity: payload.capacity,

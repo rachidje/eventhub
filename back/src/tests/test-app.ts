@@ -15,6 +15,8 @@ export class TestApp {
     }
 
     async setup() {
+        await this.resetDatabase();
+
         this.app.use(cors());
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: true }));
@@ -27,6 +29,15 @@ export class TestApp {
 
     async loadFixtures(fixtures: IFixture[]) {
         return Promise.all(fixtures.map(fixture => fixture.load(this.container)));
+    }
+
+    async resetDatabase() {
+        const prisma = this.container.resolve('prisma');
+        const tableNames = ['User', 'Venue', 'HostedEvent', 'Calendar', 'Slot'];
+
+        for (const table of tableNames) {
+            await prisma.$executeRawUnsafe(`TRUNCATE TABLE "${table}" RESTART IDENTITY CASCADE`);
+        }
     }
 
     getExpressApp() {

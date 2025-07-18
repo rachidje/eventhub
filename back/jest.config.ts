@@ -10,9 +10,9 @@ export default {
     rootDir: 'src',
     moduleNameMapper: {
         "^@event/(.*)$": "<rootDir>/modules/event-management/$1",
+        "^@user/(.*)$": "<rootDir>/modules/user-management/$1",
         "^@calendar/(.*)$": "<rootDir>/modules/calendar/$1",
         "^@venue/(.*)$": "<rootDir>/modules/venue/$1",
-        "^@organizer/(.*)$": "<rootDir>/modules/organizer/$1",
         "^@api/(.*)$": "<rootDir>/api/$1",
         "^@shared/(.*)$": "<rootDir>/modules/shared/$1",
         "^@tests/(.*)$": "<rootDir>/tests/$1"

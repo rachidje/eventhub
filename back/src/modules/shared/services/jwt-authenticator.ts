@@ -1,8 +1,8 @@
-import { Organizer } from '@organizer/domain/organizer.entity';
 import { IAuthenticator } from '@shared/application/ports/authenticator.interface';
 import { IOrganizerRepository } from '@shared/application/ports/organizer-repository.interface';
 import { TokenPayload } from '@shared/application/security/token-payload';
 import jwt from 'jsonwebtoken';
+import { User } from 'modules/user-management/domain/user.entity';
 
 export class JwtAuthenticator implements IAuthenticator {
     constructor(
@@ -10,7 +10,7 @@ export class JwtAuthenticator implements IAuthenticator {
         private readonly organizerRepository: IOrganizerRepository
     ) {}
 
-    async authenticate(token: string): Promise<Organizer> {
+    async authenticate(token: string): Promise<User> {
         try {
             const decoded = jwt.verify(token, this.jwtSecret) as TokenPayload;
 

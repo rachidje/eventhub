@@ -27,4 +27,8 @@ export class InMemoryEventRepository implements IEventRepository, IEventReposito
     async findById(id: string): Promise<HostedEvent | null> {
         return this.events.find(event => event.props.id === id) || null
     }
+
+    async runInTransaction<T>(fn: (repository: IEventRepository) => Promise<T>): Promise<T> {
+        return fn(this)
+    }
 }

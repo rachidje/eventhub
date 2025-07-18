@@ -11,7 +11,7 @@ export class EventConflictService implements IEventConflictCheckerService {
     async hasConflictWith(event: HostedEvent): Promise<boolean> {
         const events = await this.eventRepository.findByOrganizerAndStatus(
             event.props.organizer.props.id,
-            [EventStatus.SCHEDULED, EventStatus.PUBLISHED])
+            [EventStatus.scheduled, EventStatus.published])
         return event.hasConflictWith(events)
     }
 }

@@ -1,7 +1,8 @@
 import { CreateEventDto } from "@api/dto/event.dto";
 import { logger } from "@api/utils/logger";
 import { RequestValidator } from "@api/utils/validate-request";
-import { Organizer } from "@organizer/domain/organizer.entity";
+import { Role } from "@user/domain/role.enum";
+import { User } from "@user/domain/user.entity";
 import { NextFunction, Request, Response } from "express";
 import { DIContainer } from "types/di-container";
 
@@ -28,7 +29,14 @@ export const createEvent = (container: DIContainer) => {
                 venueName: input.venueName,
                 capacity: input.capacity,
                 price: input.price,
-                organizer: new Organizer({id: "usr-001", email: "alice@example.com", password: "qwerty"})
+                organizer: new User({
+                    id: "usr-001",
+                    firstname: "Alice",
+                    lastname: "Smith",
+                    email: "alice@example.com", 
+                    password: "qwerty",
+                    roles: [Role.organizer]
+                })
             }
 
             const eventId = await container.resolve('createEventUseCase').execute(payload);

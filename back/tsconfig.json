@@ -34,7 +34,7 @@
       "@api/*": ["api/*"], 
       "@venue/*" : ["modules/venue/*"],
       "@event/*" : ["modules/event-management/*"],
-      "@organizer/*" : ["modules/organizer/*"],
+      "@user/*" : ["modules/user-management/*"],
       "@calendar/*" : ["modules/calendar/*"],
       "@shared/*" : ["modules/shared/*"],
       "@tests/*" : ["tests/*"],

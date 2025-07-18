@@ -26,7 +26,7 @@ describe("Create New Event", () => {
             name: "Salon de la photo immersive",
             description: "Un événement artistique autour des technologies immersives et interactives.",
             organizer: unittestOrganizers.alice,
-            status: EventStatus.SCHEDULED,
+            status: EventStatus.scheduled,
             date: format(startDate, "yyyy-MM-dd"),
             startTime: format(startDate, "HH:mm"),
             endTime: format(endDate, "HH:mm"),
@@ -77,7 +77,6 @@ describe("Create New Event", () => {
         it("should throw an error" , async () => {
             await eventRepository.save(unittestHostedEvents.eventWithSimilarData)
             await expect(usecase.execute(invalidPayload)).rejects.toThrow("Already event exists with the same data")
-
         })
     })
 

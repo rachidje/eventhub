@@ -4,14 +4,13 @@ import { IHostedEventFactory } from "@event/application/ports/hosted-event-facto
 import { ISlotReservationService } from "@event/application/ports/slot-reservation-service.interface";
 import { IVenueAvailabilityService } from "@event/application/ports/venue-availability-service.interface";
 import { IVenueRepositoryForEvent } from "@event/application/ports/venue-repository-for-event.interface";
-import { Organizer } from "@organizer/domain/organizer.entity";
-
+import { User } from "modules/user-management/domain/user.entity";
 
 
 export interface CreateEventUseCasePayload {
     name: string
     description: string
-    organizer: Organizer
+    organizer: User
     date: string
     startTime: string
     endTime: string
@@ -57,10 +56,11 @@ export class CreateEventUseCase {
             throw new Error("Slot is not available")
         }
 
-        await this.slotReservationService.reserveSlot(venue.props.id, dates)
+        return this.eventRepository.runInTransaction(async (txRepo) => {
+            await txRepo.save(event)
+            await this.slotReservationService.reserveSlot(venue.props.id, dates)
+            return event.props.id
+        })
 
-        await this.eventRepository.save(event)
-
-        return event.props.id
     }
 }

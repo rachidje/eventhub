@@ -45,6 +45,17 @@ async function main() {
             }
         }
     });
+
+    await prisma.user.create({
+        data: {
+            id: 'usr-001',
+            firstname: 'Alice',
+            lastname: 'Smith',
+            email: 'alice@example.com',
+            password: 'qwerty',
+            roles: ['organizer']
+        }
+    });
 }
 
 main()

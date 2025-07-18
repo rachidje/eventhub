@@ -23,6 +23,12 @@ enum DayOfWeek {
   sunday
 }
 
+enum EventStatus {
+  scheduled
+  cancelled
+  published
+}
+
 model Slot {
   id          String   @id @default(uuid())
   calendarId  String
@@ -58,4 +64,43 @@ model Venue {
   country        String
   weeklySchedule Json
   calendar       Calendar?
+}
+
+enum Role {
+  admin
+  organizer
+  participant
+}
+
+model User {
+  id          String   @id @default(uuid())
+  firstname   String
+  lastname    String
+  email       String   @unique
+  password    String
+  roles       Role[]
+
+  hostedEvents HostedEvent[] @relation(name: "UserHostedEvents")
+
+  createdAt DateTime @default(now())
+}
+
+model HostedEvent {
+  id          String      @id @default(uuid())
+  name        String
+  description String
+  organizerId String
+  status      EventStatus @default(scheduled)
+  startDate   DateTime
+  endDate     DateTime
+  venueId     String
+  capacity    Int
+  price       Float
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  organizer   User     @relation("UserHostedEvents", fields: [organizerId], references: [id])
+
+  @@index([venueId, startDate, endDate])
 }

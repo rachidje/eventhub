@@ -1,4 +1,5 @@
 import { createContainer } from "@api/config/dependency-injection"
+import { E2EOrganizers } from "@tests/fixtures/seeds/e2e-users.fixture"
 import { E2EVenues } from "@tests/fixtures/seeds/e2e-venues.fixture"
 import { TestApp } from "@tests/test-app"
 import { addDays, format, nextSaturday, setHours, setMinutes, setSeconds } from "date-fns"
@@ -20,24 +21,22 @@ describe("Create New Event", () => {
         await testApp.setup();
         app = testApp.getExpressApp();
         
-        await testApp.loadFixtures([E2EVenues.venue])
+        await testApp.loadFixtures([E2EVenues.venue, E2EOrganizers.alice])
     })
 
     it("should return the event ID with status 201" , async () => {
-            
-
         const response = await request(app)
-                            .post("/v1/event")
-                            .send({
-                                name: "Salon de la photo immersive",
-                                description: "Un événement artistique autour des technologies immersives et interactives.",
-                                date: format(startDate, "yyyy-MM-dd"),
-                                startTime: format(startDate, "HH:mm"),
-                                endTime: format(endDate, "HH:mm"),
-                                venueName: "La Cité des Sciences",
-                                capacity: 50,
-                                price: 100
-                            })
+                        .post("/v1/event")
+                        .send({
+                            name: "Salon de la photo immersive",
+                            description: "Un événement artistique autour des technologies immersives et interactives.",
+                            date: format(startDate, "yyyy-MM-dd"),
+                            startTime: format(startDate, "HH:mm"),
+                            endTime: format(endDate, "HH:mm"),
+                            venueName: "La Cité des Sciences",
+                            capacity: 50,
+                            price: 100
+                        })
 
         expect(response.status).toEqual(201)
         expect(response.body.success).toEqual(true)

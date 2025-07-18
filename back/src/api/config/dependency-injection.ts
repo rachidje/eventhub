@@ -13,13 +13,15 @@ import { SlotReservationService } from "@calendar/domain/services/slot-reservati
 import { PostgresCalendarRepository } from "@calendar/infrastructure/repositories/postgres-calendar.repository";
 import { CreateEventUseCase } from "@event/application/usecases/create-event.usecase";
 import { HostedEventFactory } from "@event/domain/factories/hosted-event.factory";
+import { PostgresEventRepository } from "@event/infrastructure/repositories/postgres-event.repository";
 import { PrismaClient } from "@prisma/client";
 import { IAuthenticator } from "@shared/application/ports/authenticator.interface";
 import { IIdGenerator } from "@shared/application/ports/id-generator.interface";
 import { prismaClient } from "@shared/infrastructure/orm/prisma";
 import { UuidGenerator } from "@shared/infrastructure/uuid-generator";
 import { JwtAuthenticator } from "@shared/services/jwt-authenticator";
-import { InMemoryEventRepository } from "@tests/infra-tests/in-memory-event-repository";
+import { IUserRepository } from "@user/application/ports/user-repository.interface";
+import { PostgresUserRepository } from "@user/infrastructure/repositories/postres-user.repository";
 import { PostgresVenueRepository } from "@venue/infrastructure/repositories/postgres-venue.repository";
 import { ICalendarRepositoryForEvent } from "modules/event-management/application/ports/calendar-repository-for-event.interface";
 import { getEnv } from "./get-env";
@@ -32,6 +34,7 @@ export interface Dependencies {
     eventRepository: IEventRepository
     venueRepositoryForEvent: IVenueRepositoryForEvent
     venueRepositoryForCalendar: IVenueRepositoryForCalendar
+    userRepository: IUserRepository
     calendarRepositoryForEvent: ICalendarRepositoryForEvent
     venueAvailabilityService: IVenueAvailabilityService
     eventConflictService: IEventConflictCheckerService
@@ -52,8 +55,9 @@ export const createContainer = () => {
         jwtSecret: asValue(jwtSecret),
         prisma: asValue(prismaClient),
         idGenerator: asClass(UuidGenerator).singleton(),
-        eventRepository: asClass(InMemoryEventRepository).singleton(),
-
+        eventRepository: asClass(PostgresEventRepository).singleton(),
+        
+        userRepository: asClass(PostgresUserRepository).singleton(),
         venueRepositoryForEvent: asClass(PostgresVenueRepository).singleton(),
         venueRepositoryForCalendar: asClass(PostgresVenueRepository).singleton(),
 

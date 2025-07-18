@@ -1,15 +1,15 @@
-import { Organizer } from "@organizer/domain/organizer.entity"
+import { combineDateTime } from "@event/application/utils/datetime"
+import { differenceInBusinessDays, differenceInHours } from "date-fns"
+import { User } from "modules/user-management/domain/user.entity"
 import stringSimilarity from "string-similarity"
 import { EventStatus } from "./enums/event-status"
-import { differenceInBusinessDays, differenceInHours } from "date-fns"
-import { combineDateTime } from "@event/application/utils/datetime"
 
 
 export interface HostedEventProps {
     id: string
     name: string
     description: string
-    organizer: Organizer
+    organizer: User
     status: EventStatus
     dates: {
         start: Date,
