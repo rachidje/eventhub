@@ -22,3 +22,13 @@ export class RegisterUserDto {
     @IsString()
     role: string
 }
+
+export class LoginUserDto {
+    @IsNotEmpty()
+    @IsEmail()
+    email: string
+
+    @IsNotEmpty()
+    @IsString()
+    password: string
+}

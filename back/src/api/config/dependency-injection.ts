@@ -30,6 +30,9 @@ import { IPasswordPolicy } from "@user/application/ports/password-policy.interfa
 import { IPasswordHasher } from "@shared/application/ports/password-hasher.interface";
 import { BasicPasswordPolicy } from "@user/application/services/password-policy.service";
 import { BcryptPasswordHasher } from "@shared/infrastructure/hashing/bcrypt-password.hasher";
+import { LoginUseCase } from "@user/application/usecases/login.usecase";
+import { JwtTokenGenerator } from "@shared/infrastructure/auth/jwt-token-generator";
+import { ITokenGenerator } from "@shared/application/ports/token-generator.interface";
 
 
 const jwtSecret = getEnv('JWT_SECRET');
@@ -48,8 +51,10 @@ export interface Dependencies {
     authenticator: IAuthenticator
     passwordPolicy: IPasswordPolicy
     passwordHasher: IPasswordHasher
+    tokenGenerator: ITokenGenerator
     createEventUseCase: CreateEventUseCase
     registerUserUseCase: RegisterUseCase
+    loginUserUseCase: LoginUseCase
     jwtSecret: string
     prisma: PrismaClient
 }
@@ -77,9 +82,11 @@ export const createContainer = () => {
         authenticator: asClass(JwtAuthenticator).singleton(),
         passwordPolicy: asClass(BasicPasswordPolicy).singleton(),
         passwordHasher: asClass(BcryptPasswordHasher).singleton(),
+        tokenGenerator: asClass(JwtTokenGenerator).singleton(),
 
         createEventUseCase: asClass(CreateEventUseCase).singleton(),
-        registerUserUseCase: asClass(RegisterUseCase).singleton()
+        registerUserUseCase: asClass(RegisterUseCase).singleton(),
+        loginUserUseCase: asClass(LoginUseCase).singleton(),
     });
 
     return container;

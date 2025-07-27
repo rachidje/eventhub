@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">78.94% </span>
+                <span class="strong">26.31% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>15/19</span>
+                <span class='fraction'>5/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/4</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/5</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">82.35% </span>
+                <span class="strong">29.41% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>14/17</span>
+                <span class='fraction'>5/17</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -126,23 +126,23 @@
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -158,12 +158,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -171,12 +171,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -196,15 +196,15 @@ import { PrismaClient, Slot as SlotModel } from "@prisma/client"
 import { format } from "date-fns"
 &nbsp;
 export class PostgresCalendarRepository implements ICalendarRepository, ICalendarRepositoryForEvent {
-    constructor(private readonly prisma: PrismaClient) {}
+<span class="fstat-no" title="function not covered" >    constructor(private readonly <span class="cstat-no" title="statement not covered" >p</span>risma: PrismaClient)</span> {}
 &nbsp;
-    async findByVenueId(venueId: string): Promise&lt;Calendar | null&gt; {
-        const calendarModel = await this.prisma.calendar.findUnique({
+    async <span class="fstat-no" title="function not covered" >findByVenueId(</span>venueId: string): Promise&lt;Calendar | null&gt; {
+        const calendarModel = <span class="cstat-no" title="statement not covered" >await this.prisma.calendar.findUnique({</span>
             where: { venueId },
             include: { slots: true }
         })
 &nbsp;
-        if (!calendarModel) return null
+<span class="cstat-no" title="statement not covered" >        <span class="missing-if-branch" title="if path not taken" >I</span>if (!calendarModel) <span class="cstat-no" title="statement not covered" >return null</span></span>
 &nbsp;
         const slots = <span class="cstat-no" title="statement not covered" >calendarModel.slots.map(<span class="fstat-no" title="function not covered" >(s</span>lot: SlotModel) =&gt;</span>
 <span class="cstat-no" title="statement not covered" >            new Slot({</span>
@@ -218,27 +218,27 @@ export class PostgresCalendarRepository implements ICalendarRepository, ICalenda
 <span class="cstat-no" title="statement not covered" >        return new Calendar(venueId, slots)</span>
     }
 &nbsp;
-    async save(calendar: Calendar): Promise&lt;void&gt; {
+    async <span class="fstat-no" title="function not covered" >save(</span>calendar: Calendar): Promise&lt;void&gt; {
         // Vérifie s'il existe déjà un Calendar pour ce venueId
-        const existing = await this.prisma.calendar.findUnique({
+        const existing = <span class="cstat-no" title="statement not covered" >await this.prisma.calendar.findUnique({</span>
             where: { venueId: calendar.venueId }
         })
 &nbsp;
         // Création ou récupération du calendar
-        const calendarId = existing
-        ? <span class="branch-0 cbranch-no" title="branch not covered" >existing.id</span>
+        const calendarId = <span class="cstat-no" title="statement not covered" >existing</span>
+        ? existing.id
         : (
             await this.prisma.calendar.create({
                 data: { venueId: calendar.venueId }
             })
         ).id
 &nbsp;
-        const slots = calendar.getSlots()
+        const slots = <span class="cstat-no" title="statement not covered" >calendar.getSlots()</span>
 &nbsp;
-        <span class="missing-if-branch" title="if path not taken" >I</span>if (slots.length === 0) <span class="cstat-no" title="statement not covered" >return</span>
+<span class="cstat-no" title="statement not covered" >        <span class="missing-if-branch" title="if path not taken" >I</span>if (slots.length === 0) <span class="cstat-no" title="statement not covered" >return</span></span>
 &nbsp;
-        await this.prisma.slot.createMany({
-            data: slots.map(slot =&gt; ({
+<span class="cstat-no" title="statement not covered" >        await this.prisma.slot.createMany({</span>
+            data: slots.map(<span class="fstat-no" title="function not covered" >slot </span>=&gt; (<span class="cstat-no" title="statement not covered" >{</span>
                 calendarId,
                 date: new Date(slot.props.date),
                 startTime: combineDateTime(slot.props.date, slot.props.startTime),
@@ -256,7 +256,7 @@ export class PostgresCalendarRepository implements ICalendarRepository, ICalenda
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-07-27T10:51:35.569Z
+                at 2025-07-27T15:59:52.691Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

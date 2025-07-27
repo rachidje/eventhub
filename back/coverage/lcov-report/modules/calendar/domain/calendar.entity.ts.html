@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.33% </span>
+                <span class="strong">16.66% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/12</span>
+                <span class='fraction'>2/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/5</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.9% </span>
+                <span class="strong">18.18% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/11</span>
+                <span class='fraction'>2/11</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -92,63 +92,63 @@
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Slot, SlotDates } from "./value-objects/slot";
 &nbsp;
 &nbsp;
 export class Calendar {
-    private slots: Slot[] = []
+    private <span class="cstat-no" title="statement not covered" >slots: Slot[] = []</span>
 &nbsp;
-    constructor(
-        public readonly venueId: string, existingSlots: Slot[] = []
+<span class="fstat-no" title="function not covered" >    constructor(</span>
+        public readonly <span class="cstat-no" title="statement not covered" >venueId: string,</span> existingSlots: Slot[] = <span class="branch-0 cbranch-no" title="branch not covered" >[]</span>
     ) {
-        this.slots = existingSlots
+<span class="cstat-no" title="statement not covered" >        this.slots = existingSlots</span>
     }
 &nbsp;
-    addSlot(dates: SlotDates) {
-        const newSlot = new Slot({...dates, venueId: this.venueId})
+<span class="fstat-no" title="function not covered" >    addSlot(</span>dates: SlotDates) {
+        const newSlot = <span class="cstat-no" title="statement not covered" >new Slot({...dates, venueId: this.venueId})</span>
 &nbsp;
-        <span class="missing-if-branch" title="if path not taken" >I</span>if(this.hasConflictWith(newSlot)) {
+<span class="cstat-no" title="statement not covered" >        <span class="missing-if-branch" title="if path not taken" >I</span>if(this.hasConflictWith(newSlot)) {</span>
 <span class="cstat-no" title="statement not covered" >            throw new Error("Slot conflicts with existing one")</span>
         }
 &nbsp;
-        this.slots.push(newSlot)
+<span class="cstat-no" title="statement not covered" >        this.slots.push(newSlot)</span>
     }
 &nbsp;
-    hasConflictWith(candidate: Slot): boolean {
-        return this.slots.some(<span class="fstat-no" title="function not covered" >slot </span>=&gt; <span class="cstat-no" title="statement not covered" >slot.conflictsWith(candidate))</span>
+<span class="fstat-no" title="function not covered" >    hasConflictWith(</span>candidate: Slot): boolean {
+<span class="cstat-no" title="statement not covered" >        return this.slots.some(<span class="fstat-no" title="function not covered" >slot </span>=&gt; <span class="cstat-no" title="statement not covered" >slot.conflictsWith(candidate))</span></span>
     }
 &nbsp;
-    getSlots(): Slot[] {
-        return [...this.slots]
+<span class="fstat-no" title="function not covered" >    getSlots(</span>): Slot[] {
+<span class="cstat-no" title="statement not covered" >        return [...this.slots]</span>
     }
 }</pre></td></tr></table></pre>
 
@@ -157,7 +157,7 @@ export class Calendar {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-07-27T10:51:35.569Z
+                at 2025-07-27T15:59:52.691Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

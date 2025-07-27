@@ -1,10 +1,11 @@
-import { registerUser } from "@api/controller/v1";
+import { loginUser, registerUser } from "@api/controller/v1";
 import { Router } from "express";
 import { DIContainer } from "types/di-container";
 
 const userRoutes = (container: DIContainer): Router => {
     const router = Router();
     router.post("/register", registerUser(container));
+    router.post("/login", loginUser(container));
     return router;
 };
 

@@ -5,13 +5,13 @@ import { Role } from "@user/domain/role.enum";
 export const E2EOrganizers = {
     alice: new UserFixture(
         new User({
-        id: "usr-001",
-        email: "alice@example.com",
-        password: "qwerty",
-        firstname: "Alice",
-        lastname: "Smith",
-        roles: [Role.organizer]
-    })
+            id: "usr-001",
+            email: "alice@example.com",
+            password: "qwerty",
+            firstname: "Alice",
+            lastname: "Smith",
+            roles: [Role.organizer]
+        })
     ),
     john: new UserFixture(
         new User({
