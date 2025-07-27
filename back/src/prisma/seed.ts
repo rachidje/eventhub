@@ -6,6 +6,8 @@ async function main() {
     await prisma.slot.deleteMany()
     await prisma.calendar.deleteMany()
     await prisma.venue.deleteMany()
+    await prisma.hostedEvent.deleteMany()
+    await prisma.user.deleteMany()
 
     await prisma.venue.create({
         data: {

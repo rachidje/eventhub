@@ -25,6 +25,11 @@ import { PostgresUserRepository } from "@user/infrastructure/repositories/postre
 import { PostgresVenueRepository } from "@venue/infrastructure/repositories/postgres-venue.repository";
 import { ICalendarRepositoryForEvent } from "modules/event-management/application/ports/calendar-repository-for-event.interface";
 import { getEnv } from "./get-env";
+import { RegisterUseCase } from "@user/application/usecases/register.usecase";
+import { IPasswordPolicy } from "@user/application/ports/password-policy.interface";
+import { IPasswordHasher } from "@shared/application/ports/password-hasher.interface";
+import { BasicPasswordPolicy } from "@user/application/services/password-policy.service";
+import { BcryptPasswordHasher } from "@shared/infrastructure/hashing/bcrypt-password.hasher";
 
 
 const jwtSecret = getEnv('JWT_SECRET');
@@ -41,7 +46,10 @@ export interface Dependencies {
     hostedEventFactory: IHostedEventFactory
     slotReservationService: ISlotReservationService
     authenticator: IAuthenticator
+    passwordPolicy: IPasswordPolicy
+    passwordHasher: IPasswordHasher
     createEventUseCase: CreateEventUseCase
+    registerUserUseCase: RegisterUseCase
     jwtSecret: string
     prisma: PrismaClient
 }
@@ -67,7 +75,11 @@ export const createContainer = () => {
         hostedEventFactory: asClass(HostedEventFactory).singleton(),
         slotReservationService: asClass(SlotReservationService).singleton(),
         authenticator: asClass(JwtAuthenticator).singleton(),
-        createEventUseCase: asClass(CreateEventUseCase).singleton()
+        passwordPolicy: asClass(BasicPasswordPolicy).singleton(),
+        passwordHasher: asClass(BcryptPasswordHasher).singleton(),
+
+        createEventUseCase: asClass(CreateEventUseCase).singleton(),
+        registerUserUseCase: asClass(RegisterUseCase).singleton()
     });
 
     return container;

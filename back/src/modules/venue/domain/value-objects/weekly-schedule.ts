@@ -1,7 +1,6 @@
 // venue/domain/value-objects/weekly-schedule.ts
 import { SlotDates } from "@calendar/domain/value-objects/slot"
 import { combineDateTime } from "@event/application/utils/datetime"
-import { set } from "date-fns"
 
 type DayOfWeek = "monday" | "tuesday" | "wednesday" | "thursday" | "friday" | "saturday" | "sunday"
 
@@ -43,10 +42,5 @@ export class WeeklySchedule {
         "thursday", "friday", "saturday"
         ]
         return days[date.getDay()]
-    }
-
-    private setTime(base: Date, time: string): Date {
-        const [hours, minutes] = time.split(":").map(Number)
-        return set(base, { hours, minutes, seconds: 0, milliseconds: 0 })
     }
 }
