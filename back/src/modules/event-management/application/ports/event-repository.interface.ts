@@ -3,7 +3,7 @@ import { HostedEvent } from "@event/domain/hosted-event.entity"
 
 
 export interface IEventRepository {
-    findByOrganizerAndStatus(organizerId: string, statuses: EventStatus[]): Promise<HostedEvent[]>
+    findByOrganizerAndStatus(userId: string, statuses: EventStatus[]): Promise<HostedEvent[]>
     save(event: HostedEvent): Promise<void>
     findById(id: string): Promise<HostedEvent | null>
 

@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">4.16% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/24</span>
+                <span class='fraction'>21/24</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">4.34% </span>
+                <span class="strong">86.95% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/23</span>
+                <span class='fraction'>20/23</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -150,46 +150,46 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -216,45 +216,45 @@ export interface CreateEventUseCasePayload {
 &nbsp;
 &nbsp;
 export class CreateEventUseCase {
-<span class="fstat-no" title="function not covered" >    constructor(</span>
-        private readonly <span class="cstat-no" title="statement not covered" >eventRepository: IEventRepository,</span>
-        private readonly <span class="cstat-no" title="statement not covered" >venueRepositoryForEvent: IVenueRepositoryForEvent,</span>
-        private readonly <span class="cstat-no" title="statement not covered" >venueAvailabilityService: IVenueAvailabilityService,</span>
-        private readonly <span class="cstat-no" title="statement not covered" >eventConflictService: IEventConflictCheckerService,</span>
-        private readonly <span class="cstat-no" title="statement not covered" >hostedEventFactory: IHostedEventFactory,</span>
-        private readonly <span class="cstat-no" title="statement not covered" >slotReservationService: ISlotReservationService</span>
+    constructor(
+        private readonly eventRepository: IEventRepository,
+        private readonly venueRepositoryForEvent: IVenueRepositoryForEvent,
+        private readonly venueAvailabilityService: IVenueAvailabilityService,
+        private readonly eventConflictService: IEventConflictCheckerService,
+        private readonly hostedEventFactory: IHostedEventFactory,
+        private readonly slotReservationService: ISlotReservationService
     ) {}
 &nbsp;
-    async <span class="fstat-no" title="function not covered" >execute(</span>payload: CreateEventUseCasePayload): Promise&lt;string&gt; {
-        const venue = <span class="cstat-no" title="statement not covered" >await this.venueRepositoryForEvent.findByName(payload.venueName)</span>
+    async execute(payload: CreateEventUseCasePayload): Promise&lt;string&gt; {
+        const venue = await this.venueRepositoryForEvent.findByName(payload.venueName)
 &nbsp;
-        const dates = <span class="cstat-no" title="statement not covered" >{</span>
+        const dates = {
             date: payload.date,
             startTime: payload.startTime,
             endTime: payload.endTime
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        <span class="missing-if-branch" title="if path not taken" >I</span>if(!venue.isOpenAt(dates)) {</span>
+        <span class="missing-if-branch" title="if path not taken" >I</span>if(!venue.isOpenAt(dates)) {
 <span class="cstat-no" title="statement not covered" >            throw new Error("Event dates are not in opening hours of the place")</span>
         }
         
-        const event = <span class="cstat-no" title="statement not covered" >this.hostedEventFactory.create(payload, venue.props.id)</span>
-<span class="cstat-no" title="statement not covered" >        event.validateOrThrow()</span>
+        const event = this.hostedEventFactory.create(payload, venue.props.id)
+        event.validateOrThrow()
 &nbsp;
-        const conflict = <span class="cstat-no" title="statement not covered" >await this.eventConflictService.hasConflictWith(event)</span>
-<span class="cstat-no" title="statement not covered" >        <span class="missing-if-branch" title="if path not taken" >I</span>if(conflict) {</span>
+        const conflict = await this.eventConflictService.hasConflictWith(event)
+        <span class="missing-if-branch" title="if path not taken" >I</span>if(conflict) {
 <span class="cstat-no" title="statement not covered" >            throw new Error("Already event exists with the same data")</span>
         }
 &nbsp;
-        const venueIsAvailable = <span class="cstat-no" title="statement not covered" >await this.venueAvailabilityService.isSlotAvailable(venue.props.id, dates)</span>
-<span class="cstat-no" title="statement not covered" >        <span class="missing-if-branch" title="if path not taken" >I</span>if(!venueIsAvailable) {</span>
+        const venueIsAvailable = await this.venueAvailabilityService.isSlotAvailable(venue.props.id, dates)
+        <span class="missing-if-branch" title="if path not taken" >I</span>if(!venueIsAvailable) {
 <span class="cstat-no" title="statement not covered" >            throw new Error("Slot is not available")</span>
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        return this.eventRepository.runInTransaction(<span class="fstat-no" title="function not covered" >async (t</span>xRepo) =&gt;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" > {</span></span></span>
-<span class="cstat-no" title="statement not covered" >            await txRepo.save(event)</span>
-<span class="cstat-no" title="statement not covered" >            await this.slotReservationService.reserveSlot(venue.props.id, dates)</span>
-<span class="cstat-no" title="statement not covered" >            return event.props.id</span>
+        return this.eventRepository.runInTransaction(async (txRepo) =&gt; {
+            await txRepo.save(event)
+            await this.slotReservationService.reserveSlot(venue.props.id, dates)
+            return event.props.id
         })
 &nbsp;
     }
@@ -265,7 +265,7 @@ export class CreateEventUseCase {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-07-27T15:59:52.691Z
+                at 2025-07-29T19:21:38.181Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

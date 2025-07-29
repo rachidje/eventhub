@@ -1,5 +1,6 @@
 
 export interface TokenPayload {
-    organizerId: string;
+    userId: string;
     email: string;
+    roles: string[];
 }

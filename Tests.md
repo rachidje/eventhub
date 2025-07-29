@@ -14,3 +14,14 @@
 - [x] Should book the place
 - [x] Should return the event ID
 - [x] Should insert the event in the database
+
+### Usecase: Register User
+- [x] Should fail if user already exists with the same email
+- [x] Should fail if password is weak
+- [x] Should hash the password
+- [x] Should return the user ID
+
+### Usecase: Login User
+- [x] Should fail if user does not exist
+- [x] Should fail if password is wrong
+- [x] Should return token

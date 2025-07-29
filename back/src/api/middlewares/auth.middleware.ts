@@ -5,7 +5,7 @@ import { DIContainer } from "types/di-container";
 
 declare module 'express-serve-static-core' {
     interface Request {
-        organizer?: TokenPayload;
+        user?: TokenPayload;
     }
 }
 
@@ -21,14 +21,15 @@ export const authMiddleware = (container: DIContainer) => {
             return res.jsonError('Unauthorized', 403);
         }
 
-        const organizer = await container.resolve('authenticator').authenticate(token);
-        if (!organizer) {
+        const user = await container.resolve('authenticator').authenticate(token);
+        if (!user) {
             return res.jsonError('Unauthorized', 403);
         }
 
-        req.organizer = {
-            organizerId: organizer.props.id,
-            email: organizer.props.email
+        req.user = {
+            userId: user.props.id,
+            email: user.props.email,
+            roles: user.props.roles
         };
         
         next();

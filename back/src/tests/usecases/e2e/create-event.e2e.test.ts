@@ -27,6 +27,7 @@ describe("Create New Event", () => {
     it("should return the event ID with status 201" , async () => {
         const response = await request(app)
                         .post("/v1/event")
+                        .set('Authorization', E2EOrganizers.alice.createJwtToken())
                         .send({
                             name: "Salon de la photo immersive",
                             description: "Un événement artistique autour des technologies immersives et interactives.",

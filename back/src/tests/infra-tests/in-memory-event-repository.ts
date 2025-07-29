@@ -13,9 +13,9 @@ export class InMemoryEventRepository implements IEventRepository, IEventReposito
         this.events.push(event)
     }
 
-    async findByOrganizerAndStatus(organizerId: string, statuses: EventStatus[]): Promise<HostedEvent[]> {
+    async findByOrganizerAndStatus(userId: string, statuses: EventStatus[]): Promise<HostedEvent[]> {
         return this.events.filter(event => 
-            event.props.organizer.props.id === organizerId &&
+            event.props.organizer.props.id === userId &&
             statuses.includes(event.props.status)
         )
     }

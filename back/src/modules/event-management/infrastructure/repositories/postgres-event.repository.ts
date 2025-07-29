@@ -67,13 +67,13 @@ export class PostgresEventRepository implements IEventRepository, IEventReposito
         })
     }
 
-    async findByOrganizerAndStatus(organizerId: string, statuses: EventStatus[]): Promise<HostedEvent[]> {
+    async findByOrganizerAndStatus(userId: string, statuses: EventStatus[]): Promise<HostedEvent[]> {
         const models = await this.prisma.hostedEvent.findMany({
             where: {
-                organizerId,
+                organizerId: userId,
                 status: {
                     in: statuses
-                }
+                },
             },
             include: {
                 organizer: true
@@ -93,7 +93,7 @@ export class PostgresEventRepository implements IEventRepository, IEventReposito
             venueId: model.venueId,
             status: model.status as EventStatus,
             organizer: new User({
-                id: model.organizer.id,
+                id: model.organizerId,
                 email: model.organizer.email,
                 password: model.organizer.password,
                 firstname: model.organizer.firstname,

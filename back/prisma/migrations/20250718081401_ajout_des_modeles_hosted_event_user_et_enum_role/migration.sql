@@ -22,7 +22,7 @@ CREATE TABLE "HostedEvent" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
-    "organizerId" TEXT NOT NULL,
+    "userId" TEXT NOT NULL,
     "status" "EventStatus" NOT NULL DEFAULT 'scheduled',
     "startDate" TIMESTAMP(3) NOT NULL,
     "endDate" TIMESTAMP(3) NOT NULL,
@@ -42,4 +42,4 @@ CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 CREATE INDEX "HostedEvent_venueId_startDate_endDate_idx" ON "HostedEvent"("venueId", "startDate", "endDate");
 
 -- AddForeignKey
-ALTER TABLE "HostedEvent" ADD CONSTRAINT "HostedEvent_organizerId_fkey" FOREIGN KEY ("organizerId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "HostedEvent" ADD CONSTRAINT "HostedEvent_organizerId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
