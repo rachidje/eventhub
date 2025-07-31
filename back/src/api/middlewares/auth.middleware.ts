@@ -1,5 +1,6 @@
 import { extractToken } from "@api/utils/extract-token";
 import { TokenPayload } from "@shared/application/security/token-payload";
+import { Role } from "@user/domain/role.enum";
 import { NextFunction, Request, Response } from "express";
 import { DIContainer } from "types/di-container";
 
@@ -29,7 +30,7 @@ export const authMiddleware = (container: DIContainer) => {
         req.user = {
             userId: user.props.id,
             email: user.props.email,
-            roles: user.props.roles
+            roles: user.props.roles.map(role => Role[role])
         };
         
         next();

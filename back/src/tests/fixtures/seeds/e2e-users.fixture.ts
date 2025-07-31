@@ -20,7 +20,7 @@ export const E2EOrganizers = {
             password: "qwerty",
             firstname: "John",
             lastname: "Doe",
-            roles: [Role.organizer]
+            roles: [Role.participant]
         })
     )
 }
