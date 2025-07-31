@@ -19,6 +19,7 @@ jobs:
         with:
           node-version: 18
 
+      # --- Backend ---
       - name: Install backend dependencies
         working-directory: ./back
         run: npm ci
@@ -31,4 +32,19 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           files: ./back/coverage/cobertura-coverage.xml
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      # --- Frontend ---
+      - name: Install frontend dependencies
+        working-directory: ./front
+        run: npm ci
+
+      - name: Run frontend unit tests
+        working-directory: ./front
+        run: npm run test
+
+      - name: Upload frontend coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          files: ./front/coverage/cobertura-coverage.xml
           token: ${{ secrets.CODECOV_TOKEN }}
