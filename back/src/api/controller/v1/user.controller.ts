@@ -12,7 +12,6 @@ export const registerUser = (container: DIContainer) => {
         next: NextFunction
     ) : Promise<any> => {
         try {
-            console.log("register user");
             logger.info(`Register user request received: ${JSON.stringify({...req.body, email: "***", password: "***"})}`);
             const {errors, input} = await RequestValidator(RegisterUserDto, req.body);
 
@@ -45,8 +44,6 @@ export const loginUser = (container: DIContainer) => {
         next: NextFunction
     ) : Promise<any> => {
         try {
-            console.log("login user");  
-            
             logger.info(`Login user request received: ${JSON.stringify({...req.body, password: "***"})}`);
             const {errors, input} = await RequestValidator(LoginUserDto, req.body);
 
