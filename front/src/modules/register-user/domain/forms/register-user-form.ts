@@ -43,7 +43,6 @@ export class RegisterForm {
         const errors = Object.fromEntries(
             Object.entries(fieldErrors).map(([key, value]) => [key, value?.[0]])
         ) as ValidationError;
-        console.log(errors);
 
         return {
             isValid: false,

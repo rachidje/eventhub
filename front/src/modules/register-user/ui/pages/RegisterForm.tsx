@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, FormLabel, Grid, Stack, TextField, Typography } from "@mui/material";
+import { Alert, Box, Button, FormControl, FormLabel, Grid, Stack, TextField, Typography } from "@mui/material";
 import { useRegisterForm } from "../../hooks/use-register-form.hook";
 import { SelectableRole } from "../components/SelectableRole";
 
@@ -8,6 +8,14 @@ export const RegisterForm = () => {
     return (
         <Box>
             <Typography mb={6} textAlign="center" variant="h5" fontWeight={700}>Inscription</Typography>
+
+            {
+                hook.networkError && (
+                    <Alert severity="error">
+                        {hook.networkError}
+                    </Alert>
+                )
+            }
 
             <Stack spacing={4}>
                 <FormControl>

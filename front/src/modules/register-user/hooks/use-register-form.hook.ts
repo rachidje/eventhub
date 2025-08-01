@@ -1,8 +1,9 @@
 import { useRef, useState } from "react";
 import type { RegisterModel } from "../domain/model/register-model";
 import { RegisterForm } from "../domain/forms/register-user-form";
-import { useAppDispatch } from "@eventhub/store/store";
+import { useAppDispatch, type AppState } from "@eventhub/store/store";
 import { registerUserAction } from "../actions/register-user.action";
+import { useSelector } from "react-redux";
 
 export const useRegisterForm = () => {
     function updateField<K extends keyof RegisterModel.Form>(field: K, value: RegisterModel.Form[K]) {
@@ -48,6 +49,7 @@ export const useRegisterForm = () => {
         role: null
     });
     const [errors, setErrors] = useState<ValidationError>({});
+    const networkError = useSelector((state: AppState) => state.registerUser.error);
 
     return {
         form,
@@ -57,6 +59,7 @@ export const useRegisterForm = () => {
             role
         })),
         errors,
+        networkError,
         isSubmittable: isSubmittable(),
         updateField,
         assignRole,
