@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, FormLabel, Grid, Input, Stack, TextField, Typography } from "@mui/material";
+import { Box, Button, FormControl, FormLabel, Grid, Stack, TextField, Typography } from "@mui/material";
 import { useRegisterForm } from "../../hooks/use-register-form.hook";
 import { SelectableRole } from "../components/SelectableRole";
 
