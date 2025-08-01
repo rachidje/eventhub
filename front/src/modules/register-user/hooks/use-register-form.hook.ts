@@ -1,11 +1,16 @@
 import { useRef, useState } from "react";
 import type { RegisterModel } from "../domain/model/register-model";
 import { RegisterForm } from "../domain/forms/register-user-form";
+import { useAppDispatch } from "@eventhub/store/store";
+import { registerUserAction } from "../actions/register-user.action";
 
 export const useRegisterForm = () => {
     function updateField<K extends keyof RegisterModel.Form>(field: K, value: RegisterModel.Form[K]) {
         const newState = registerForm.current.updateField(form, field, value)
         setForm(newState)
+
+        const validation = registerForm.current.validate(newState);
+        setErrors(validation.errors);
     }
 
     function assignRole(role: RegisterModel.Role) {
@@ -20,10 +25,14 @@ export const useRegisterForm = () => {
         return registerForm.current.isSubmittable(form);
     }
 
-    function submit() {}
+    function submit() {
+        dispatch(registerUserAction(form));
+    }
     
     type AllowedRole = keyof typeof allowedRoles;
     type ValidationError = Partial<Record<keyof RegisterModel.Form, string>>;
+
+    const dispatch = useAppDispatch();
 
     const allowedRoles = {
         organizer: "Organisateur",

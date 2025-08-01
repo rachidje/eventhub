@@ -1,7 +1,9 @@
 import type { IFetchVenuesRequest } from "@eventhub/modules/create-event/api/interfaces/fetch-venues.interface";
 import type { ISaveEventRequest } from "@eventhub/modules/create-event/api/interfaces/save-event.interface";
+import type { IRegisterGateway } from "@eventhub/modules/register-user/api/interfaces/register-gateway.interface";
 
 export type Dependencies = {
     fetchVenues: IFetchVenuesRequest
     saveEvent: ISaveEventRequest
+    registerGateway: IRegisterGateway
 };

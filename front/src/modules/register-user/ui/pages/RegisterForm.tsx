@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, FormLabel, Grid, Input, Stack, Typography } from "@mui/material";
+import { Box, Button, FormControl, FormLabel, Grid, Input, Stack, TextField, Typography } from "@mui/material";
 import { useRegisterForm } from "../../hooks/use-register-form.hook";
 import { SelectableRole } from "../components/SelectableRole";
 
@@ -12,7 +12,9 @@ export const RegisterForm = () => {
             <Stack spacing={4}>
                 <FormControl>
                     <FormLabel>Prénom</FormLabel>
-                    <Input
+                    <TextField
+                        required
+                        helperText={hook.errors.firstname}
                         value={hook.form.firstname}
                         onChange={(e) => hook.updateField("firstname", e.target.value)}
                     />
@@ -20,7 +22,9 @@ export const RegisterForm = () => {
 
                 <FormControl>
                     <FormLabel>Nom</FormLabel>
-                    <Input
+                    <TextField
+                        required
+                        helperText={hook.errors.lastname}
                         value={hook.form.lastname}
                         onChange={(e) => hook.updateField("lastname", e.target.value)}
                     />
@@ -28,7 +32,9 @@ export const RegisterForm = () => {
 
                 <FormControl>
                     <FormLabel>Email</FormLabel>
-                    <Input
+                    <TextField
+                        required
+                        helperText={hook.errors.email}
                         type="email"
                         value={hook.form.email}
                         onChange={(e) => hook.updateField("email", e.target.value)}
@@ -37,7 +43,9 @@ export const RegisterForm = () => {
 
                 <FormControl>
                     <FormLabel>Mot de passe</FormLabel>
-                    <Input
+                    <TextField
+                        required
+                        helperText={hook.errors.password}
                         type="password"
                         value={hook.form.password}
                         onChange={(e) => hook.updateField("password", e.target.value)}
