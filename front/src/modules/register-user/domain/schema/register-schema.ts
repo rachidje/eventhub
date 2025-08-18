@@ -2,7 +2,7 @@ import { z } from "zod";
 
 const passwordPolicy = z
         .string()
-        .min(8, "Le mot de passe doit contenir au moins 8 caractères")
+        .min(8, "Le mot de passe doit contenir au moins 8 caractères, une majuscule, un chiffre et un caractère spécial")
         .refine((val) => /[A-Z]/.test(val), {
             message: "Le mot de passe doit contenir au moins une majuscule"
         })

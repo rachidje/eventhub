@@ -1,9 +1,9 @@
 import { Container, CssBaseline, Toolbar, Typography } from "@mui/material";
 import React from "react";
+import { Outlet } from "react-router-dom";
+import { Header } from "./header/Header";
 
-export const Layout: React.FC<{ children: React.ReactNode }> = ({
-    children,
-}) => {
+export const Layout: React.FC<{}> = () => {
     return (
             <>
                 <CssBaseline />
@@ -11,9 +11,10 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         EVENT HUB
                     </Typography>
+                    <Header />
                 </Toolbar>
                 <Container maxWidth="lg" sx={{ mt: 4 }}>
-                    {children}
+                    <Outlet />
                 </Container>
             </>
         );
