@@ -1,8 +1,9 @@
 import { InMemoryFetchVenuesApi } from "@eventhub/modules/create-event/api/in-memory-fetch-venues.api";
 import { SaveEventApi } from "@eventhub/modules/create-event/api/save-event.api";
 import type { Dependencies } from "@eventhub/store/dependencies";
-import { MockRegisterGateway } from "./mock.register-gateway";
 import { createStore, type AppState } from "@eventhub/store/store";
+import { MockLoginGateway } from "../login-user/tests/mock-login.gateway";
+import { MockRegisterGateway } from "../register-user/tests/mock.register-gateway";
 
 /**
  * Create testing dependencies with provided defaults
@@ -15,6 +16,7 @@ const createDependencies = (
   fetchVenues: new InMemoryFetchVenuesApi(),
   saveEvent: new SaveEventApi(),
   registerGateway: new MockRegisterGateway(),
+  loginUserApi: new MockLoginGateway(),
   ...dependencies,
 });
 

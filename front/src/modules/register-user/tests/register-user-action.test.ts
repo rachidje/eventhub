@@ -1,8 +1,8 @@
+import { createTestStore } from "../../tests/tests-environment";
 import { registerUserAction } from "../actions/register-user.action";
 import type { RegisterModel } from "../domain/model/register-model";
 import type { RegisterUserState } from "../store/register-user.slice";
 import { MockRegisterGateway } from "./mock.register-gateway";
-import { createTestStore } from "./tests-environment";
 
 describe("Register User Action", () => {
     it("should save the user", async () => {
