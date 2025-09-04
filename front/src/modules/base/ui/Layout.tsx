@@ -2,6 +2,7 @@ import { Container, CssBaseline, Toolbar, Typography } from "@mui/material";
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { Header } from "./header/Header";
+import FlashBanner from "./components/FlashBanner";
 
 export const Layout: React.FC<{}> = () => {
     return (
@@ -14,6 +15,7 @@ export const Layout: React.FC<{}> = () => {
                     <Header />
                 </Toolbar>
                 <Container maxWidth="lg" sx={{ mt: 4 }}>
+                    <FlashBanner />
                     <Outlet />
                 </Container>
             </>
