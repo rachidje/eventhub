@@ -4,6 +4,7 @@ import type { AuthModel } from "../domain/model/auth-model";
 import { useSelector } from "react-redux";
 import { LoginUserForm } from "../domain/forms/login-user-form";
 import { loginUserAction } from "../actions/login.user.action";
+import { useNavigate } from "react-router-dom";
 
 type ValidationError = Partial<Record<keyof AuthModel.LoginForm, string>>;
 
@@ -26,10 +27,12 @@ export const useLoginForm = () => {
 
     function submit() {
         dispatch(loginUserAction(form));
+        navigate('/create-event')
     }
 
 
     const dispatch = useAppDispatch();
+    const navigate = useNavigate()
     const loginForm = useRef(new LoginUserForm());
     const [form, setForm] = useState<AuthModel.LoginForm>({
         email: "",
