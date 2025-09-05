@@ -10,7 +10,7 @@ export const E2EOrganizers = {
             password: "qwerty",
             firstname: "Alice",
             lastname: "Smith",
-            roles: [Role.organizer]
+            role: Role.organizer
         })
     ),
     john: new UserFixture(
@@ -20,7 +20,7 @@ export const E2EOrganizers = {
             password: "qwerty",
             firstname: "John",
             lastname: "Doe",
-            roles: [Role.participant]
+            role: Role.participant
         })
     )
 }

@@ -11,8 +11,6 @@ export const createEvent = (container: DIContainer) => {
         next: NextFunction
     ) : Promise<any> => {
         try {
-            console.log(`Create event request received: ${JSON.stringify(req.body)}`);
-            
             logger.info(`Create event request received: ${JSON.stringify(req.body)}`);
             const {errors, input} = await RequestValidator(CreateEventDto, req.body);
 
@@ -32,6 +30,22 @@ export const createEvent = (container: DIContainer) => {
             });
 
             return res.jsonSuccess(eventId, 201);
+        } catch (error) {
+            logger.error(error)
+            next(error);
+        }
+    };
+}
+
+export const diplayAllEvents = (container: DIContainer) => {
+    return async (
+        req: Request,
+        res: Response,
+        next: NextFunction
+    ) : Promise<any> => {
+        try {
+            const events = await container.resolve('eventRepository').findAll();
+            return res.jsonSuccess(events.map(event => event.props), 200);
         } catch (error) {
             logger.error(error)
             next(error);

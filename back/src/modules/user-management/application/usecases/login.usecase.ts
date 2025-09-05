@@ -1,6 +1,7 @@
 import { IPasswordHasher } from "@shared/application/ports/password-hasher.interface";
 import { IUserRepository } from "../ports/user-repository.interface";
 import { ITokenGenerator } from "@shared/application/ports/token-generator.interface";
+import { User } from "@user/domain/user.entity";
 
 interface LoginUseCasePayload {
     email: string
@@ -8,7 +9,8 @@ interface LoginUseCasePayload {
 }
 
 interface LoginUseCaseResult {
-    token: string
+    token: string,
+    user: User
 }
 
 export class LoginUseCase {
@@ -34,11 +36,11 @@ export class LoginUseCase {
         const tokenPayload = {
             userId: user.props.id,
             email: user.props.email,
-            roles: user.props.roles
+            role: user.props.role
         }
 
         const token = await this.tokenGenerator.generate(tokenPayload);
 
-        return { token };
+        return { token, user };
     }
 }

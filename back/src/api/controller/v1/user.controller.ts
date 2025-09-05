@@ -56,12 +56,43 @@ export const loginUser = (container: DIContainer) => {
                 password: input.password,
             }
 
-            const result = await container.resolve('loginUserUseCase').execute(payload);
+            const {token, user} = await container.resolve('loginUserUseCase').execute(payload);
 
-            return res.jsonSuccess(result, 200);
+            res.cookie("accessToken", token, {
+                httpOnly: true,
+                secure: true,
+                sameSite: "lax",
+                maxAge: 3600 * 24 * 7 * 1000 // 1 semaine
+            })
+
+            return res.jsonSuccess({
+                user: {
+                    userId: user.props.id,
+                    email: user.props.email,
+                    role: user.props.role
+                }
+            }, 200);
         } catch (error) {
             logger.error(error)
             next(error);
         }
     };
+}
+
+export const me = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) : Promise<any> => {
+    try {
+        if (!req.user) {
+            return res.jsonError("Vous n'êtes pas connecté", 401);
+        }
+
+        const { userId, email, role } = req.user;
+        
+        return res.jsonSuccess({ userId, email, role }, 200);
+    } catch (error) {
+        next(error);
+    }
 }

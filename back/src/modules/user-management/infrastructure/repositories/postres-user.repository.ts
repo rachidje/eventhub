@@ -29,7 +29,7 @@ export class PostgresUserRepository implements IUserRepository {
             lastname: model.lastname,
             email: model.email,
             password: model.password,
-            roles: model.roles as Role[]
+            role: model.role as Role,
         })
     }
 }

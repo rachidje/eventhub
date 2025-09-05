@@ -21,7 +21,7 @@ export class UserFixture implements IFixture {
         const payload = {
             userId: this.user.props.id,
             email: this.user.props.email,
-            roles: this.user.props.roles
+            role: this.user.props.role
         };
 
         const secret = process.env.JWT_SECRET;

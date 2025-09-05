@@ -12,7 +12,7 @@ export const buildOrganizerWithHashedPassword = async () => {
             lastname: "Smith",
             email: "alice@example.com",
             password,
-            roles: [Role.organizer]
+            role: Role.organizer
         })
     }
 };
@@ -25,7 +25,7 @@ export const unittestOrganizers = {
         lastname: "Smith",
         email: "alice@example.com",
         password: "qwerty",
-        roles: [Role.organizer]
+        role: Role.organizer
     }),
     john: new User({
         id: "usr-002",
@@ -33,6 +33,6 @@ export const unittestOrganizers = {
         lastname: "Doe",
         email: "john@example.com",
         password: "qwerty",
-        roles: [Role.organizer]
+        role: Role.organizer
     })
 }

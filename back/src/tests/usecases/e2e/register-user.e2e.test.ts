@@ -34,11 +34,11 @@ describe("Create New User", () => {
         expect(response.body.data).toEqual(expect.objectContaining({
             id: expect.any(String),
             email: "alice@example.com",
-            roles: expect.arrayContaining(["organizer"])
+            role: expect.arrayContaining(["organizer"])
         }))
 
         const user = await container.resolve('userRepository').findByEmail("alice@example.com")
         expect(user).toBeDefined()
-        expect(user!.props.roles).toEqual([Role.organizer])
+        expect(user!.props.role).toEqual([Role.organizer])
     })
 })

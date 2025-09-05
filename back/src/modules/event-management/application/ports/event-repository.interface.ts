@@ -6,6 +6,6 @@ export interface IEventRepository {
     findByOrganizerAndStatus(userId: string, statuses: EventStatus[]): Promise<HostedEvent[]>
     save(event: HostedEvent): Promise<void>
     findById(id: string): Promise<HostedEvent | null>
-
+    findAll(): Promise<HostedEvent[]>
     runInTransaction<T>(fn: (repo: IEventRepository) => Promise<T>): Promise<T>
 }

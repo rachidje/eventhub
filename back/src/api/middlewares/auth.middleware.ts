@@ -1,4 +1,3 @@
-import { extractToken } from "@api/utils/extract-token";
 import { TokenPayload } from "@shared/application/security/token-payload";
 import { Role } from "@user/domain/role.enum";
 import { NextFunction, Request, Response } from "express";
@@ -12,12 +11,14 @@ declare module 'express-serve-static-core' {
 
 export const authMiddleware = (container: DIContainer) => {
     return async (req: Request, res: Response, next: NextFunction) : Promise<any> => {
-        const authorization = req.headers.authorization;
-        if (!authorization) {
-            return res.jsonError('Unauthorized', 403);
-        }
+        // const authorization = req.headers.authorization;
+        // if (!authorization) {
+        //     return res.jsonError('Unauthorized', 403);
+        // }
 
-        const token = extractToken(authorization);
+        // const token = extractToken(authorization);
+        const token = req.cookies?.accessToken
+        
         if (!token) {
             return res.jsonError('Unauthorized', 403);
         }
@@ -30,7 +31,7 @@ export const authMiddleware = (container: DIContainer) => {
         req.user = {
             userId: user.props.id,
             email: user.props.email,
-            roles: user.props.roles.map(role => Role[role])
+            role: Role[user.props.role]
         };
         
         next();

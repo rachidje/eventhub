@@ -62,7 +62,7 @@ export class PostgresEventRepository implements IEventRepository, IEventReposito
                 password: model.organizer.password,
                 firstname: model.organizer.firstname,
                 lastname: model.organizer.lastname,
-                roles: model.organizer.roles as Role[]
+                role: model.organizer.role as Role
             })
         })
     }
@@ -98,7 +98,7 @@ export class PostgresEventRepository implements IEventRepository, IEventReposito
                 password: model.organizer.password,
                 firstname: model.organizer.firstname,
                 lastname: model.organizer.lastname,
-                roles: model.organizer.roles as Role[]
+                role: model.organizer.role as Role
             })
         }))
     }
@@ -131,7 +131,7 @@ export class PostgresEventRepository implements IEventRepository, IEventReposito
                 password: model.organizer.password,
                 firstname: model.organizer.firstname,
                 lastname: model.organizer.lastname,
-                roles: model.organizer.roles as Role[]
+                role: model.organizer.role as Role
             })
         }))
     }
@@ -145,5 +145,35 @@ export class PostgresEventRepository implements IEventRepository, IEventReposito
             const txRepo = new PostgresEventRepository(tx)
             return fn(txRepo)
         })
+    }
+
+    async findAll(): Promise<HostedEvent[]> {
+        const models = await this.prisma.hostedEvent.findMany({
+            include: {
+                organizer: true
+            }
+        })
+
+        return models.map(model => new HostedEvent({
+            id: model.id,
+            name: model.name,
+            description: model.description,
+            dates: {
+                start: model.startDate,
+                end: model.endDate
+            },
+            capacity: model.capacity,
+            price: model.price,
+            venueId: model.venueId,
+            status: model.status as EventStatus,
+            organizer: new User({
+                id: model.organizer.id,
+                email: model.organizer.email,
+                password: model.organizer.password,
+                firstname: model.organizer.firstname,
+                lastname: model.organizer.lastname,
+                role: model.organizer.role as Role
+            })
+        }))
     }
 }

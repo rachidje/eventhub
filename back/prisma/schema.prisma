@@ -78,7 +78,7 @@ model User {
   lastname    String
   email       String   @unique
   password    String
-  roles       Role[]
+  role        Role @default(participant)
 
   hostedEvents HostedEvent[] @relation(name: "UserHostedEvents")
 
@@ -89,7 +89,7 @@ model HostedEvent {
   id          String      @id @default(uuid())
   name        String
   description String
-  organizerId String
+  organizerId String      @map("userId")
   status      EventStatus @default(scheduled)
   startDate   DateTime
   endDate     DateTime

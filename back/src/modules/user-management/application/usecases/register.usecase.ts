@@ -16,7 +16,7 @@ interface RegisterUseCasePayload {
 interface RegisterUseCaseResult {
     id: string
     email: string
-    roles: Role[]
+    role: Role
 }
 
 export class RegisterUseCase {
@@ -50,7 +50,7 @@ export class RegisterUseCase {
             lastname: payload.lastname,
             email: payload.email,
             password: hashedPassword,
-            roles: [payload.role]
+            role: payload.role
         })
 
         await user.validateOrThrow()
@@ -60,7 +60,7 @@ export class RegisterUseCase {
         return {
             id,
             email: user.props.email,
-            roles: user.props.roles
+            role: user.props.role
         }
     }
 }

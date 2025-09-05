@@ -6,11 +6,15 @@ import { errorHandlerMiddleware } from './middlewares/error-handler.middleware';
 import { jsonApiResponseMiddleware } from './middlewares/json-response.middleware';
 import { createApiRoutes } from './routes';
 import { logger } from './utils/logger';
+import cookieParser from 'cookie-parser'
+import helmet from 'helmet';
 
 const app = express();
 const container = createContainer();
 
+app.use(cookieParser())
 app.use(cors());
+app.use(helmet())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('combined', {

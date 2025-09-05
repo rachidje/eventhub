@@ -6,7 +6,7 @@ interface UserProps {
     lastname: string
     email: string
     password: string
-    roles: Role[]
+    role: Role
 }
 
 export class User {
@@ -27,10 +27,6 @@ export class User {
 
         if(!this.props.password) {
             throw new Error("Password is required")
-        }
-
-        if(!this.props.roles.length) {
-            throw new Error("At least one role is required")
         }
     }
 }
