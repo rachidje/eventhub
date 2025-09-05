@@ -28,7 +28,7 @@ describe("Create New Event", () => {
         it("should return the event ID with status 201" , async () => {
             const response = await request(app)
                             .post("/v1/event")
-                            .set('Authorization', E2EOrganizers.alice.createJwtToken())
+                            .set('Cookie', [`accessToken=${E2EOrganizers.alice.createAccessToken()}`])
                             .send({
                                 name: "Salon de la photo immersive",
                                 description: "Un événement artistique autour des technologies immersives et interactives.",
@@ -50,7 +50,7 @@ describe("Create New Event", () => {
         it("should return an error with status 403", async () => {
             const response = await request(app)
                             .post("/v1/event")
-                            .set('Authorization', E2EOrganizers.john.createJwtToken())
+                            .set('Cookie', [`accessToken=${E2EOrganizers.john.createAccessToken()}`])
                             .send({
                                 name: "Salon de la photo immersive",
                                 description: "Un événement artistique autour des technologies immersives et interactives.",
@@ -64,7 +64,7 @@ describe("Create New Event", () => {
 
             expect(response.status).toEqual(403)
             expect(response.body.success).toEqual(false)
-            expect(response.body.error.message).toEqual("Unauthorized")
+            expect(response.body.error.message).toEqual("Role not allowed")
         });
     });
 })

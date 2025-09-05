@@ -31,4 +31,8 @@ export class InMemoryEventRepository implements IEventRepository, IEventReposito
     async runInTransaction<T>(fn: (repository: IEventRepository) => Promise<T>): Promise<T> {
         return fn(this)
     }
+
+    async findAll(): Promise<HostedEvent[]> {
+        return this.events
+    }
 }

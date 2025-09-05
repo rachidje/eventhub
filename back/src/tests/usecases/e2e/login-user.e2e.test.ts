@@ -32,7 +32,11 @@ describe("Login User", () => {
 
         expect(response.status).toEqual(200)
         expect(response.body.success).toEqual(true)
-        expect(response.body.data).toEqual({token: expect.any(String)})
+        expect(response.body.data.user).toEqual({
+            userId: expect.any(String),
+            email: 'alice@example.com',
+            role: 'organizer'
+            })
 
     })
 })

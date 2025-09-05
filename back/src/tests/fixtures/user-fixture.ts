@@ -27,4 +27,15 @@ export class UserFixture implements IFixture {
         const secret = process.env.JWT_SECRET;
         return `Bearer ${jwt.sign(payload, secret!)}`;
     }
+
+    createAccessToken(): string {
+        const payload = {
+            userId: this.user.props.id,
+            email: this.user.props.email,
+            role: this.user.props.role
+        };
+
+        const secret = process.env.JWT_SECRET;
+        return `${jwt.sign(payload, secret!)}`;
+    }
 }

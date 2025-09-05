@@ -25,7 +25,7 @@ export const authMiddleware = (container: DIContainer) => {
 
         const user = await container.resolve('authenticator').authenticate(token);
         if (!user) {
-            return res.jsonError('Unauthorized', 403);
+            return res.jsonError('Unauthorized 1', 403);
         }
 
         req.user = {

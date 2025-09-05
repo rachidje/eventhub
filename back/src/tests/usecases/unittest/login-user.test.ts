@@ -55,9 +55,9 @@ describe('Login user usecase', () => {
 
     describe("Scenario: Should return a token", () => {
         it("Should return a token", async () => {
-            const token = await usecase.execute(payload);
+            const {token, user} = await usecase.execute(payload);
 
-            expect(token).toEqual({token: expect.any(String)});
+            expect(token).toEqual(expect.any(String));
         });
     });
 });

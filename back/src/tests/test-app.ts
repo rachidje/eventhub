@@ -1,10 +1,11 @@
-import "../tests/setup/load-env";
 import { errorHandlerMiddleware } from "@api/middlewares/error-handler.middleware";
 import { jsonApiResponseMiddleware } from "@api/middlewares/json-response.middleware";
 import { createApiRoutes } from "@api/routes";
+import cookieParser from 'cookie-parser';
 import cors from "cors";
 import express, { Application } from "express";
 import { DIContainer } from "types/di-container";
+import "../tests/setup/load-env";
 import { IFixture } from "./fixtures/fixture.interface";
 
 export class TestApp {
@@ -17,6 +18,7 @@ export class TestApp {
     async setup() {
         await this.resetDatabase();
 
+        this.app.use(cookieParser());
         this.app.use(cors());
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: true }));
