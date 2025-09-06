@@ -4,6 +4,7 @@ import type { Dependencies } from "@eventhub/store/dependencies";
 import { createStore, type AppState } from "@eventhub/store/store";
 import { MockLoginGateway } from "../login-user/tests/mock-login.gateway";
 import { MockRegisterGateway } from "../register-user/tests/mock.register-gateway";
+import { ListEventsApi } from "../displayEvents/api/list-events.api";
 
 /**
  * Create testing dependencies with provided defaults
@@ -17,6 +18,7 @@ const createDependencies = (
   saveEvent: new SaveEventApi(),
   registerGateway: new MockRegisterGateway(),
   loginUserApi: new MockLoginGateway(),
+  listEventsApi: new ListEventsApi(),
   ...dependencies,
 });
 
