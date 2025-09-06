@@ -4,9 +4,15 @@ import type { LoginUserDto } from "./dto/login-user.dto";
 import type { ILoginGateway } from "./interfaces/login-gateway.interface";
 
 export class LoginUserApi implements ILoginGateway {
-    async token(payload: AuthModel.LoginForm): Promise<LoginUserDto> {
+    async login(payload: AuthModel.LoginForm): Promise<LoginUserDto> {
         try {
-            const response = await axios.post("/api/v1/user/login", payload)
+            const response = await axios.post(
+                "/api/v1/user/login", 
+                payload,
+                {
+                    withCredentials: true
+                }
+            )
 
             if(!response.data.success) {
                 throw new Error(response.data.error.message || 'Unknown error from backend')

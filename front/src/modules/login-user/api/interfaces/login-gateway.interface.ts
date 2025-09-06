@@ -1,5 +1,5 @@
 import type { AuthModel } from "../../domain/model/auth-model";
 
 export interface ILoginGateway {
-    token(payload: AuthModel.LoginForm): Promise<AuthModel.TokenPayload>;
+    login(payload: AuthModel.LoginForm): Promise<AuthModel.User>;
 }

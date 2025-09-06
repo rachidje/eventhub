@@ -4,6 +4,7 @@ import { InMemoryFetchVenuesApi } from "../create-event/api/in-memory-fetch-venu
 import { SaveEventApi } from "../create-event/api/save-event.api";
 import { LoginUserApi } from "../login-user/api/login-user.api";
 import { RegisterUserApi } from "../register-user/api/register-user.api";
+import { ListEventsApi } from "../displayEvents/api/list-events.api";
 
 export class App {
     public dependencies: Dependencies;
@@ -19,7 +20,8 @@ export class App {
             fetchVenues: new InMemoryFetchVenuesApi(),
             saveEvent: new SaveEventApi(),
             registerGateway: new RegisterUserApi(),
-            loginUserApi: new LoginUserApi()
+            loginUserApi: new LoginUserApi(),
+            listEventsApi: new ListEventsApi()
         };
     }
 }

@@ -3,7 +3,7 @@ import type { RegisterModel } from "../../domain/model/register-model";
 export type RegisterGatewayResponse = {
     id: string
     email: string
-    roles: RegisterModel.Role[]
+    role: RegisterModel.Role
 }
 
 export interface IRegisterGateway {

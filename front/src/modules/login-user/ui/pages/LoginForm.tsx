@@ -9,13 +9,14 @@ export const LoginForm: React.FC<{}> = () => {
         <Box>
             <Typography mb={6} textAlign="center" variant="h5" fontWeight={700}>Connection</Typography>
 
-            {
+            {/* Opter pour le flashMessage */}
+            {/* {
                 hook.networkError && (
                     <Alert severity="error">
                         {hook.networkError}
                     </Alert>
                 )
-            }
+            } */}
 
             <Stack spacing={4}>
                 <FormControl>

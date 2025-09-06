@@ -9,13 +9,13 @@ export const RegisterForm = () => {
         <Box>
             <Typography mb={6} textAlign="center" variant="h5" fontWeight={700}>Inscription</Typography>
 
-            {
+            {/* {
                 hook.networkError && (
                     <Alert severity="error">
                         {hook.networkError}
                     </Alert>
                 )
-            }
+            } */}
 
             <Stack spacing={4}>
                 <FormControl>

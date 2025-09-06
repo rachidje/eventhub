@@ -6,10 +6,16 @@ export namespace AuthModel {
         password: string;
     }
 
+    export type User = {
+        userId: string;
+        email: string;
+        role: Role
+    }
+
     export type TokenPayload = {
         userId: string;
         email: string;
         token: string;
-        roles: Role[];
+        role: Role;
     }
 }

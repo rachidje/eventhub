@@ -12,6 +12,6 @@ export namespace RegisterModel {
     export type TokenPayload = {
         userId: string;
         email: string;
-        roles: Role[];
+        role: Role;
     }
 }

@@ -10,7 +10,7 @@ export class MockRegisterGateway implements IRegisterGateway {
         return {
             id: "123456789",
             email: "test@test.com",
-            roles: ["organizer", "participant"]
+            role: "organizer"
         }
     }
 

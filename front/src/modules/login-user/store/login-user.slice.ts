@@ -7,6 +7,7 @@ export type AuthState = {
     userId: string | null
     token: string | null
     isAuthenticated: boolean
+    user: AuthModel.User
 }
 
 export const initialState: AuthState = {
@@ -14,7 +15,12 @@ export const initialState: AuthState = {
     error: null,
     userId: null,
     token: null,
-    isAuthenticated: false
+    isAuthenticated: false,
+    user: {
+        userId: "",
+        email: "",
+        role: null
+    }
 }
 
 export const authSlice = createSlice({
@@ -27,11 +33,10 @@ export const authSlice = createSlice({
             state.token = null;
             state.userId = null;
         },
-        handleSuccessLoginUser: (state, action: PayloadAction<AuthModel.TokenPayload>) => {
+        handleSuccessLoginUser: (state, action: PayloadAction<AuthModel.User>) => {
             state.status = "success";
-            state.error = null;
-            state.userId = action.payload.userId;
-            state.token = action.payload.token;
+            state.user.userId = action.payload.userId;
+            state.user.role = action.payload.role;
             state.isAuthenticated = true;
         },
         handleErrorLoginUser: (state, action: PayloadAction<string>) => {
@@ -40,7 +45,22 @@ export const authSlice = createSlice({
             state.userId = null;
             state.token = null;
             state.isAuthenticated = false;
-        }
+        },
+        logout: (state) => {
+            state.user.email = "";
+            state.user.role = null;
+            state.user.userId = "";
+            state.isAuthenticated = false;
+            state.error = null;
+            state.status = "idle";
+        },
+        hydrateAuth: (state, action: PayloadAction<AuthModel.User>) => {
+            state.user.email = action.payload.email;
+            state.user.role = action.payload.role;
+            state.isAuthenticated = true;
+            state.error = null;
+            state.status = "success";
+        },
     }
 })
 

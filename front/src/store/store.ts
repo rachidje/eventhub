@@ -5,12 +5,14 @@ import { createEventReducer } from "@eventhub/modules/create-event/store/create-
 import { registerUserReducer } from "@eventhub/modules/register-user/store/register-user.slice";
 import { authReducer } from "@eventhub/modules/login-user/store/login-user.slice";
 import { flashReducer } from "@eventhub/modules/base/store/flash-message.slice";
+import { listEventsReducer } from "@eventhub/modules/displayEvents/store/list-events.slice";
 
 const reducers = combineReducers({
     flash: flashReducer,
     createEvent: createEventReducer,
     registerUser: registerUserReducer,
-    auth: authReducer
+    auth: authReducer,
+    listEvents: listEventsReducer,
 });
 
 export type AppStore = ReturnType<typeof createStore>;

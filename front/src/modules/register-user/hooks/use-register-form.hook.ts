@@ -27,9 +27,11 @@ export const useRegisterForm = () => {
         return registerForm.current.isSubmittable(form);
     }
 
-    function submit() {
-        dispatch(registerUserAction(form));
-        navigate('/login')
+    async function submit() {
+        const ok = await dispatch(registerUserAction(form));
+        if (ok) {
+            navigate("/login");
+        }
     }
     
     type AllowedRole = keyof typeof allowedRoles;
@@ -52,7 +54,7 @@ export const useRegisterForm = () => {
         role: null
     });
     const [errors, setErrors] = useState<ValidationError>({});
-    const networkError = useSelector((state: AppState) => state.registerUser.error);
+    // const networkError = useSelector((state: AppState) => state.registerUser.error);
 
     return {
         form,
@@ -62,7 +64,7 @@ export const useRegisterForm = () => {
             role
         })),
         errors,
-        networkError,
+        // networkError,
         isSubmittable: isSubmittable(),
         updateField,
         assignRole,

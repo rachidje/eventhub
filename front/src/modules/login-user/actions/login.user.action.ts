@@ -12,10 +12,13 @@ export const loginUserAction = (form: AuthModel.LoginForm) => async (
 ) => {
     try {
         dispatch(authSlice.actions.handleLoginUserLoading());
-        const result = await dependencies.loginUserApi.token(form);
+        const result = await dependencies.loginUserApi.login(form);
         dispatch(authSlice.actions.handleSuccessLoginUser(result));
         dispatch(flashActions.showFlash({message: "Vous êtes maintenant connecté", level: "success", ttlMs: 3000}))
+        return true
     } catch (error) {
         dispatch(authSlice.actions.handleErrorLoginUser(extractErrorMessage(error)));
+        dispatch(flashActions.showFlash({message: "Erreur lors de la connexion", level: "error", ttlMs: 3000}))
+        return false
     }
 }

@@ -62,6 +62,13 @@ jobs:
               echo "Le build a échoué, arrêt du déploiement."
               exit 1
             }
+            docker compose run --rm backend npx prisma migrate diff \
+              --from-migrations prisma/migrations \
+              --to-schema-datamodel prisma/schema.prisma \
+              --script || {
+                echo "❌ Drift détecté entre les migrations et le schéma actuel."
+                exit 1
+            }
             # ✅ Exécuter le service migrate une seule fois, sans le garder actif
             docker compose run --rm migrate || {
               echo "La migration Prisma a échoué."

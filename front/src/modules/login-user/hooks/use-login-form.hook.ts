@@ -25,9 +25,11 @@ export const useLoginForm = () => {
         return loginForm.current.isSubmittable(form);
     }
 
-    function submit() {
-        dispatch(loginUserAction(form));
-        navigate('/create-event')
+    async function submit() {
+        const ok = await dispatch(loginUserAction(form));
+        if(ok) {
+            navigate('/create-event')
+        }
     }
 
 
@@ -39,12 +41,12 @@ export const useLoginForm = () => {
         password: "",
     })
     const [errors, setErrors] = useState<ValidationError>({})
-    const networkError = useSelector((state: AppState) => state.auth.error)
+    // const networkError = useSelector((state: AppState) => state.auth.error) : Opter pour le flashMessage
 
     return {
         form,
         errors,
-        networkError,
+        // networkError,
         isSubmittable: isSubmittable(),
         updateField,
         submit

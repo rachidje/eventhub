@@ -11,7 +11,10 @@ export const registerUserAction = (form: RegisterModel.Form) => async (dispatch:
         const result = await dependencies.registerGateway.register(form) as any
         dispatch(registerUserActions.handleSuccessRegisterUser(result))
         dispatch(flashActions.showFlash({ message: "Félicitations !", level: "success", ttlMs: 3000 }))
+        return true
     } catch (error) {
-        dispatch(registerUserActions.handleErrorRegisterUser(extractErrorMessage(error)))
+        // dispatch(registerUserActions.handleErrorRegisterUser(extractErrorMessage(error)))
+        dispatch(flashActions.showFlash({ message: extractErrorMessage(error), level: "error", ttlMs: 3000 }))
+        return false
     }
 }
