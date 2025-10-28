@@ -9,6 +9,7 @@ type RoleRouteProps = {
 
 const RoleRoute: React.FC<RoleRouteProps> = ({ allowed }) => {
     const { isAuthenticated, user } = useSelector((state: AppState) => state.auth);
+    console.log("🔍 RoleRoute Debug:", { isAuthenticated, user, allowed });
 
     if (!isAuthenticated) {
         return <Navigate to="/login" replace />;

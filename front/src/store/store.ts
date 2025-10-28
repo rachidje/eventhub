@@ -1,11 +1,11 @@
+import { flashReducer } from "@eventhub/modules/base/store/flash-message.slice";
+import { createEventReducer } from "@eventhub/modules/create-event/store/create-event.slice";
+import { listEventsReducer } from "@eventhub/modules/displayEvents/store/list-events.slice";
+import { authReducer } from "@eventhub/modules/login-user/store/login-user.slice";
+import { registerUserReducer } from "@eventhub/modules/register-user/store/register-user.slice";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import type { Dependencies } from "./dependencies";
-import { createEventReducer } from "@eventhub/modules/create-event/store/create-event.slice";
-import { registerUserReducer } from "@eventhub/modules/register-user/store/register-user.slice";
-import { authReducer } from "@eventhub/modules/login-user/store/login-user.slice";
-import { flashReducer } from "@eventhub/modules/base/store/flash-message.slice";
-import { listEventsReducer } from "@eventhub/modules/displayEvents/store/list-events.slice";
 
 const reducers = combineReducers({
     flash: flashReducer,

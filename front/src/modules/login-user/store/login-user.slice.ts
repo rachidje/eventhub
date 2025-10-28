@@ -35,9 +35,18 @@ export const authSlice = createSlice({
         },
         handleSuccessLoginUser: (state, action: PayloadAction<AuthModel.User>) => {
             state.status = "success";
-            state.user.userId = action.payload.userId;
-            state.user.role = action.payload.role;
             state.isAuthenticated = true;
+            
+            // ✅ Remplacer complètement l'objet user au lieu de muter les propriétés
+            state.user = {
+                userId: action.payload.userId,
+                email: action.payload.email,
+                role: action.payload.role
+            };
+            
+            // ✅ TEMPORAIRE : Log pour déboguer
+            console.log("✅ handleSuccessLoginUser payload:", action.payload);
+            console.log("✅ handleSuccessLoginUser state.user:", state.user);
         },
         handleErrorLoginUser: (state, action: PayloadAction<string>) => {
             state.status = "error";
